@@ -1,5 +1,6 @@
 ---
-layout: page
+sidebar: false
+aside: true
 ---
 
 # 🔗 友链
@@ -85,7 +86,6 @@ layout: page
 ## 申请友链
 
 想和我们交换友链？请通过以下方式联系：
-
 - 📧 在 [GitHub Issues](https://github.com/XAUAT-ACM/xauat-acm.github.io/issues) 提交申请
 - 💬 加入 QQ 群联系管理员
 

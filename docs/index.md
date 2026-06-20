@@ -1,74 +1,52 @@
 ---
-layout: page
+sidebar: false
+aside: true
 ---
 
 <script setup>
 import { data as posts } from './posts.data'
-import { computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import TypedBanner from './.vitepress/theme/components/TypedBanner.vue'
+import Pagination from './.vitepress/theme/components/Pagination.vue'
+import { setPosts } from './.vitepress/theme/composables/usePosts'
 
-// 统计数据
-const postCount = computed(() => posts.length)
-const tagSet = computed(() => {
-  const set = new Set()
-  posts.forEach(p => p.tags?.forEach(t => set.add(t)))
-  return set
+// 修复问题5：将文章数据注入全局 store，供右侧边栏使用
+setPosts(posts)
+
+const pageSize = 5
+const currentPage = ref(1)
+const totalPages = computed(() => Math.max(1, Math.ceil(posts.length / pageSize)))
+
+const pagedPosts = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return posts.slice(start, start + pageSize)
 })
-const categorySet = computed(() => {
-  const set = new Set()
-  posts.forEach(p => { if (p.category) set.add(p.category) })
-  return set
-})
+
+function goPage(page) {
+  currentPage.value = page
+  if (typeof window !== 'undefined') {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
 </script>
 
-<!-- Hero 区域 -->
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">XAUAT ACM</h1>
-    <p class="hero-subtitle">西安建筑科技大学 ACM 协会</p>
-    <div class="hero-typed">
-      <TypedBanner />
-    </div>
-    <p class="hero-desc">算法竞赛 · 编程训练 · 技术交流 · 以赛促学</p>
-    <div class="hero-actions">
-      <a href="/about" class="hero-btn hero-btn-primary">了解我们</a>
-      <a href="/about#加入我们" class="hero-btn hero-btn-secondary">加入协会</a>
-    </div>
-  </div>
-</section>
+<div class="typed-line">
+  <TypedBanner />
+</div>
 
-<!-- 统计卡片 -->
-<section class="stats">
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-number">{{ postCount }}</div>
-      <div class="stat-label">文章</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">{{ categorySet.size }}</div>
-      <div class="stat-label">分类</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">{{ tagSet.size }}</div>
-      <div class="stat-label">标签</div>
-    </div>
-  </div>
-</section>
-
-<!-- 最新文章 -->
+<!-- 最新文�?-->
 <section class="post-section">
-  <h2 class="section-title">📝 最新文章</h2>
   <div class="post-list">
-    <div v-for="post in posts" :key="post.url" class="post-item">
+    <div v-for="post in pagedPosts" :key="post.url" class="post-item">
       <a :href="post.url" class="post-title">{{ post.title }}</a>
       <div class="post-meta">
         <span class="post-date">{{ post.date }}</span>
-        <a :href="`/tags?tag=${post.category}`" class="post-category">{{ post.category }}</a>
+        <a :href="`/tags?tag=${encodeURIComponent(post.category)}`" class="post-category">{{ post.category }}</a>
         <span class="post-tags">
           <a
             v-for="tag in post.tags"
             :key="tag"
-            :href="`/tags?tag=${tag}`"
+            :href="`/tags?tag=${encodeURIComponent(tag)}`"
             class="post-tag"
           >{{ tag }}</a>
         </span>
@@ -79,7 +57,11 @@ const categorySet = computed(() => {
       还没有文章，开始写第一篇吧 ✍️
     </div>
   </div>
-  <div class="view-all" v-if="posts.length > 0">
-    <a href="/archives" class="view-all-link">查看全部归档 →</a>
-  </div>
+
+  <Pagination
+    v-if="totalPages > 1"
+    :currentPage="currentPage"
+    :totalPages="totalPages"
+    @page-change="goPage"
+  />
 </section>

@@ -2,19 +2,26 @@ import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import type { Router } from 'vitepress'
 import mediumZoom from 'medium-zoom'
-import Giscus from './components/Giscus.vue'
-import CanvasRibbon from './components/CanvasRibbon.vue'
+import RightSidebar from './components/RightSidebar.vue'
 import FloatingPanel from './components/FloatingPanel.vue'
+import Giscus from './components/Giscus.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
+import CanvasRibbon from './components/CanvasRibbon.vue'
+import HeroBanner from './components/HeroBanner.vue'
+import GeoDecor from './components/GeoDecor.vue'
 import './styles/custom.css'
 
 export default {
   extends: DefaultTheme,
 
-  // 在所有页面注入全局组件
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      // 文章底部：评论 + 运行时间 + 访客统计
+      // 几何装饰 + Hero
+      'layout-top': () => [
+        h(GeoDecor),
+        h(HeroBanner),
+      ],
+      // 文章底部：评论区 + 页脚信息
       'doc-after': () => [
         h(Giscus),
         h('div', { class: 'footer-extras' }, [
@@ -27,7 +34,9 @@ export default {
           ]),
         ]),
       ],
-      // 布局底部：飘带 + 浮动面板
+      // 右侧边栏
+      'aside-outline-before': () => h(RightSidebar),
+      // 底部
       'layout-bottom': () => [
         h(CanvasRibbon),
         h(FloatingPanel),
@@ -36,7 +45,6 @@ export default {
   },
 
   enhanceApp({ app, router }: { app: any; router: Router }) {
-    // 图片灯箱：仅在客户端初始化
     if (typeof window !== 'undefined') {
       router.onAfterRouteChanged = () => {
         mediumZoom('.vp-doc img:not(.no-zoom)', {

@@ -1,12 +1,16 @@
 ---
-layout: page
+sidebar: false
+aside: true
 ---
 
 <script setup>
 import { data as posts } from './posts.data'
 import { computed } from 'vue'
+import { setPosts } from './.vitepress/theme/composables/usePosts'
 
-// 按年份分组
+// 修复问题5：将文章数据注入全局 store，供右侧边栏使用
+setPosts(posts)
+
 const archives = computed(() => {
   const grouped = {}
   for (const post of posts) {

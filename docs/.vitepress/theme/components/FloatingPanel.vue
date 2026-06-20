@@ -1,13 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useData } from 'vitepress'
 
-const { isDark } = useData()
 const showBackTop = ref(false)
-
-function toggleDark() {
-  isDark.value = !isDark.value
-}
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -27,73 +21,52 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="floating-panel">
-    <!-- 回到顶部 -->
-    <button
-      class="floating-btn back-top"
-      :class="{ visible: showBackTop }"
-      @click="scrollToTop"
-      title="回到顶部"
-    >
-      ↑
-    </button>
-
-    <!-- 深色模式切换 -->
-    <button class="floating-btn" @click="toggleDark" :title="isDark ? '浅色模式' : '深色模式'">
-      {{ isDark ? '☀️' : '🌙' }}
-    </button>
-  </div>
+  <button
+    class="back-to-top"
+    :class="{ visible: showBackTop }"
+    @click="scrollToTop"
+    title="回到顶部"
+  >
+    ↑
+  </button>
 </template>
 
 <style scoped>
-.floating-panel {
+.back-to-top {
   position: fixed;
   right: 1.5rem;
-  bottom: 6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  z-index: 100;
-}
-
-.floating-btn {
+  bottom: 3rem;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-2);
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  color: #666;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.25s ease;
-  font-size: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.floating-btn:hover {
-  color: var(--vp-c-brand);
-  border-color: var(--vp-c-brand);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-}
-
-.floating-btn.back-top {
+  font-size: 1.1rem;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
-.floating-btn.back-top.visible {
+.back-to-top.visible {
   opacity: 1;
   visibility: visible;
 }
 
+.back-to-top:hover {
+  color: #2563eb;
+  border-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
 @media (max-width: 768px) {
-  .floating-panel {
-    right: 0.75rem;
-    bottom: 4rem;
-  }
+  .back-to-top { right: 0.75rem; bottom: 2rem; }
 }
 </style>

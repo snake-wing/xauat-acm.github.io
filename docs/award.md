@@ -1,107 +1,212 @@
 ---
-layout: page
+sidebar: false
+aside: true
 ---
 
 <script setup>
-import { computed } from 'vue'
+import { ref } from 'vue'
 
-// ============================================================
-// 「获奖荣誉」数据 —— 按年份分组，直接修改此数组即可
-// awardLevel: gold / silver / bronze / iron / special
-// ============================================================
-const awardsByYear = [
-  {
-    year: 2026,
-    items: [
-      // 示例数据，请替换为真实获奖记录
-      // {
-      //   competition: 'ICPC 亚洲区域赛（西安站）',
-      //   level: 'silver',
-      //   levelLabel: '银牌',
-      //   team: '队伍名',
-      //   members: '张三、李四、王五',
-      //   date: '2026-12',
-      // },
-      // {
-      //   competition: '蓝桥杯省赛',
-      //   level: 'gold',
-      //   levelLabel: '一等奖',
-      //   team: '-',
-      //   members: '张三',
-      //   date: '2026-04',
-      // },
+const activeTab = ref('ICPC')
+
+const tabs = ['ICPC', 'CCPC', '蓝桥杯', '天梯赛']
+
+const awards = {
+  ICPC: {
+    title: 'ICPC 国际大学生程序设计竞赛',
+    icon: '🌍',
+    levels: [
+      { label: '🥇 金奖', color: 'gold', items: [] },
+      { label: '🥈 银奖', color: 'silver', items: [] },
+      { label: '🥉 铜奖', color: 'bronze', items: [] },
     ],
   },
-]
+  CCPC: {
+    title: 'CCPC 中国大学生程序设计竞赛',
+    icon: '🇨🇳',
+    levels: [
+      { label: '🥇 金奖', color: 'gold', items: [] },
+      { label: '🥈 银奖', color: 'silver', items: [] },
+      { label: '🥉 铜奖', color: 'bronze', items: [] },
+    ],
+  },
+  蓝桥杯: {
+    title: '蓝桥杯全国软件和信息技术专业人才大赛',
+    icon: '🏔️',
+    levels: [
+      { label: '🥇 国一', color: 'gold', items: [] },
+      { label: '🥈 国二', color: 'silver', items: [] },
+      { label: '🥉 国三', color: 'bronze', items: [] },
+      { label: '省一', color: 'iron', items: [] },
+      { label: '省二', color: 'iron', items: [] },
+      { label: '省三', color: 'iron', items: [] },
+    ],
+  },
+  天梯赛: {
+    title: '中国高校计算机大赛-团体程序设计天梯赛',
+    icon: '🪜',
+    subsections: [
+      {
+        title: '团队奖项',
+        levels: [
+          { label: '🥇 国一', color: 'gold', items: [] },
+          { label: '🥈 国二', color: 'silver', items: [] },
+          { label: '🥉 国三', color: 'bronze', items: [] },
+          { label: '省一', color: 'iron', items: [] },
+          { label: '省二', color: 'iron', items: [] },
+          { label: '省三', color: 'iron', items: [] },
+        ],
+      },
+      {
+        title: '个人奖项',
+        levels: [
+          { label: '🥇 国一', color: 'gold', items: [] },
+          { label: '🥈 国二', color: 'silver', items: [] },
+          { label: '🥉 国三', color: 'bronze', items: [] },
+        ],
+      },
+    ],
+  },
+}
 
-// 统计
-const stats = computed(() => {
-  let gold = 0, silver = 0, bronze = 0, other = 0
-  awardsByYear.forEach(y => {
-    y.items.forEach(item => {
-      if (item.level === 'gold') gold++
-      else if (item.level === 'silver') silver++
-      else if (item.level === 'bronze') bronze++
-      else other++
-    })
-  })
-  return { gold, silver, bronze, other }
-})
+function levelClass(color) {
+  return { gold: 'lv-gold', silver: 'lv-silver', bronze: 'lv-bronze', iron: 'lv-iron' }[color] || ''
+}
 
-const levelClass = (level) => {
-  return { gold: 'level-gold', silver: 'level-silver', bronze: 'level-bronze', iron: 'level-iron', special: 'level-special' }[level] || ''
+function totalCount(data) {
+  if (data.subsections) {
+    return data.subsections.reduce((s, sub) => s + sub.levels.reduce((ss, l) => ss + l.items.length, 0), 0)
+  }
+  return data.levels.reduce((s, l) => s + l.items.length, 0)
 }
 </script>
 
 # 🏆 获奖荣誉
 
-<div class="award-section">
+<div class="award-page">
 
-<p class="award-intro">
-建队以来，XAUAT ACM 集训队在各项算法竞赛中奋勇拼搏。每一份荣誉背后，都是无数个日夜的刷题与坚持。
-</p>
-
-<!-- 荣誉统计 -->
-<div class="award-stats">
-  <div class="award-stat gold">
-    <span class="award-stat-num">{{ stats.gold }}</span>
-    <span class="award-stat-label">金牌 / 一等奖</span>
-  </div>
-  <div class="award-stat silver">
-    <span class="award-stat-num">{{ stats.silver }}</span>
-    <span class="award-stat-label">银牌 / 二等奖</span>
-  </div>
-  <div class="award-stat bronze">
-    <span class="award-stat-num">{{ stats.bronze }}</span>
-    <span class="award-stat-label">铜牌 / 三等奖</span>
-  </div>
+<div class="award-tabs">
+  <button
+    v-for="tab in tabs"
+    :key="tab"
+    class="award-tab"
+    :class="{ active: activeTab === tab }"
+    @click="activeTab = tab"
+  >
+    {{ tab }}
+    <span class="award-tab-count" v-if="totalCount(awards[tab]) > 0">{{ totalCount(awards[tab]) }}</span>
+  </button>
 </div>
 
-<!-- 按年份展示 -->
-<div v-for="yearGroup in awardsByYear" :key="yearGroup.year" class="award-year">
-  <h2 class="award-year-title">{{ yearGroup.year }} 年</h2>
-  <div class="award-list">
-    <div v-for="(item, idx) in yearGroup.items" :key="idx" class="award-item">
-      <div class="award-badge" :class="levelClass(item.level)">
-        {{ item.levelLabel }}
+<div class="award-section" v-show="activeTab === 'ICPC'">
+  <div class="award-section-head">
+    <span class="award-section-icon">🌍</span>
+    <span class="award-section-title">{{ awards.ICPC.title }}</span>
+  </div>
+  <p class="award-section-intro">
+    ACM-ICPC 是世界上规模最大、历史最悠久的大学生程序设计竞赛，被誉为「程序设计界的奥林匹克」。
+    协会成员在 ICPC 亚洲区域赛中奋力拼搏，以下是历年获奖记录。
+  </p>
+  <div class="award-levels-grid">
+    <div class="award-level-col" v-for="level in awards.ICPC.levels" :key="level.label">
+      <div class="award-level-head" :class="levelClass(level.color)">
+        {{ level.label }}
+        <span class="award-level-count">{{ level.items.length }}</span>
       </div>
-      <div class="award-detail">
-        <div class="award-comp">{{ item.competition }}</div>
-        <div class="award-team" v-if="item.team && item.team !== '-'">🏆 {{ item.team }}</div>
-        <div class="award-members">👤 {{ item.members }}</div>
-        <div class="award-date">{{ item.date }}</div>
+      <div class="award-level-items">
+        <div class="award-row" v-for="(item, idx) in level.items" :key="idx">
+          <span class="award-row-year">{{ item.year }}</span>
+          <span class="award-row-comp">{{ item.competition }}</span>
+          <span class="award-row-team" v-if="item.team">{{ item.team }}</span>
+          <span class="award-row-members">{{ item.members }}</span>
+        </div>
+        <div class="award-row-empty" v-if="level.items.length === 0">暂无</div>
       </div>
     </div>
   </div>
-  <div v-if="yearGroup.items.length === 0" class="award-empty-year">
-    暂无 {{ yearGroup.year }} 年的获奖记录
+</div>
+
+<div class="award-section" v-show="activeTab === 'CCPC'">
+  <div class="award-section-head">
+    <span class="award-section-icon">🇨🇳</span>
+    <span class="award-section-title">{{ awards.CCPC.title }}</span>
+  </div>
+  <p class="award-section-intro">
+    CCPC 是中国计算机学会主办的国内顶级大学生程序设计竞赛，与 ICPC 并列为协会重点参加的赛事。
+  </p>
+  <div class="award-levels-grid">
+    <div class="award-level-col" v-for="level in awards.CCPC.levels" :key="level.label">
+      <div class="award-level-head" :class="levelClass(level.color)">
+        {{ level.label }}
+        <span class="award-level-count">{{ level.items.length }}</span>
+      </div>
+      <div class="award-level-items">
+        <div class="award-row" v-for="(item, idx) in level.items" :key="idx">
+          <span class="award-row-year">{{ item.year }}</span>
+          <span class="award-row-comp">{{ item.competition }}</span>
+          <span class="award-row-team" v-if="item.team">{{ item.team }}</span>
+          <span class="award-row-members">{{ item.members }}</span>
+        </div>
+        <div class="award-row-empty" v-if="level.items.length === 0">暂无</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- 空状态 -->
-<div v-if="awardsByYear.length === 0" class="award-empty">
-  <p>🏅 暂无获奖记录，期待首金！</p>
-  <p>每一次参赛都是成长，每一份努力都会有回报。加油训练，荣誉墙等你来书写！</p>
+<div class="award-section" v-show="activeTab === '蓝桥杯'">
+  <div class="award-section-head">
+    <span class="award-section-icon">🏔️</span>
+    <span class="award-section-title">{{ awards['蓝桥杯'].title }}</span>
+  </div>
+  <p class="award-section-intro">
+    蓝桥杯是国内高校参与度最高的程序设计竞赛之一，个人赛形式，适合各阶段同学参加。
+  </p>
+  <div class="award-levels-grid">
+    <div class="award-level-col" v-for="level in awards['蓝桥杯'].levels" :key="level.label">
+      <div class="award-level-head" :class="levelClass(level.color)">
+        {{ level.label }}
+        <span class="award-level-count">{{ level.items.length }}</span>
+      </div>
+      <div class="award-level-items">
+        <div class="award-row" v-for="(item, idx) in level.items" :key="idx">
+          <span class="award-row-year">{{ item.year }}</span>
+          <span class="award-row-comp">{{ item.competition }}</span>
+          <span class="award-row-team" v-if="item.team">{{ item.team }}</span>
+          <span class="award-row-members">{{ item.members }}</span>
+        </div>
+        <div class="award-row-empty" v-if="level.items.length === 0">暂无</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="award-section" v-show="activeTab === '天梯赛'">
+  <div class="award-section-head">
+    <span class="award-section-icon">🪜</span>
+    <span class="award-section-title">{{ awards['天梯赛'].title }}</span>
+  </div>
+  <p class="award-section-intro">
+    天梯赛以团队积分制为核心特色，鼓励全校参与，是检验整体训练成果的好机会。
+  </p>
+  <div v-for="sub in awards['天梯赛'].subsections" :key="sub.title" class="award-subsection">
+    <h3 class="award-sub-title">{{ sub.title }}</h3>
+    <div class="award-levels-grid">
+      <div class="award-level-col" v-for="level in sub.levels" :key="level.label">
+        <div class="award-level-head" :class="levelClass(level.color)">
+          {{ level.label }}
+          <span class="award-level-count">{{ level.items.length }}</span>
+        </div>
+        <div class="award-level-items">
+          <div class="award-row" v-for="(item, idx) in level.items" :key="idx">
+            <span class="award-row-year">{{ item.year }}</span>
+            <span class="award-row-comp">{{ item.competition }}</span>
+            <span class="award-row-team" v-if="item.team">{{ item.team }}</span>
+            <span class="award-row-members">{{ item.members }}</span>
+          </div>
+          <div class="award-row-empty" v-if="level.items.length === 0">暂无</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 </div>
