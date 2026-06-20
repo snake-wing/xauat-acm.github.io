@@ -5,8 +5,8 @@ export default defineConfig({
   description: '西安建筑科技大学 ACM 协会',
   lang: 'zh-CN',
 
-  // 部署到 GitHub Pages 时使用
-  base: '/',
+  // 部署到 GitHub Pages 时使用（仓库名作为路径前缀）
+  base: '/xauat-acm.github.io/',
 
   // 开启 clean URL（/about 而非 /about.html）
   cleanUrls: true,
