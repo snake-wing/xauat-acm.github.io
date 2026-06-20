@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'XAUAT ACM',
-  description: '西安建筑科技大学 ACM 协会',
+  description: '西安建筑科技大学 ACM 协会 — 算法竞赛、编程训练、技术交流',
   lang: 'zh-CN',
 
   // 部署到 GitHub Pages 时使用（仓库名作为路径前缀）
@@ -11,22 +11,61 @@ export default defineConfig({
   // 开启 clean URL（/about 而非 /about.html）
   cleanUrls: true,
 
+  // SEO & Meta
+  head: [
+    ['link', { rel: 'icon', href: '/xauat-acm.github.io/favicon.svg' }],
+    ['meta', { name: 'author', content: 'XAUAT ACM' }],
+    ['meta', { name: 'keywords', content: 'XAUAT,西安建筑科技大学,ACM,算法竞赛,程序设计,ICPC,编程训练' }],
+    // Open Graph
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'XAUAT ACM — 西安建筑科技大学 ACM 协会' }],
+    ['meta', { property: 'og:description', content: '西安建筑科技大学 ACM 协会官网，提供算法竞赛培训、技术交流与赛事信息。' }],
+    ['meta', { property: 'og:site_name', content: 'XAUAT ACM' }],
+    // Twitter Card
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:title', content: 'XAUAT ACM — 西安建筑科技大学 ACM 协会' }],
+    ['meta', { name: 'twitter:description', content: '西安建筑科技大学 ACM 协会官网，提供算法竞赛培训、技术交流与赛事信息。' }],
+    // 不蒜子访客统计
+    ['script', { async: '', src: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js' }],
+  ],
+
   // 本地搜索
   themeConfig: {
-    // 网站 Logo（先注释，等有 logo 后替换）
-    // logo: '/logo.svg',
+    // 网站 Logo
+    logo: '/favicon.svg',
 
     // 顶部导航
     nav: [
       { text: '首页', link: '/' },
       { text: '归档', link: '/archives' },
       { text: '标签', link: '/tags' },
-      { text: '关于', link: '/about' },
+      {
+        text: '关于',
+        items: [
+          { text: '协会简介', link: '/about' },
+          { text: '加入我们', link: '/about#加入我们' },
+          { text: '友链', link: '/links' },
+        ],
+      },
     ],
 
     // 社交链接
     socialLinks: [
       { icon: 'github', link: 'https://github.com/XAUAT-ACM' },
+      {
+        icon: {
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>',
+        },
+        link: 'https://jq.qq.com/?_wv=1027&k=xxxxx',
+        ariaLabel: 'QQ 群',
+      },
+      {
+        icon: {
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.178.198-.257l2.652-2.653a1.25 1.25 0 0 1 1.768 0zM7.25 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9.5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>',
+        },
+        link: 'https://space.bilibili.com/xxxxx',
+        ariaLabel: 'Bilibili',
+      },
     ],
 
     // 侧边栏（文章页面显示）
@@ -42,7 +81,7 @@ export default defineConfig({
     // 页脚
     footer: {
       message: '西安建筑科技大学 ACM 协会',
-      copyright: 'Copyright © 2024 XAUAT ACM',
+      copyright: 'Copyright © 2026 XAUAT ACM',
     },
 
     // 编辑链接
