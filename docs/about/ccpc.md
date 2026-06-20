@@ -6,7 +6,7 @@ aside: true
 # CCPC 简介
 
 <div class="comp-header">
-  <img src="/images/ccpc-logo.svg" alt="CCPC Logo" class="comp-logo" />
+  <img src="/images/ccpc-logo.png" alt="CCPC Logo" class="comp-logo" />
   <div>
     <strong>China Collegiate Programming Contest</strong><br/>
     中国大学生程序设计竞赛

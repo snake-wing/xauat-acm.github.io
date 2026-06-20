@@ -13,7 +13,7 @@ export default defineConfig({
   appearance: { initialValue: 'light' },
 
   head: [
-    ['link', { rel: 'icon', href: '/xauat-acm.github.io/favicon.svg' }],
+    ['link', { rel: 'icon', href: '/xauat-acm.github.io/favicon.png' }],
     ['meta', { name: 'author', content: 'XAUAT ACM' }],
     ['meta', { name: 'keywords', content: 'XAUAT,西安建筑科技大学,ACM,算法竞赛,程序设计,ICPC,编程训练' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -27,7 +27,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '/favicon.svg',
+    logo: '/favicon.png',
 
     nav: [
       { text: '首页', link: '/' },

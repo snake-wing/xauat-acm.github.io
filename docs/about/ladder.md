@@ -6,7 +6,7 @@ aside: true
 # 天梯赛简介
 
 <div class="comp-header">
-  <img src="/images/ladder-logo.svg" alt="天梯赛 Logo" class="comp-logo" />
+  <img src="/images/ladder-logo.png" alt="天梯赛 Logo" class="comp-logo" />
   <div>
     <strong>中国高校计算机大赛 — 团体程序设计天梯赛</strong><br/>
     教育部教指委等机构联合主办

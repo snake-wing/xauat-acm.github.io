@@ -6,7 +6,7 @@ aside: true
 # ICPC 简介
 
 <div class="comp-header">
-  <img src="/images/icpc-logo.svg" alt="ICPC Logo" class="comp-logo" />
+  <img src="/images/icpc-logo.png" alt="ICPC Logo" class="comp-logo" />
   <div>
     <strong>International Collegiate Programming Contest</strong><br/>
     国际大学生程序设计竞赛

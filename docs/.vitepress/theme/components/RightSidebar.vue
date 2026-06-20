@@ -33,7 +33,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   <aside class="rs-root">
     <!-- 1. 站点信息模块 -->
     <div class="rs-card">
-      <div class="rs-avatar">ACM</div>
+      <div class="rs-avatar"><img src="/favicon.png" alt="ACM" /></div>
       <div class="rs-site-name">XAUAT ACM</div>
       <div class="rs-tagline">西安建筑科技大学 ACM 协会</div>
       <div class="rs-stats-row">
@@ -134,14 +134,17 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
 
 /* 站点信息 */
 .rs-avatar {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  color: #fff;
-  font-size: 1.2rem; font-weight: 800;
+  width: 67px; height: 67px;
+  border-radius: 12px;
+  overflow: hidden;
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 0.75rem;
-  letter-spacing: 1px;
+}
+
+.rs-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .rs-site-name {

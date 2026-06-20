@@ -4,7 +4,7 @@ import type { Router } from 'vitepress'
 import mediumZoom from 'medium-zoom'
 import RightSidebar from './components/RightSidebar.vue'
 import FloatingPanel from './components/FloatingPanel.vue'
-import Giscus from './components/Giscus.vue'
+import GiscusWrapper from './components/GiscusWrapper.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
 import CanvasRibbon from './components/CanvasRibbon.vue'
 import HeroBanner from './components/HeroBanner.vue'
@@ -23,7 +23,7 @@ export default {
       ],
       // 文章底部：评论区 + 页脚信息
       'doc-after': () => [
-        h(Giscus),
+        h(GiscusWrapper),
         h('div', { class: 'footer-extras' }, [
           h(SiteRuntime),
           h('span', { id: 'busuanzi_container_site_uv', style: 'display:none' }, [

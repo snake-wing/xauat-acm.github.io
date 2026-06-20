@@ -63,7 +63,7 @@ body {
   border-bottom: 1px solid #e8e8ed !important;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
-.VPNav .container { max-width: 2100px !important; }
+.VPNav .container { max-width: 1800px !important; }
 .VPNav .title { font-weight: 700; }
 
 /* ===== 需求2：首页 Banner 区域（半屏高 + 图片占位） ===== */
@@ -161,11 +161,18 @@ body {
 .VPDoc {
   background: #f5f6f8;
   padding: 0 !important;
-  /* 全局居中：清除 VitePress 默认的左 padding（留给侧边栏的空间） */
+  /* 全局居中：清除 VitePress 所有层级的左偏移 */
   padding-left: 0 !important;
 }
 
-/* 隐藏空左侧栏占位，消除左侧偏移 */
+/* 根层级：消除 VitePress Layout 所有可能的左偏移 */
+.Layout { padding-left: 0 !important; }
+.VPContent {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* 隐藏空左侧栏占位 */
 .VPSidebar { display: none !important; }
 
 /* 覆盖 VitePress 在有/无侧边栏时对容器施加的左偏移 */
@@ -173,11 +180,12 @@ body {
 .VPDoc:not(.has-sidebar) .container {
   margin-left: auto !important;
   margin-right: auto !important;
+  justify-content: center !important;
 }
 
-/* 核心居中：容器自适应宽度 + 水平居中 */
+/* 核心居中：容器自适应宽度 + 水平居中，7:3 比例 */
 .VPDoc .container {
-  max-width: 2100px !important;
+  max-width: 1800px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   display: flex !important;
@@ -186,6 +194,7 @@ body {
   padding: 1.5rem;
 }
 
+/* 主内容区保持原有宽度，flex: 1 自动填充 */
 .VPDoc .content {
   flex: 1 !important;
   min-width: 0 !important;
@@ -193,16 +202,16 @@ body {
   order: 1;
 }
 
-/* 需求1：右侧侧边栏 —— 取消 sticky 定位，跟随页面自然滚动，不截断内容 */
+/* 右侧侧边栏加宽 */
 .VPDoc .aside {
   order: 2;
-  width: 960px !important;
-  min-width: 840px !important;
+  width: 540px !important;
+  min-width: 480px !important;
   flex-shrink: 0;
   padding: 0 !important;
   border-left: none !important;
-  position: relative !important;  /* 覆盖 VitePress 默认 sticky，防止内容被视口截断 */
-  top: auto !important;           /* 清除 sticky 带来的 top 偏移 */
+  position: relative !important;
+  top: auto !important;
 }
 
 /* 需求1：清除 aside 内部容器的 sticky 定位 */
@@ -376,6 +385,12 @@ body {
 
 .award-section-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
 .award-section-icon { font-size: 1.4rem; }
+
+.award-logo {
+  height: 36px;
+  border-radius: 6px;
+  vertical-align: middle;
+}
 .award-section-title { font-size: 1.2rem; font-weight: 700; color: #333; }
 .award-section-intro { color: #888; font-size: 0.88rem; margin-bottom: 1.25rem; line-height: 1.6; }
 
@@ -557,7 +572,7 @@ html.dark .back-to-top { background: #1a1a30; border-color: #252540; color: #888
 /* ===== 响应式 ===== */
 @media (max-width: 1024px) {
   .VPDoc .container { flex-direction: column; }
-  .VPDoc .aside { width: 100% !important; min-width: 0 !important; }
+  .VPDoc .aside { flex: none !important; width: 100% !important; }
   .geo-decor { display: none; }
 }
 

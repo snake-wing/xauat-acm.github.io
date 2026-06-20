@@ -1,7 +1,11 @@
 <template>
   <div class="giscus-wrapper">
-    <!-- 修复问题3：当 Giscus 配置为占位符时，优雅降级显示空状态，不暴露原始错误 -->
-    <div v-if="!isPlaceholder" ref="giscusContainer"></div>
+    <div v-if="!isPlaceholder" ref="giscusContainer">
+      <div class="giscus-loading">
+        <span class="giscus-spinner"></span>
+        <span>评论加载中...</span>
+      </div>
+    </div>
     <div v-else class="giscus-placeholder">
       <div class="giscus-placeholder-icon">💬</div>
       <p class="giscus-placeholder-title">评论功能暂未开启</p>
@@ -22,14 +26,13 @@ import { useData } from 'vitepress'
 
 const { isDark } = useData()
 const giscusContainer = ref(null)
+const isLoading = ref(true)
 
-const GISCUS_REPO = 'XAUAT-ACM/xauat-acm.github.io'
-// ⚠️ 部署前需要替换为你的实际 ID（在 https://giscus.app 填写仓库信息后自动生成）
-const GISCUS_REPO_ID = 'R_kgDOXXXXXX'
+const GISCUS_REPO = 'snake-wing/xauat-acm.github.io'
+const GISCUS_REPO_ID = 'R_kgDOTAB1Pw'
 const GISCUS_CATEGORY = 'Announcements'
-const GISCUS_CATEGORY_ID = 'DIC_kwDOXXXXXX'
+const GISCUS_CATEGORY_ID = 'DIC_kwDOTAB1P84C_jCz'
 
-// 修复问题3：检测是否为占位符 ID，若是则不加载 giscus 避免报错
 const isPlaceholder = computed(() => {
   return GISCUS_REPO_ID === 'R_kgDOXXXXXX' || GISCUS_CATEGORY_ID === 'DIC_kwDOXXXXXX'
 })
@@ -37,6 +40,7 @@ const isPlaceholder = computed(() => {
 function loadGiscus() {
   if (!giscusContainer.value || isPlaceholder.value) return
 
+  isLoading.value = true
   giscusContainer.value.innerHTML = ''
 
   const script = document.createElement('script')
@@ -56,6 +60,10 @@ function loadGiscus() {
   script.setAttribute('crossorigin', 'anonymous')
   script.async = true
 
+  script.onload = () => {
+    isLoading.value = false
+  }
+
   giscusContainer.value.appendChild(script)
 }
 
@@ -70,14 +78,35 @@ watch(isDark, () => {
 
 <style scoped>
 .giscus-wrapper {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
-/* 修复问题3：占位空状态样式，与页面白色卡片风格统一 */
+.giscus-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem 0;
+  color: var(--vp-c-text-3);
+  font-size: 0.9rem;
+}
+
+.giscus-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--vp-c-divider);
+  border-top-color: var(--vp-c-brand);
+  border-radius: 50%;
+  animation: giscus-spin 0.8s linear infinite;
+}
+
+@keyframes giscus-spin {
+  to { transform: rotate(360deg); }
+}
+
 .giscus-placeholder {
   text-align: center;
   padding: 2rem 1rem;
-  color: var(--vp-c-text-2);
 }
 
 .giscus-placeholder-icon {
@@ -89,7 +118,6 @@ watch(isDark, () => {
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--vp-c-text-2);
-  margin-bottom: 0.5rem;
 }
 
 .giscus-placeholder-desc {
@@ -97,7 +125,7 @@ watch(isDark, () => {
   color: var(--vp-c-text-3);
   line-height: 1.7;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0.5rem auto 0;
 }
 
 .giscus-placeholder-desc code {

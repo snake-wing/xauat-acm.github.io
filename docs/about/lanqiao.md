@@ -6,7 +6,7 @@ aside: true
 # 蓝桥杯简介
 
 <div class="comp-header">
-  <img src="/images/lanqiao-logo.svg" alt="蓝桥杯 Logo" class="comp-logo" />
+  <img src="/images/lanqiao-logo.png" alt="蓝桥杯 Logo" class="comp-logo" />
   <div>
     <strong>全国软件和信息技术专业人才大赛</strong><br/>
     工业和信息化部人才交流中心主办

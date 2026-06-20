@@ -99,7 +99,7 @@ function totalCount(data) {
 
 <div class="award-section" v-show="activeTab === 'ICPC'">
   <div class="award-section-head">
-    <span class="award-section-icon">🌍</span>
+    <img src="/images/icpc-logo.png" alt="ICPC" class="award-logo" />
     <span class="award-section-title">{{ awards.ICPC.title }}</span>
   </div>
   <p class="award-section-intro">
@@ -127,7 +127,7 @@ function totalCount(data) {
 
 <div class="award-section" v-show="activeTab === 'CCPC'">
   <div class="award-section-head">
-    <span class="award-section-icon">🇨🇳</span>
+    <img src="/images/ccpc-logo.png" alt="CCPC" class="award-logo" />
     <span class="award-section-title">{{ awards.CCPC.title }}</span>
   </div>
   <p class="award-section-intro">
@@ -154,7 +154,7 @@ function totalCount(data) {
 
 <div class="award-section" v-show="activeTab === '蓝桥杯'">
   <div class="award-section-head">
-    <span class="award-section-icon">🏔️</span>
+    <img src="/images/lanqiao-logo.png" alt="蓝桥杯" class="award-logo" />
     <span class="award-section-title">{{ awards['蓝桥杯'].title }}</span>
   </div>
   <p class="award-section-intro">
@@ -181,7 +181,7 @@ function totalCount(data) {
 
 <div class="award-section" v-show="activeTab === '天梯赛'">
   <div class="award-section-head">
-    <span class="award-section-icon">🪜</span>
+    <img src="/images/ladder-logo.png" alt="天梯赛" class="award-logo" />
     <span class="award-section-title">{{ awards['天梯赛'].title }}</span>
   </div>
   <p class="award-section-intro">

@@ -15,14 +15,7 @@ aside: true
 
 ---
 
-## 🔗 四大算法竞赛的关系
-
-<div class="comp-logos-row">
-  <img src="/images/icpc-logo.svg" alt="ICPC" class="comp-logo-sm" />
-  <img src="/images/ccpc-logo.svg" alt="CCPC" class="comp-logo-sm" />
-  <img src="/images/lanqiao-logo.svg" alt="蓝桥杯" class="comp-logo-sm" />
-  <img src="/images/ladder-logo.svg" alt="天梯赛" class="comp-logo-sm" />
-</div>
+## 📊 各算法比赛简介
 
 | 赛事 | 主办方 | 形式 | 难度 | 地位 |
 |------|--------|------|------|------|
@@ -31,34 +24,12 @@ aside: true
 | **蓝桥杯** | 工信部（中国） | 个人 | ⭐⭐~⭐⭐⭐ | 覆盖面最广，适合入门到进阶 |
 | **天梯赛** | 教育部教指委（中国） | 10 人团队积分 | ⭐⭐~⭐⭐⭐⭐ | 强调团队积分，鼓励全员参与 |
 
-### 它们之间的关系
-
-```
-┌─────────────────────────────────────────┐
-│              算法竞赛生态                │
-│                                          │
-│   ICPC ──────── 世界顶级 ────── CCPC     │
-│    │              ↑              │       │
-│    │         天梯赛              │       │
-│    │         (全员练兵)           │       │
-│    ↓              │              ↓       │
-│    └────── 蓝桥杯 (个人入门) ────┘       │
-│                                          │
-│   难度梯度：蓝桥杯 → 天梯赛 → ICPC/CCPC  │
-│   形式互补：个人赛 + 团队赛 + 积分赛     │
-└─────────────────────────────────────────┘
-```
-
-- **蓝桥杯**是入门首选，个人参赛，难度适中，适合积累比赛经验
-- **天梯赛**是团体练兵，鼓励全协会参与，检验整体训练水平
-- **ICPC** 和 **CCPC** 是终极目标，团队作战，代表协会最高水平
-
 ---
 
 ## ICPC — 国际大学生程序设计竞赛
 
 <div class="comp-header">
-  <img src="/images/icpc-logo.svg" alt="ICPC" class="comp-logo" />
+  <img src="/images/icpc-logo.png" alt="ICPC" class="comp-logo" />
   <div>
     <strong>全称</strong>：International Collegiate Programming Contest<br/>
     <strong>简称</strong>：ICPC（原名 ACM-ICPC）
@@ -70,14 +41,14 @@ aside: true
 - 📅 每年秋季区域赛 → 次年春季全球总决赛
 - 🎯 协会的**最高目标赛事**
 
-> 📖 [详细了解 ICPC →](/about/icpc)
+> 📖 [访问 ICPC 官网 →](https://icpc.global)
 
 ---
 
 ## CCPC — 中国大学生程序设计竞赛
 
 <div class="comp-header">
-  <img src="/images/ccpc-logo.svg" alt="CCPC" class="comp-logo" />
+  <img src="/images/ccpc-logo.png" alt="CCPC" class="comp-logo" />
   <div>
     <strong>全称</strong>：China Collegiate Programming Contest<br/>
     <strong>主办</strong>：中国计算机学会（CCF）
@@ -89,14 +60,14 @@ aside: true
 - 🤝 与 ICPC 考察内容高度重合，训练体系共享
 - 🎯 协会的**双核心赛事之一**
 
-> 📖 [详细了解 CCPC →](/about/ccpc)
+> 📖 [访问 CCPC 官网 →](https://ccpc.io)
 
 ---
 
 ## 蓝桥杯 — 全国软件和信息技术专业人才大赛
 
 <div class="comp-header">
-  <img src="/images/lanqiao-logo.svg" alt="蓝桥杯" class="comp-logo" />
+  <img src="/images/lanqiao-logo.png" alt="蓝桥杯" class="comp-logo" />
   <div>
     <strong>主办</strong>：工业和信息化部人才交流中心<br/>
     <strong>官网</strong>：<a href="https://dasai.lanqiao.cn" target="_blank">dasai.lanqiao.cn</a>
@@ -108,14 +79,14 @@ aside: true
 - 📈 省赛 → 国赛，层次分明
 - 🎯 协会的**入门首选赛事**
 
-> 📖 [详细了解蓝桥杯 →](/about/lanqiao)
+> 📖 [访问蓝桥杯官网 →](https://dasai.lanqiao.cn)
 
 ---
 
 ## 天梯赛 — 团体程序设计天梯赛
 
 <div class="comp-header">
-  <img src="/images/ladder-logo.svg" alt="天梯赛" class="comp-logo" />
+  <img src="/images/ladder-logo.png" alt="天梯赛" class="comp-logo" />
   <div>
     <strong>全称</strong>：中国高校计算机大赛-团体程序设计天梯赛<br/>
     <strong>主办</strong>：教育部高等学校计算机类专业教学指导委员会
@@ -127,7 +98,7 @@ aside: true
 - 🪜 题目分 L1（基础）/ L2（进阶）/ L3（挑战）
 - 🎯 检验**整体训练成果**
 
-> 📖 [详细了解天梯赛 →](/about/ladder)
+> 📖 [访问天梯赛官网 →](https://gplt.pateste.cn)
 
 ---
 
