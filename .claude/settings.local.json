@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:chd-acm.github.io)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "PowerShell(npm install *)",
+      "PowerShell(New-Item *)",
+      "PowerShell(npm run *)"
+    ]
+  }
+}
