@@ -40,6 +40,14 @@ export default defineConfig({
       { text: '归档', link: '/archives' },
       { text: '标签', link: '/tags' },
       {
+        text: '集训队',
+        items: [
+          { text: '成员', link: '/team' },
+          { text: '获奖荣誉', link: '/award' },
+          { text: '获奖瞬间', link: '/gallery' },
+        ],
+      },
+      {
         text: '关于',
         items: [
           { text: '协会简介', link: '/about' },
