@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { withBase } from 'vitepress'
 import { usePosts } from '../composables/usePosts'
 
 const posts = usePosts()
@@ -37,15 +38,15 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
       <div class="rs-site-name">XAUAT ACM</div>
       <div class="rs-tagline">西安建筑科技大学 ACM 协会</div>
       <div class="rs-stats-row">
-        <a href="/archives" class="rs-stat">
+        <a :href="withBase('/archives')" class="rs-stat">
           <span class="rs-stat-num">{{ postCount }}</span>
           <span class="rs-stat-lbl">文章</span>
         </a>
-        <a href="/tags" class="rs-stat">
+        <a :href="withBase('/tags')" class="rs-stat">
           <span class="rs-stat-num">{{ categoryCounts.length }}</span>
           <span class="rs-stat-lbl">分类</span>
         </a>
-        <a href="/tags" class="rs-stat">
+        <a :href="withBase('/tags')" class="rs-stat">
           <span class="rs-stat-num">{{ tagCounts.length }}</span>
           <span class="rs-stat-lbl">标签</span>
         </a>
@@ -58,7 +59,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
       <div class="rs-announce">
         <p>欢迎加入 XAUAT ACM 协会！2026 秋季纳新即将开始，敬请期待～</p>
         <p v-if="latestPosts.length > 0" style="margin-top:0.3rem;font-size:0.8rem;color:var(--vp-c-text-3)">
-          📝 最新文章：<a :href="latestPosts[0].url" style="color:var(--vp-c-brand)">{{ latestPosts[0].title }}</a>
+          📝 最新文章：<a :href="withBase(latestPosts[0].url)" style="color:var(--vp-c-brand)">{{ latestPosts[0].title }}</a>
         </p>
       </div>
     </div>
@@ -67,7 +68,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
     <div class="rs-card">
       <div class="rs-card-head">📝 最新内容</div>
       <div class="rs-post-list">
-        <a v-for="(p, i) in latestPosts" :key="p.url" :href="p.url" class="rs-post-item">
+        <a v-for="(p, i) in latestPosts" :key="p.url" :href="withBase(p.url)" class="rs-post-item">
           <span class="rs-post-num">{{ i + 1 }}</span>
           <span class="rs-post-title">{{ p.title }}</span>
           <span class="rs-post-date">{{ p.date }}</span>
@@ -80,7 +81,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
     <div class="rs-card">
       <div class="rs-card-head">📂 分类目录</div>
       <div class="rs-cat-list">
-        <a v-for="[cat, cnt] in categoryCounts" :key="cat" :href="`/tags?tag=${encodeURIComponent(cat)}`" class="rs-cat-item">
+        <a v-for="[cat, cnt] in categoryCounts" :key="cat" :href="withBase(`/tags?tag=${encodeURIComponent(cat)}`)" class="rs-cat-item">
           <span class="rs-cat-name">{{ cat }}</span>
           <span class="rs-cat-count">{{ cnt }}</span>
         </a>
@@ -95,7 +96,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
         <a
           v-for="([tag, cnt], idx) in tagCounts"
           :key="tag"
-          :href="`/tags?tag=${encodeURIComponent(tag)}`"
+          :href="withBase(`/tags?tag=${encodeURIComponent(tag)}`)"
           class="rs-tag"
           :style="{ background: tagColor(idx) + '18', color: tagColor(idx), borderColor: tagColor(idx) + '30' }"
         >

@@ -223,6 +223,16 @@ body {
 
 .VPDoc .content-container { max-width: none !important; padding: 0 !important; }
 
+/* ===== 文章详情页：居中单栏布局 ===== */
+/* 文章页使用 aside: false 后，VitePress 不渲染 aside 容器 */
+/* 此时 content 自动占满容器，限制阅读宽度 + 居中 */
+.VPDoc:not(.has-aside) .content .vp-doc,
+.VPDoc:not(.has-sidebar) .content .vp-doc {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ===== 内容卡片样式 ===== */
 .vp-doc {
   background: #fff;

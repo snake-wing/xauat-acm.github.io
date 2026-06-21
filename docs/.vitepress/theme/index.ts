@@ -1,6 +1,7 @@
-import { h } from 'vue'
+import { h, computed } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import type { Router } from 'vitepress'
+import { useRoute } from 'vitepress'
 import mediumZoom from 'medium-zoom'
 import RightSidebar from './components/RightSidebar.vue'
 import FloatingPanel from './components/FloatingPanel.vue'
@@ -9,13 +10,20 @@ import SiteRuntime from './components/SiteRuntime.vue'
 import CanvasRibbon from './components/CanvasRibbon.vue'
 import HeroBanner from './components/HeroBanner.vue'
 import GeoDecor from './components/GeoDecor.vue'
+import PostMeta from './components/PostMeta.vue'
 import './styles/custom.css'
 
 export default {
   extends: DefaultTheme,
 
   Layout() {
+    const route = useRoute()
+    const isPostPage = computed(() => route.path.startsWith('/posts/'))
+
     return h(DefaultTheme.Layout, null, {
+      // 文章页元数据（日期、分类、标签）
+      'doc-before': () => h(PostMeta),
+
       // 几何装饰 + Hero
       'layout-top': () => [
         h(GeoDecor),
@@ -34,8 +42,8 @@ export default {
           ]),
         ]),
       ],
-      // 右侧边栏
-      'aside-outline-before': () => h(RightSidebar),
+      // 右侧边栏（文章页隐藏，居中阅读）
+      'aside-outline-before': () => isPostPage.value ? null : h(RightSidebar),
       // 底部
       'layout-bottom': () => [
         h(CanvasRibbon),

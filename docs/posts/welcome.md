@@ -4,6 +4,7 @@ date: 2026-06-20
 category: 公告
 tags: [公告, 招新]
 excerpt: 西安建筑科技大学 ACM 协会正式成立啦！欢迎各位对算法和编程充满热情的同学加入我们～
+aside: false
 ---
 
 # 欢迎来到 XAUAT ACM！

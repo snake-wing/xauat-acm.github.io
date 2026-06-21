@@ -6,6 +6,7 @@ aside: true
 <script setup>
 import { data as posts } from './posts.data'
 import { ref, computed, onMounted } from 'vue'
+import { withBase } from 'vitepress'
 import TypedBanner from './.vitepress/theme/components/TypedBanner.vue'
 import Pagination from './.vitepress/theme/components/Pagination.vue'
 import { setPosts } from './.vitepress/theme/composables/usePosts'
@@ -38,15 +39,15 @@ function goPage(page) {
 <section class="post-section">
   <div class="post-list">
     <div v-for="post in pagedPosts" :key="post.url" class="post-item">
-      <a :href="post.url" class="post-title">{{ post.title }}</a>
+      <a :href="withBase(post.url)" class="post-title">{{ post.title }}</a>
       <div class="post-meta">
         <span class="post-date">{{ post.date }}</span>
-        <a :href="`/tags?tag=${encodeURIComponent(post.category)}`" class="post-category">{{ post.category }}</a>
+        <a :href="withBase(`/tags?tag=${encodeURIComponent(post.category)}`)" class="post-category">{{ post.category }}</a>
         <span class="post-tags">
           <a
             v-for="tag in post.tags"
             :key="tag"
-            :href="`/tags?tag=${encodeURIComponent(tag)}`"
+            :href="withBase(`/tags?tag=${encodeURIComponent(tag)}`)"
             class="post-tag"
           >{{ tag }}</a>
         </span>
