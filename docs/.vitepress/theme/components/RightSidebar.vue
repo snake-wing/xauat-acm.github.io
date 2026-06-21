@@ -113,13 +113,13 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   /* 修复问题2：不设固定宽度，由父容器 .aside 控制，避免布局崩塌 */
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.4rem;
 }
 
 .rs-card {
   background: #fff;
   border-radius: 12px;
-  padding: 1.25rem;
+  padding: 0.75rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   border: 1px solid #eee;
 }

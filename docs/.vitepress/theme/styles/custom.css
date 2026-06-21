@@ -191,7 +191,7 @@ body {
   display: flex !important;
   align-items: flex-start !important;
   gap: 0;
-  padding: 1.5rem;
+  padding: 0.5rem 1rem;
 }
 
 /* 主内容区保持原有宽度，flex: 1 自动填充 */
@@ -237,7 +237,7 @@ body {
 .vp-doc {
   background: #fff;
   border-radius: 12px;
-  padding: 1.25rem 0.75rem !important;
+  padding: 1rem 0.5rem !important;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   border: 1px solid #eee;
 }
