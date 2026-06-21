@@ -213,12 +213,14 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   padding: 0.45rem 0.6rem;
   border-radius: 8px;
   text-decoration: none;
-  background: rgba(73,177,245,0.08);
+  background: #fff;
+  border: 1px solid #eee;
   transition: all 0.2s;
 }
 
 .rs-social-link:hover {
-  background: rgba(73,177,245,0.16);
+  background: #f8fafd;
+  border-color: #49b1f5;
   transform: translateY(-1px);
 }
 
@@ -226,12 +228,12 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  color: #6ebef7;
+  color: #49b1f5;
 }
 
 .rs-social-text {
   font-size: 0.78rem;
-  color: #6ebef7;
+  color: #49b1f5;
   font-weight: 500;
 }
 
@@ -320,8 +322,8 @@ html.dark .rs-cat-item:hover { background: rgba(96,165,250,0.06); }
 html.dark .rs-post-item:hover { background: rgba(96,165,250,0.06); }
 html.dark .rs-empty { color: #555; }
 html.dark .rs-socials { border-top-color: #2a2a45; }
-html.dark .rs-social-link { background: rgba(96,165,250,0.08); }
-html.dark .rs-social-link:hover { background: rgba(96,165,250,0.15); }
+html.dark .rs-social-link { background: #1e1e36; border-color: #2a2a45; }
+html.dark .rs-social-link:hover { background: #252545; border-color: #60a5fa; }
 html.dark .rs-social-icon { color: #60a5fa; }
 html.dark .rs-social-text { color: #60a5fa; }
 
