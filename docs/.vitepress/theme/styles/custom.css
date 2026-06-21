@@ -189,8 +189,8 @@ body {
 
 .VPDoc .aside {
   order: 2;
-  width: 520px !important;
-  min-width: 520px !important;
+  width: 360px !important;
+  min-width: 360px !important;
   max-width: none !important;
   flex-shrink: 0;
   padding: 0 !important;
@@ -208,7 +208,7 @@ body {
 }
 
 .VPDoc .aside .aside-curtain {
-  width: 520px !important;
+  width: 360px !important;
 }
 
 .VPDoc .aside .aside-content {
