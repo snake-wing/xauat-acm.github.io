@@ -200,8 +200,6 @@ body {
   min-width: 0 !important;
   max-width: none !important;
   order: 1;
-  padding-right: 0 !important;
-  margin-right: 0 !important;
 }
 
 /* 右侧侧边栏加宽 */
@@ -211,41 +209,19 @@ body {
   min-width: 480px !important;
   flex-shrink: 0;
   padding: 0 !important;
-  padding-left: 0 !important;
-  margin-left: 0 !important;
   border-left: none !important;
   position: relative !important;
   top: auto !important;
 }
 
-/* 清除 aside 内部所有容器的定位、间距 */
-.VPDoc .aside .aside-curtain { display: none !important; }
+/* 需求1：清除 aside 内部容器的 sticky 定位 */
 .VPDoc .aside .aside-container,
-.VPDoc .aside .aside-content,
 .VPDoc .aside .VPDocAside {
   position: relative !important;
   top: auto !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  width: 100% !important;
 }
 
-/* 覆盖 VitePress 默认的 688px 宽度锁死 + 清零内边距 */
-.VPDoc .content-container,
-.VPDoc.has-aside .content-container,
-.VPDoc:not(.has-aside) .content-container {
-  max-width: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* 也让 content 本身不留间距 */
-.VPDoc .content,
-.VPDoc.has-aside .content,
-.VPDoc:not(.has-aside) .content {
-  padding: 0 !important;
-  margin: 0 !important;
-}
+.VPDoc .content-container { max-width: none !important; padding: 0 !important; }
 
 /* ===== 文章详情页：居中单栏布局 ===== */
 /* 文章页使用 aside: false 后，VitePress 不渲染 aside 容器 */
