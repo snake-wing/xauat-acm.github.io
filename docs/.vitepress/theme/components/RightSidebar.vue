@@ -213,18 +213,32 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   border-radius: 8px;
   text-decoration: none;
   background: #fff;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .rs-social-link:hover {
-  background: #f8fafd;
-  transform: translateY(-1px);
+  background: rgba(73,177,245,0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(73,177,245,0.15);
+}
+
+.rs-social-link:hover .rs-social-icon {
+  animation: icon-bounce 0.5s ease;
 }
 
 .rs-social-icon {
   width: 22px;
   height: 22px;
   color: #49b1f5;
+  transition: transform 0.3s ease;
+}
+
+@keyframes icon-bounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3); }
+  50%  { transform: scale(0.9); }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
 /* 公告 */
