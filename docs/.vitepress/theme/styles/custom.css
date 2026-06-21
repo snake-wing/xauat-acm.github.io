@@ -185,12 +185,12 @@ body {
 
 /* 核心居中：容器自适应宽度 + 水平居中，7:3 比例 */
 .VPDoc .container {
-  max-width: 1800px !important;
+  max-width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   display: flex !important;
   align-items: flex-start !important;
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 1.5rem;
 }
 
