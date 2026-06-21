@@ -40,7 +40,11 @@ const generations = [
   },
 ]
 
-const collapsed = ref({})
+// 默认只展开 2025 级，其他折叠
+const collapsed = ref({
+  '2024 级': true,
+  '2023 级': true,
+})
 
 function toggle(year) {
   collapsed.value[year] = !collapsed.value[year]
@@ -59,40 +63,43 @@ function isCollapsed(year) {
 
   <div class="team-grade-bar" :class="{ 'collapsed-bar': isCollapsed(gen.year) }" @click="toggle(gen.year)">
     <span class="team-grade-year">{{ gen.year }}</span>
+    <span class="team-grade-count">{{ gen.members.length }} 人</span>
     <span class="team-grade-arrow" :class="{ collapsed: isCollapsed(gen.year) }">&#9660;</span>
   </div>
 
-  <table class="team-table" v-show="!isCollapsed(gen.year)">
-    <thead>
-      <tr>
-        <th>年级</th>
-        <th>姓名</th>
-        <th>学院 / 专业</th>
-        <th>状态</th>
-        <th>毕业去向</th>
-        <th>联系方式</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="m in gen.members" :key="m.name">
-        <td>{{ m.grade }}</td>
-        <td>{{ m.name }}</td>
-        <td>{{ m.department }}</td>
-        <td>
-          <span class="status-tag" :class="m.status === '现役' ? 'active' : 'retired'">{{ m.status }}</span>
-        </td>
-        <td>{{ m.graduation }}</td>
-        <td class="col-contact">
-          <a v-if="m.contact.github" :href="m.contact.github" target="_blank">GitHub</a>
-          <template v-if="m.contact.github && m.contact.cf"> / </template>
-          <a v-if="m.contact.cf" :href="m.contact.cf" target="_blank">Codeforces</a>
-          <template v-if="(m.contact.github || m.contact.cf) && m.contact.blog"> / </template>
-          <a v-if="m.contact.blog" :href="m.contact.blog" target="_blank">Blog</a>
-          <span v-if="!m.contact.github && !m.contact.cf && !m.contact.blog">-</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="team-table-wrapper" v-show="!isCollapsed(gen.year)">
+    <table class="team-table">
+      <thead>
+        <tr>
+          <th>年级</th>
+          <th>姓名</th>
+          <th>学院 / 专业</th>
+          <th>状态</th>
+          <th>毕业去向</th>
+          <th>联系方式</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="m in gen.members" :key="m.name">
+          <td>{{ m.grade }}</td>
+          <td>{{ m.name }}</td>
+          <td>{{ m.department }}</td>
+          <td>
+            <span class="status-tag" :class="m.status === '现役' ? 'active' : 'retired'">{{ m.status }}</span>
+          </td>
+          <td>{{ m.graduation }}</td>
+          <td class="col-contact">
+            <a v-if="m.contact.github" :href="m.contact.github" target="_blank">GitHub</a>
+            <template v-if="m.contact.github && m.contact.cf"> / </template>
+            <a v-if="m.contact.cf" :href="m.contact.cf" target="_blank">Codeforces</a>
+            <template v-if="(m.contact.github || m.contact.cf) && m.contact.blog"> / </template>
+            <a v-if="m.contact.blog" :href="m.contact.blog" target="_blank">Blog</a>
+            <span v-if="!m.contact.github && !m.contact.cf && !m.contact.blog">-</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 </div>
 
@@ -110,7 +117,7 @@ function isCollapsed(year) {
   font-size: 1.5rem;
   font-weight: 700;
   color: #2c2c2c;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.5rem 0;
   text-align: left;
   letter-spacing: 0.5px;
 }
@@ -118,7 +125,7 @@ function isCollapsed(year) {
 /* 年级分组 */
 .team-group {
   width: 100%;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1rem;
 }
 
 .team-group:first-child {
@@ -129,33 +136,54 @@ function isCollapsed(year) {
 .team-grade-bar {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   width: 100%;
-  padding: 0.4rem 0.85rem;
-  background: #f8f8f8;
-  border: 1px solid #e8e8e8;
-  border-radius: 4px 4px 0 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, rgba(73,177,245,0.08), rgba(73,177,245,0.03));
+  border: 1px solid rgba(73,177,245,0.2);
+  border-radius: 10px;
   cursor: pointer;
   user-select: none;
-  transition: background 0.15s;
+  transition: all 0.2s;
 }
 
 .team-grade-bar:hover {
+  background: linear-gradient(135deg, rgba(73,177,245,0.12), rgba(73,177,245,0.05));
+  border-color: rgba(73,177,245,0.3);
+  transform: translateY(-1px);
+}
+
+/* 折叠状态 */
+.team-grade-bar.collapsed-bar {
+  border-radius: 10px;
+  background: #f8f8f8;
+  border-color: #e8e8e8;
+}
+
+.team-grade-bar.collapsed-bar:hover {
   background: #f0f0f0;
 }
 
-/* 折叠状态：独立矩形，完整四边 + 四角圆角 */
-.team-grade-bar.collapsed-bar {
-  border-radius: 4px;
+.team-grade-year {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #49b1f5;
 }
 
-.team-grade-year {
-  font-size: 0.88rem;
+.team-grade-bar.collapsed-bar .team-grade-year {
   color: #555;
 }
 
+.team-grade-count {
+  font-size: 0.78rem;
+  color: #999;
+  background: rgba(0,0,0,0.05);
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+}
+
 .team-grade-arrow {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color: #999;
   transition: transform 0.2s;
   margin-left: auto;
@@ -163,6 +191,11 @@ function isCollapsed(year) {
 
 .team-grade-arrow.collapsed {
   transform: rotate(-90deg);
+}
+
+/* 表格容器 */
+.team-table-wrapper {
+  margin-top: 0.5rem;
 }
 
 /* 表格 — 覆写 VitePress 对 table 的 display: block */
@@ -175,7 +208,8 @@ function isCollapsed(year) {
   font-size: 0.86rem;
   color: #333;
   border: 1px solid #e8e8e8;
-  border-top: none;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 /* 列宽 */
@@ -199,13 +233,13 @@ function isCollapsed(year) {
 
 /* 表头 */
 .team-table thead th {
-  background: #f4f4f4;
-  color: #333;
+  background: #f8f8f8;
+  color: #555;
   font-weight: 600;
   text-align: left;
-  padding: 0.6rem 0.85rem;
-  border-bottom: 2px solid #ddd;
-  font-size: 0.82rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 2px solid #e8e8e8;
+  font-size: 0.8rem;
   letter-spacing: 0.3px;
 }
 
@@ -213,14 +247,14 @@ function isCollapsed(year) {
 .team-table tbody td {
   background: #fff;
   text-align: left;
-  padding: 0.6rem 0.85rem;
-  border-bottom: 1px solid #eee;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
   vertical-align: middle;
   font-size: 0.86rem;
 }
 
 .team-table tbody tr:hover td {
-  background: #fafbfc;
+  background: rgba(73,177,245,0.03);
 }
 
 .team-table tbody tr:last-child td {
@@ -229,13 +263,14 @@ function isCollapsed(year) {
 
 /* 联系方式 */
 .col-contact a {
-  color: #555;
+  color: #666;
   text-decoration: none;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
+  transition: color 0.15s;
 }
 
 .col-contact a:hover {
-  color: #2563eb;
+  color: #49b1f5;
 }
 
 /* 状态标签 */
@@ -243,19 +278,19 @@ function isCollapsed(year) {
   display: inline-block;
   padding: 0.18rem 0.6rem;
   border-radius: 10px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.3px;
 }
 
 .status-tag.active {
-  background: #2d8a4e;
-  color: #fff;
+  background: rgba(45,138,78,0.12);
+  color: #2d8a4e;
 }
 
 .status-tag.retired {
-  background: #e8e8e8;
-  color: #666;
+  background: #f0f0f0;
+  color: #888;
 }
 </style>

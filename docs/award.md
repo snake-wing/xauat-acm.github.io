@@ -102,10 +102,6 @@ function totalCount(data) {
     <img src="/images/icpc-logo.png" alt="ICPC" class="award-logo" />
     <span class="award-section-title">{{ awards.ICPC.title }}</span>
   </div>
-  <p class="award-section-intro">
-    ACM-ICPC 是世界上规模最大、历史最悠久的大学生程序设计竞赛，被誉为「程序设计界的奥林匹克」。
-    协会成员在 ICPC 亚洲区域赛中奋力拼搏，以下是历年获奖记录。
-  </p>
   <div class="award-levels-grid">
     <div class="award-level-col" v-for="level in awards.ICPC.levels" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
@@ -130,9 +126,6 @@ function totalCount(data) {
     <img src="/images/ccpc-logo.png" alt="CCPC" class="award-logo" />
     <span class="award-section-title">{{ awards.CCPC.title }}</span>
   </div>
-  <p class="award-section-intro">
-    CCPC 是中国计算机学会主办的国内顶级大学生程序设计竞赛，与 ICPC 并列为协会重点参加的赛事。
-  </p>
   <div class="award-levels-grid">
     <div class="award-level-col" v-for="level in awards.CCPC.levels" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
@@ -157,9 +150,6 @@ function totalCount(data) {
     <img src="/images/lanqiao-logo.png" alt="蓝桥杯" class="award-logo" />
     <span class="award-section-title">{{ awards['蓝桥杯'].title }}</span>
   </div>
-  <p class="award-section-intro">
-    蓝桥杯是国内高校参与度最高的程序设计竞赛之一，个人赛形式，适合各阶段同学参加。
-  </p>
   <div class="award-levels-grid">
     <div class="award-level-col" v-for="level in awards['蓝桥杯'].levels" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
@@ -184,9 +174,6 @@ function totalCount(data) {
     <img src="/images/ladder-logo.png" alt="天梯赛" class="award-logo" />
     <span class="award-section-title">{{ awards['天梯赛'].title }}</span>
   </div>
-  <p class="award-section-intro">
-    天梯赛以团队积分制为核心特色，鼓励全校参与，是检验整体训练成果的好机会。
-  </p>
   <div v-for="sub in awards['天梯赛'].subsections" :key="sub.title" class="award-subsection">
     <h3 class="award-sub-title">{{ sub.title }}</h3>
     <div class="award-levels-grid">
