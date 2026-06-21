@@ -190,9 +190,11 @@ body {
 .VPDoc .aside {
   order: 2;
   width: 520px !important;
-  min-width: 500px !important;
+  min-width: 520px !important;
+  max-width: none !important;
   flex-shrink: 0;
   padding: 0 !important;
+  padding-left: 0 !important;
   border-left: none !important;
   position: relative !important;
   top: auto !important;
@@ -202,6 +204,15 @@ body {
 .VPDoc .aside .VPDocAside {
   position: relative !important;
   top: auto !important;
+  width: 100% !important;
+}
+
+.VPDoc .aside .aside-curtain {
+  width: 520px !important;
+}
+
+.VPDoc .aside .aside-content {
+  width: 100% !important;
 }
 
 .VPDoc .content-container { max-width: none !important; padding: 0 !important; }
