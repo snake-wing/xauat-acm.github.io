@@ -214,13 +214,11 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   border-radius: 8px;
   text-decoration: none;
   background: #fff;
-  border: 1px solid #eee;
   transition: all 0.2s;
 }
 
 .rs-social-link:hover {
   background: #f8fafd;
-  border-color: #49b1f5;
   transform: translateY(-1px);
 }
 
@@ -322,8 +320,8 @@ html.dark .rs-cat-item:hover { background: rgba(96,165,250,0.06); }
 html.dark .rs-post-item:hover { background: rgba(96,165,250,0.06); }
 html.dark .rs-empty { color: #555; }
 html.dark .rs-socials { border-top-color: #2a2a45; }
-html.dark .rs-social-link { background: #1e1e36; border-color: #2a2a45; }
-html.dark .rs-social-link:hover { background: #252545; border-color: #60a5fa; }
+html.dark .rs-social-link { background: #1e1e36; }
+html.dark .rs-social-link:hover { background: #252545; }
 html.dark .rs-social-icon { color: #60a5fa; }
 html.dark .rs-social-text { color: #60a5fa; }
 
