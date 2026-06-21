@@ -1,7 +1,7 @@
 import { h, computed } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import type { Router } from 'vitepress'
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 import mediumZoom from 'medium-zoom'
 import RightSidebar from './components/RightSidebar.vue'
 import FloatingPanel from './components/FloatingPanel.vue'
@@ -18,7 +18,13 @@ export default {
 
   Layout() {
     const route = useRoute()
-    const isPostPage = computed(() => route.path.startsWith('/posts/'))
+    const { page } = useData()
+    // 用 page.relativePath 判断更可靠（SSR 时 route.path 可能含 base 前缀）
+    const isPostPage = computed(() => {
+      const rp = page.value?.relativePath || ''
+      const rPath = route.path || ''
+      return rp.startsWith('posts/') || rPath.startsWith('/posts/') || rPath.includes('/posts/')
+    })
 
     return h(DefaultTheme.Layout, null, {
       // 文章页元数据（日期、分类、标签）

@@ -4,9 +4,14 @@ import { computed } from 'vue'
 import { useData } from 'vitepress'
 
 const route = useRoute()
-const { frontmatter } = useData()
+const { frontmatter, page } = useData()
 
-const showMeta = computed(() => route.path.startsWith('/posts/'))
+// 用 page.relativePath 判断（SSR 可靠，值为 "posts/welcome.md"）
+const showMeta = computed(() => {
+  const rp = page.value?.relativePath || ''
+  const rPath = route.path || ''
+  return rp.startsWith('posts/') || rPath.startsWith('/posts/') || rPath.includes('/posts/')
+})
 
 const dateLabel = computed(() => {
   if (frontmatter.value.date) {
