@@ -60,8 +60,8 @@ onUnmounted(() => {
 }
 
 .back-to-top:hover {
-  color: #2563eb;
-  border-color: #2563eb;
+  color: #49b1f5;
+  border-color: #49b1f5;
   transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(0,0,0,0.12);
 }

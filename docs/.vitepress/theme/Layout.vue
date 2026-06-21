@@ -105,9 +105,9 @@ function toggleDark() {
 /* ===== 根容器 ===== */
 .site-root {
   min-height: 100vh;
-  background: #f5f6f8;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #333;
+  background: #f6f8fa;
+  font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color: #4c4948;
   position: relative;
   overflow-x: hidden;
 }
@@ -130,7 +130,7 @@ function toggleDark() {
   top: 15%;
   width: 200px;
   height: 200px;
-  border: 2px solid rgba(37, 99, 235, 0.08);
+  border: 2px solid rgba(73, 177, 245, 0.08);
   border-radius: 50%;
 }
 
@@ -142,7 +142,7 @@ function toggleDark() {
   height: 0;
   border-left: 60px solid transparent;
   border-right: 60px solid transparent;
-  border-bottom: 100px solid rgba(37, 99, 235, 0.04);
+  border-bottom: 100px solid rgba(73, 177, 245, 0.04);
 }
 
 .geo-dot-grid {
@@ -151,7 +151,7 @@ function toggleDark() {
   top: 45%;
   width: 80px;
   height: 80px;
-  background-image: radial-gradient(circle, rgba(37, 99, 235, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(73, 177, 245, 0.12) 1px, transparent 1px);
   background-size: 12px 12px;
 }
 
@@ -186,7 +186,7 @@ function toggleDark() {
 }
 
 .nav-logo-icon {
-  background: #2563eb;
+  background: #49b1f5;
   color: #fff;
   padding: 0.2rem 0.45rem;
   border-radius: 6px;
@@ -214,8 +214,8 @@ function toggleDark() {
 
 .nav-item:hover,
 .nav-item.active {
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.06);
+  color: #49b1f5;
+  background: rgba(73, 177, 245, 0.06);
 }
 
 .nav-icon-btn {
@@ -265,8 +265,8 @@ function toggleDark() {
 }
 
 .nav-dropdown-item:hover {
-  background: rgba(37, 99, 235, 0.06);
-  color: #2563eb;
+  background: rgba(73, 177, 245, 0.06);
+  color: #49b1f5;
 }
 
 .nav-dropdown-group-label {
@@ -285,7 +285,7 @@ function toggleDark() {
 
 /* ===== Hero Banner ===== */
 .hero-banner {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
+  background: linear-gradient(135deg, #1e3a5f 0%, #49b1f5 50%, #7c3aed 100%);
   padding: 4rem 1rem 2rem;
   text-align: center;
   color: #fff;

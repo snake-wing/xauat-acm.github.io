@@ -24,7 +24,7 @@ const category = computed(() => frontmatter.value.category || '')
 const tags = computed(() => frontmatter.value.tags || [])
 
 const tagColors = [
-  '#2563eb', '#7c3aed', '#db2777', '#ea580c', '#16a34a',
+  '#49b1f5', '#7c3aed', '#db2777', '#ea580c', '#16a34a',
   '#0891b2', '#ca8a04', '#4f46e5', '#be185d', '#0284c7',
 ]
 function tagColor(idx: number) {

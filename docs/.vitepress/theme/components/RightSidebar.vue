@@ -26,7 +26,7 @@ const tagCounts = computed(() => {
 
 const latestPosts = computed(() => posts.value.slice(0, 5))
 
-const tagColors = ['#2563eb','#7c3aed','#db2777','#ea580c','#16a34a','#0891b2','#ca8a04','#4f46e5','#be185d','#0284c7']
+const tagColors = ['#49b1f5','#7c3aed','#db2777','#ea580c','#16a34a','#0891b2','#ca8a04','#4f46e5','#be185d','#0284c7']
 function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
 </script>
 
@@ -173,12 +173,12 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   padding: 0.4rem 0.25rem; border-radius: 8px;
   transition: background 0.15s;
 }
-.rs-stat:hover { background: rgba(37,99,235,0.05); }
+.rs-stat:hover { background: rgba(73,177,245,0.05); }
 
 .rs-stat-num {
   display: block;
   font-size: 1.3rem; font-weight: 800;
-  color: #2563eb;
+  color: #49b1f5;
 }
 
 .rs-stat-lbl {
@@ -200,7 +200,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   text-decoration: none; padding: 0.35rem 0.4rem; border-radius: 6px;
   transition: background 0.15s;
 }
-.rs-post-item:hover { background: rgba(37,99,235,0.04); }
+.rs-post-item:hover { background: rgba(73,177,245,0.04); }
 
 .rs-post-num {
   width: 20px; text-align: center;
@@ -226,7 +226,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   text-decoration: none; padding: 0.35rem 0.4rem; border-radius: 6px;
   font-size: 0.84rem; color: #555; transition: background 0.15s;
 }
-.rs-cat-item:hover { background: rgba(37,99,235,0.04); }
+.rs-cat-item:hover { background: rgba(73,177,245,0.04); }
 
 .rs-cat-count {
   font-size: 0.72rem; color: #bbb;
