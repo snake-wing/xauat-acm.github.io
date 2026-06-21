@@ -51,6 +51,16 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
           <span class="rs-stat-lbl">标签</span>
         </a>
       </div>
+      <div class="rs-socials">
+        <a class="rs-social-link rs-social-qq" href="https://qm.qq.com/q/1002960176" target="_blank" title="QQ 群：1002960176">
+          <svg class="rs-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm3.5 13.5c-.3 0-.6-.1-.8-.3l-2.7-2-2.7 2c-.2.2-.5.3-.8.3-.3 0-.6-.1-.8-.3-.4-.4-.4-1 0-1.4l3.5-2.5L7.7 9.8c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0L12 11l2.9-2.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-3.5 2.5 3.5 2.5c.4.4.4 1 0 1.4-.2.2-.5.3-.8.3z"/></svg>
+          <span class="rs-social-text">1002960176</span>
+        </a>
+        <a class="rs-social-link rs-social-bili" href="#" target="_blank" title="哔哩哔哩">
+          <svg class="rs-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 4.5c1.1 0 2 .9 2 2v11c0 1.1-.9 2-2 2H6.2c-1.1 0-2-.9-2-2v-11c0-1.1.9-2 2-2h2.4l1.1-1.8c.2-.3.5-.4.9-.4.3 0 .7.1.9.4l1.1 1.8h2.4zm-5.8 4c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 2c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm-5.2-1.5c-.4 0-.8.3-.8.8v4c0 .4.3.8.8.8.4 0 .8-.3.8-.8v-4c0-.4-.3-.8-.8-.8zm10.4 0c-.4 0-.8.3-.8.8v4c0 .4.3.8.8.8.4 0 .8-.3.8-.8v-4c0-.4-.3-.8-.8-.8z"/></svg>
+          <span class="rs-social-text">哔哩哔哩</span>
+        </a>
+      </div>
     </div>
 
     <!-- 2. 公告模块 -->
@@ -185,6 +195,46 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   font-size: 0.72rem; color: #999;
 }
 
+/* 社交链接 */
+.rs-socials {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rs-social-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  background: rgba(73,177,245,0.08);
+  transition: all 0.2s;
+}
+
+.rs-social-link:hover {
+  background: rgba(73,177,245,0.16);
+  transform: translateY(-1px);
+}
+
+.rs-social-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #6ebef7;
+}
+
+.rs-social-text {
+  font-size: 0.78rem;
+  color: #6ebef7;
+  font-weight: 500;
+}
+
 /* 公告 */
 .rs-announce {
   font-size: 0.84rem; color: #666; line-height: 1.6;
@@ -269,6 +319,11 @@ html.dark .rs-stat:hover { background: rgba(96,165,250,0.06); }
 html.dark .rs-cat-item:hover { background: rgba(96,165,250,0.06); }
 html.dark .rs-post-item:hover { background: rgba(96,165,250,0.06); }
 html.dark .rs-empty { color: #555; }
+html.dark .rs-socials { border-top-color: #2a2a45; }
+html.dark .rs-social-link { background: rgba(96,165,250,0.08); }
+html.dark .rs-social-link:hover { background: rgba(96,165,250,0.15); }
+html.dark .rs-social-icon { color: #60a5fa; }
+html.dark .rs-social-text { color: #60a5fa; }
 
 @media (max-width: 1024px) {
   .rs-root { display: none; }
