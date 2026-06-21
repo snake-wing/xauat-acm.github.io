@@ -132,9 +132,6 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   padding: 1rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   border: 1px solid #eee;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .rs-card-head {
@@ -336,6 +333,5 @@ html.dark .rs-social-text { color: #60a5fa; }
 
 @media (max-width: 1024px) {
   .rs-root { display: none; }
-  .rs-card { aspect-ratio: auto; }
 }
 </style>
