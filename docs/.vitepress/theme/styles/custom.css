@@ -228,7 +228,7 @@ body {
 /* 此时 content 自动占满容器，限制阅读宽度 + 居中 */
 .VPDoc:not(.has-aside) .content .vp-doc,
 .VPDoc:not(.has-sidebar) .content .vp-doc {
-  max-width: 900px;
+  max-width: 82%;
   margin-left: auto;
   margin-right: auto;
 }
