@@ -119,7 +119,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
 .rs-card {
   background: #fff;
   border-radius: 12px;
-  padding: 0.75rem;
+  padding: 1rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   border: 1px solid #eee;
 }
