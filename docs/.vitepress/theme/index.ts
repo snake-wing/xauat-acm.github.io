@@ -9,7 +9,6 @@ import GiscusWrapper from './components/GiscusWrapper.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
 import CanvasRibbon from './components/CanvasRibbon.vue'
 import HeroBanner from './components/HeroBanner.vue'
-import GeoDecor from './components/GeoDecor.vue'
 import PostMeta from './components/PostMeta.vue'
 import './styles/custom.css'
 
@@ -30,9 +29,8 @@ export default {
       // 文章页元数据（日期、分类、标签）
       'doc-before': () => h(PostMeta),
 
-      // 几何装饰 + Hero
+      // Hero
       'layout-top': () => [
-        h(GeoDecor),
         h(HeroBanner),
       ],
       // 文章底部：评论区 + 页脚信息

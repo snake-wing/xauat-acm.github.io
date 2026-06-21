@@ -3,112 +3,259 @@ sidebar: false
 aside: true
 ---
 
+<!--
+  ============================================================
+  添加新成员：在下方 generations 数组中找到对应年级，
+  在 members 数组末尾追加对象即可。
+  字段：grade(年级) name(姓名) department(学院/专业)
+        status(现役/退役) graduation(毕业去向，现役填 '-')
+        contact: { github, cf, blog } 可选
+  ============================================================
+-->
+
 <script setup>
 import { ref } from 'vue'
 
 const generations = [
   {
-    year: '2024 级',
-    members: [
-      {
-        grade: '2024级',
-        name: '张三',
-        department: '计算机科学与技术',
-        status: '现役',
-        graduation: '-',
-        contact: { github: 'https://github.com/zhangsan', cf: 'https://codeforces.com/profile/zhangsan' },
-      },
-      {
-        grade: '2024级',
-        name: '李四',
-        department: '软件工程',
-        status: '现役',
-        graduation: '-',
-        contact: { github: 'https://github.com/lisi', blog: 'https://lisi.dev' },
-      },
-    ],
-  },
-  {
     year: '2025 级',
     members: [
-      {
-        grade: '2025级',
-        name: '王五',
-        department: '计算机科学与技术',
-        status: '现役',
-        graduation: '-',
-        contact: { cf: 'https://codeforces.com/profile/wangwu' },
-      },
-      {
-        grade: '2025级',
-        name: '赵六',
-        department: '人工智能',
-        status: '现役',
-        graduation: '-',
-        contact: {},
-      },
+      { grade: '2025 级', name: '张三', department: '计算机科学与技术', status: '现役', graduation: '-', contact: { github: 'https://github.com/zhangsan', cf: 'https://codeforces.com/profile/zhangsan' } },
+      { grade: '2025 级', name: '李四', department: '软件工程', status: '现役', graduation: '-', contact: { github: 'https://github.com/lisi', blog: 'https://lisi.dev' } },
     ],
   },
   {
-    year: '已毕业',
+    year: '2024 级',
     members: [
-      {
-        grade: '2020级',
-        name: '前辈A',
-        department: '计算机科学与技术',
-        status: '退役',
-        graduation: '腾讯 · 后端开发',
-        contact: { github: 'https://github.com/senior-a' },
-      },
+      { grade: '2024 级', name: '王五', department: '计算机科学与技术', status: '现役', graduation: '-', contact: { cf: 'https://codeforces.com/profile/wangwu' } },
+      { grade: '2024 级', name: '赵六', department: '人工智能', status: '现役', graduation: '-', contact: {} },
+    ],
+  },
+  {
+    year: '2023 级',
+    members: [
+      { grade: '2023 级', name: '前辈A', department: '计算机科学与技术', status: '退役', graduation: '腾讯 · 后端开发', contact: { github: 'https://github.com/senior-a' } },
+      { grade: '2023 级', name: '前辈B', department: '软件工程', status: '退役', graduation: '字节跳动 · 前端开发', contact: { github: 'https://github.com/senior-b', blog: 'https://senior-b.dev' } },
     ],
   },
 ]
 
 const collapsed = ref({})
+
 function toggle(year) {
   collapsed.value[year] = !collapsed.value[year]
 }
+
 function isCollapsed(year) {
   return !!collapsed.value[year]
 }
 </script>
 
-# 👥 集训队成员
+<h1 class="team-page-title">ACM 集训队成员名单</h1>
 
 <div class="team-section">
 
-<div class="team-table-wrapper" v-for="gen in generations" :key="gen.year">
-  <div class="team-group-header" @click="toggle(gen.year)">
-    <span class="team-arrow" :class="{ collapsed: isCollapsed(gen.year) }">▾</span>
-    <span class="team-group-year">{{ gen.year }}</span>
-    <span class="team-group-count">{{ gen.members.length }} 人</span>
+<div class="team-group" v-for="gen in generations" :key="gen.year">
+
+  <div class="team-grade-bar" :class="{ 'collapsed-bar': isCollapsed(gen.year) }" @click="toggle(gen.year)">
+    <span class="team-grade-year">{{ gen.year }}</span>
+    <span class="team-grade-arrow" :class="{ collapsed: isCollapsed(gen.year) }">&#9660;</span>
   </div>
 
-  <div class="team-table" v-show="!isCollapsed(gen.year)">
-    <div class="team-table-head">
-      <span class="col-grade">年级</span>
-      <span class="col-name">姓名</span>
-      <span class="col-dept">学院/专业</span>
-      <span class="col-status">状态</span>
-      <span class="col-grad">毕业去向</span>
-      <span class="col-contact">联系方式</span>
-    </div>
-    <div class="team-table-row" v-for="m in gen.members" :key="m.name">
-      <span class="col-grade">{{ m.grade }}</span>
-      <span class="col-name">{{ m.name }}</span>
-      <span class="col-dept">{{ m.department }}</span>
-      <span class="col-status">
-        <span class="status-tag" :class="m.status === '现役' ? 'active' : 'retired'">{{ m.status }}</span>
-      </span>
-      <span class="col-grad">{{ m.graduation }}</span>
-      <span class="col-contact">
-        <a v-if="m.contact.github" :href="m.contact.github" target="_blank" class="contact-link" title="GitHub">GH</a>
-        <a v-if="m.contact.cf" :href="m.contact.cf" target="_blank" class="contact-link" title="Codeforces">CF</a>
-        <a v-if="m.contact.blog" :href="m.contact.blog" target="_blank" class="contact-link" title="Blog">📝</a>
-      </span>
-    </div>
-    <div class="team-empty-row" v-if="gen.members.length === 0">暂无成员</div>
-  </div>
+  <table class="team-table" v-show="!isCollapsed(gen.year)">
+    <thead>
+      <tr>
+        <th>年级</th>
+        <th>姓名</th>
+        <th>学院 / 专业</th>
+        <th>状态</th>
+        <th>毕业去向</th>
+        <th>联系方式</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="m in gen.members" :key="m.name">
+        <td>{{ m.grade }}</td>
+        <td>{{ m.name }}</td>
+        <td>{{ m.department }}</td>
+        <td>
+          <span class="status-tag" :class="m.status === '现役' ? 'active' : 'retired'">{{ m.status }}</span>
+        </td>
+        <td>{{ m.graduation }}</td>
+        <td class="col-contact">
+          <a v-if="m.contact.github" :href="m.contact.github" target="_blank">GitHub</a>
+          <template v-if="m.contact.github && m.contact.cf"> / </template>
+          <a v-if="m.contact.cf" :href="m.contact.cf" target="_blank">Codeforces</a>
+          <template v-if="(m.contact.github || m.contact.cf) && m.contact.blog"> / </template>
+          <a v-if="m.contact.blog" :href="m.contact.blog" target="_blank">Blog</a>
+          <span v-if="!m.contact.github && !m.contact.cf && !m.contact.blog">-</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
 
 </div>
+
+<style>
+/* 全局重置 */
+.team-section,
+.team-section * {
+  box-sizing: border-box;
+}
+
+/* 页面标题 */
+.team-page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin: 0 0 2rem 0;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+/* 年级分组 */
+.team-group {
+  width: 100%;
+  margin-bottom: 2.25rem;
+}
+
+.team-group:first-child {
+  margin-top: 0;
+}
+
+/* 年级折叠栏 */
+.team-grade-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.4rem 0.85rem;
+  background: #f8f8f8;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.team-grade-bar:hover {
+  background: #f0f0f0;
+}
+
+/* 折叠状态：独立矩形，完整四边 + 四角圆角 */
+.team-grade-bar.collapsed-bar {
+  border-radius: 4px;
+}
+
+.team-grade-year {
+  font-size: 0.88rem;
+  color: #555;
+}
+
+.team-grade-arrow {
+  font-size: 0.6rem;
+  color: #999;
+  transition: transform 0.2s;
+  margin-left: auto;
+}
+
+.team-grade-arrow.collapsed {
+  transform: rotate(-90deg);
+}
+
+/* 表格 — 覆写 VitePress 对 table 的 display: block */
+.team-table {
+  display: table !important;
+  width: 100% !important;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+  font-size: 0.86rem;
+  color: #333;
+  border: 1px solid #e8e8e8;
+  border-top: none;
+}
+
+/* 列宽 */
+.team-table th:nth-child(1),
+.team-table td:nth-child(1) { width: 12%; }
+
+.team-table th:nth-child(2),
+.team-table td:nth-child(2) { width: 13%; }
+
+.team-table th:nth-child(3),
+.team-table td:nth-child(3) { width: 25%; }
+
+.team-table th:nth-child(4),
+.team-table td:nth-child(4) { width: 10%; }
+
+.team-table th:nth-child(5),
+.team-table td:nth-child(5) { width: 22%; }
+
+.team-table th:nth-child(6),
+.team-table td:nth-child(6) { width: 18%; }
+
+/* 表头 */
+.team-table thead th {
+  background: #f4f4f4;
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 2px solid #ddd;
+  font-size: 0.82rem;
+  letter-spacing: 0.3px;
+}
+
+/* 数据行 */
+.team-table tbody td {
+  background: #fff;
+  text-align: left;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+  font-size: 0.86rem;
+}
+
+.team-table tbody tr:hover td {
+  background: #fafbfc;
+}
+
+.team-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 联系方式 */
+.col-contact a {
+  color: #555;
+  text-decoration: none;
+  font-size: 0.84rem;
+}
+
+.col-contact a:hover {
+  color: #2563eb;
+}
+
+/* 状态标签 */
+.status-tag {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+}
+
+.status-tag.active {
+  background: #2d8a4e;
+  color: #fff;
+}
+
+.status-tag.retired {
+  background: #e8e8e8;
+  color: #666;
+}
+</style>

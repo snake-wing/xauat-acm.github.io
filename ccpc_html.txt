@@ -1,0 +1,12 @@
+﻿HTTP/1.1 200 OK
+Connection: keep-alive
+Strict-Transport-Security: max-age=31536000
+Accept-Ranges: bytes
+Content-Length: 404
+Content-Type: text/html
+Date: Sat, 20 Jun 2026 11:05:39 GMT
+ETag: "69cfc136-194"
+Last-Modified: Fri, 03 Apr 2026 13:31:34 GMT
+Server: nginx
+
+<!DOCTYPE html><html><head><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/umi.b5ea7236.css"><meta charset="utf-8"><title>ä¸­å½å¤§å­¦çç¨åºè®¾è®¡ç«èµ(CCPC)-å®ç½</title><script>window.routerBase = "/";</script><script async src="/pwacompat.min.js"></script></head><body style="min-width: 1190px;"><div id="root"></div><script src="/umi.1a82fa36.js"></script></body></html>

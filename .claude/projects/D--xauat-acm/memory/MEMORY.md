@@ -1,0 +1,1 @@
+- [CHD ACM Reference Layout](chd-acm-reference-layout.md) — 长安大学 ACM 主页完整布局结构分析，含配色/组件/与 XAUAT 现有实现的对比

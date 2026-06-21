@@ -6,7 +6,8 @@
       "WebFetch(domain:github.com)",
       "PowerShell(npm install *)",
       "PowerShell(New-Item *)",
-      "PowerShell(npm run *)"
+      "PowerShell(npm run *)",
+      "PowerShell(git add *)"
     ]
   }
 }

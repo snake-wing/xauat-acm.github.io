@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长安大学 ACM 协会</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .nav-gradient {
+            background: linear-gradient(90deg, #f97316, #ef4444);
+        }
+        .hero-bg {
+            background-color: #9bd63c; /* Approximate matching the bright lime-green */
+        }
+        .tag-cloud a {
+            transition: color 0.2s;
+        }
+        .tag-cloud a:hover {
+            text-decoration: underline;
+        }
+        /* Hide scrollbar for cleaner look if needed */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8; 
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 h-14 nav-gradient z-50 text-white flex items-center justify-between px-4 md:px-8 shadow-md">
+        <div class="text-lg font-bold truncate max-w-[150px] md:max-w-none">长安大学 ACM 协会</div>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <a href="#" class="hover:text-gray-200 flex items-center transition-colors"><i class="fas fa-search mr-1.5"></i> 搜索</a>
+            <a href="#" class="hover:text-gray-200 flex items-center transition-colors"><i class="fas fa-home mr-1.5"></i> 首页</a>
+            <a href="#" class="hover:text-gray-200 flex items-center transition-colors group relative">
+                <i class="fas fa-info-circle mr-1.5"></i> 关于我们 <i class="fas fa-chevron-down ml-1 text-xs opacity-70"></i>
+            </a>
+            <a href="#" class="hover:text-gray-200 flex items-center transition-colors group relative">
+                <i class="fas fa-link mr-1.5"></i> 友情链接 <i class="fas fa-chevron-down ml-1 text-xs opacity-70"></i>
+            </a>
+            <a href="#" class="hover:text-gray-200 flex items-center transition-colors group relative">
+                <i class="fas fa-users mr-1.5"></i> 集训队 <i class="fas fa-chevron-down ml-1 text-xs opacity-70"></i>
+            </a>
+            <div class="w-8 h-8 rounded-full bg-white text-gray-500 flex items-center justify-center overflow-hidden cursor-pointer shadow-sm">
+                <img src="https://cdn.screenshottocode.com/o1m0QqNT_wNxC0quaj0yj.png" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+        </nav>
+        <!-- Mobile menu button -->
+        <button class="md:hidden text-white focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg relative pt-32 pb-28 flex justify-center items-center overflow-hidden">
+        <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider z-10 drop-shadow-lg text-center px-4">
+            长安大学 ACM 协会
+        </h1>
+        
+        <!-- Wave Divider -->
+        <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10">
+            <svg class="relative block w-full h-[40px] md:h-[60px] lg:h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,120.22,192,109.81,236.42,102.13,279.79,81.18,321.39,56.44Z" fill="#f4f5f7"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-[1200px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6 relative z-20">
+        
+        <!-- Left Column: Articles -->
+        <div class="w-full lg:w-[73%] flex flex-col gap-5">
+            
+            <!-- Article 1 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">What's ACM-ICPC ?</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2016-04-02</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-folder text-red-400 mr-1.5 w-3 text-center"></i> FAQ</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-eye text-red-400 mr-1.5 w-3 text-center"></i> 3次阅读</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    欢迎来到What's ACM协会的招新现场!为了解答各位同学的常见FAQ:What's ACM-ICPC ? ICPC:国际大学生程序设计竞赛(英文全称:International Collegiate Programming Contest(简称ICPC))是由国际计算机协会(ACM)主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。经过近40年的发展，ACM国际大学生程序设计竞赛已经发展成为全球最具影响力的大学生程序设计竞赛。赛事由微软(M$), 华为,JetBrains j[jb] 赞助。远...
+                </p>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">社团活动介绍</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2016-02-28</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-folder text-red-400 mr-1.5 w-3 text-center"></i> FAQ</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-eye text-red-400 mr-1.5 w-3 text-center"></i> 3次阅读</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    长安大学What's ACM协会活动介绍为了解答各位同学的常见FAQ:社团活动能够提供我们很多锻炼能力、开阔眼界、编程，算法的兴趣以及团队合作能力机会。协会平时的主要活动就是平时在集训室做题，通过这些刷题活动来提升队员在各方面算法思维资料。在每年九月份的时候，协会更是会招新入门编程、算法有浓厚。在有比赛或者集训的时候代表学校去外校比赛，不论是经验还是阅历，这是加入一些普通社团所平时不能得到的收获。在这个持续了两到十二天，协会更是集训竞赛组提供丰满的算法讲...
+                </p>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">入门指南</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2016-02-28</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-folder text-red-400 mr-1.5 w-3 text-center"></i> FAQ</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-eye text-red-400 mr-1.5 w-3 text-center"></i> 3次阅读</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    欢迎来到长安大学ACM协会的入门指南常见FAQ(社团纳新版)对于刚开始接触编程的同学，基础知识确实有些困难。随着近几年算法竞赛在网络上流行, 越来越多同学希望加入到算法竞赛中来。系统的学习算法体系，这成为了我们面临的难题。很多同学在学习这方面的知识并没有得到充分引导。需要花费大量时间去摸索学习路线。本文章旨在帮助刚刚接触这方面知识的新手们建立对算法体系的基础认知，以及在后续如何找到适合自己的学习路线结构，本文推荐给对于各入门小白，算法竞赛各方面内容感兴趣，渴望主动学习...
+                </p>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">刷题网站介绍</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2021-11-07</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    常用刷题网站如下:HDOJ(http://acm.hdu.edu.cn/)(杭电OJ)国内非常早的一个OJ，也是目前国内各大高校使用最多的在线评测系统，关于CodeForces(https://codeforces.com/)洛谷(https://www.luogu.com.cn/)CodeChef(https://www.codechef.com/) 牛客网等等。刷题是学习算法的一个阶段。在这个过程中你可能会遇到各种各样难解的题，这都是你提升自我的过程。在没有完全理解题意或者代码思路之前不要急于求成去抄写代码。请在完全理解或者看完一篇题解理清思路之后再自己独立去写。哪怕是一道非常基础的题也会有很多巧妙的解法。多尝试不同的解题思路。那么接下来就跟着这几大知名OJ平台一起来熟悉...
+                </p>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">图的连通性</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2024-08-04</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    Tarjan 算法，由 R.E.Tarjan 发明(这位大佬真的非常非常牛B)算法可以用在有向图求强连通分量或者是无向图中求双连通分量(割点和桥)。首先说一说这个算法的思想：Tarjan算法基于DFS遍历。在一个强连通分量中，如果存在一个强连通分量，肯定存在回路。由于连通分量是一个极大强连通图。所以我们应该把一个图中所有的强连通分量找出来。怎么找呢？这又是个非常精妙的发现。在DFS时如果搜到一个点属于该强连通分量里并且是该强连通分量在DFS中最先搜到的点，也就是该连通分量的“根”。那么它可以通过DFS找到该连通分量内所有别的点...
+                </p>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">2022春季算法讲堂 (6)</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2022-05-04</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    点击下载课件 图论 最短路基础二分图及最大匹配基础二分图最大匹配及网络流初步二分图最大匹配的匈牙利算法及应用 网络流基本概念 最大流算法（Dinic算法等） 费用流初步 最小费用最大流应用及常见建图方法 最短路径树(最短路树)及应用 差分约束系统及应用...
+                </p>
+            </article>
+
+            <!-- Article 7 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">2022春季算法讲堂 (5)</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2022-05-02</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    点击下载课件 图论 最短路基础Dijkstra算法 算法介绍及Dijkstra 算法的朴素实现 算法介绍及Dijkstra 算法的堆优化实现 堆优化Dijkstra算法与优先队列 优先队列优化Dijkstra 算法实战 算法复杂度及注意事项 SPFA 算法 算法介绍及SPFA 算法的队列实现 SPFA 算法判负环 SPFA 算法实战 算法复杂度及注意事项 Bellman-Ford 算法 算法介绍及Bellman-Ford 算法的实现 Bellman-Ford 算法判负环 Bellman-Ford 算法实战 算法复杂度及注意事项...
+                </p>
+            </article>
+
+            <!-- Article 8 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">2022春季算法讲堂 (4)</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2022-05-02</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    点击下载课件 动态规划基础背包问题01背包 完全背包 多重背包 混合背包 二维费用背包 分组背包 有依赖的背包问题 背包问题求方案数 背包问题求具体方案 线性DP 状态机模型 状态压缩DP 树形DP 数位DP 记忆化搜索 单调队列优化DP 斜率优化DP 四边形不等式优化DP...
+                </p>
+            </article>
+
+            <!-- Article 9 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">2022春季算法讲堂 (3)</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2022-05-02</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    点击下载课件 搜索与图论 深度优先搜索 DFS的基本概念及框架 DFS的连通性判定 DFS的搜索顺序 DFS的剪枝策略 记忆化搜索 DFS结合回溯 迭代加深搜索 广度优先搜索 BFS的基本概念及框架 走迷宫最短路模型 八数码问题及状态哈希 多源BFS 优先队列BFS及A*算法 双向广搜 BFS求拓扑排序...
+                </p>
+            </article>
+
+            <!-- Article 10 -->
+            <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-800 hover:text-red-500 cursor-pointer mb-3 transition-colors">2022春季算法讲堂 (2)</h2>
+                <div class="flex flex-wrap items-center text-xs text-gray-500 mb-4 gap-y-2">
+                    <span class="flex items-center"><i class="fas fa-user text-red-400 mr-1.5 w-3 text-center"></i> 宣讲组</span>
+                    <span class="mx-3 hidden sm:inline">|</span>
+                    <span class="flex items-center"><i class="far fa-calendar-alt text-red-400 mr-1.5 w-3 text-center"></i> 发表于 2022-04-18</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed text-justify line-clamp-3 md:line-clamp-none">
+                    点击下载课件 基础数据结构与算法 栈和队列 单调栈和单调队列 KMP算法 Trie字典树 并查集及带权并查集 堆的实现及应用 Hash表的实现及字符串Hash 线段树和树状数组基础 ST表及RMQ问题 ST表的实现及应用...
+                </p>
+            </article>
+
+
+            <!-- Paginator -->
+            <div class="flex justify-center items-center space-x-1.5 mt-4 mb-8">
+                <a href="#" class="px-3 py-1.5 bg-white border border-gray-200 text-gray-500 rounded hover:bg-gray-50 text-sm transition-colors"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="px-3.5 py-1.5 bg-[#49b1f5] text-white rounded text-sm shadow transition-colors">1</a>
+                <a href="#" class="px-3.5 py-1.5 bg-white border border-gray-200 text-gray-600 rounded hover:bg-[#49b1f5] hover:text-white hover:border-[#49b1f5] text-sm transition-colors">2</a>
+                <a href="#" class="px-3.5 py-1.5 bg-white border border-gray-200 text-gray-600 rounded hover:bg-[#49b1f5] hover:text-white hover:border-[#49b1f5] text-sm transition-colors">3</a>
+                <span class="px-2 text-gray-500">...</span>
+                <a href="#" class="px-3.5 py-1.5 bg-white border border-gray-200 text-gray-600 rounded hover:bg-[#49b1f5] hover:text-white hover:border-[#49b1f5] text-sm transition-colors">10</a>
+                <a href="#" class="px-3 py-1.5 bg-white border border-gray-200 text-gray-500 rounded hover:bg-gray-50 hover:text-[#49b1f5] hover:border-[#49b1f5] text-sm transition-colors"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Right Column: Sidebar Widgets -->
+        <aside class="w-full lg:w-[27%] flex flex-col gap-5">
+            
+            <!-- Profile Card -->
+            <div class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-shadow duration-300">
+                <div class="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-md cursor-pointer hover:rotate-[360deg] transition-transform duration-700 ease-in-out mb-3">
+                    <img src="https://cdn.screenshottocode.com/o1m0QqNT_wNxC0quaj0yj.png" alt="CHD-ACM" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-[22px] font-bold text-gray-800">CHD-ACM</h3>
+                <p class="text-gray-500 text-[13px] mt-1 italic">coding changes the world!</p>
+                <div class="flex justify-center gap-6 mt-5 mb-5">
+                    <div class="flex flex-col">
+                        <span class="text-[13px] text-gray-500 mb-1">文章</span>
+                        <span class="font-semibold text-lg text-gray-800">94</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[13px] text-gray-500 mb-1">标签</span>
+                        <span class="font-semibold text-lg text-gray-800">56</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[13px] text-gray-500 mb-1">分类</span>
+                        <span class="font-semibold text-lg text-gray-800">7</span>
+                    </div>
+                </div>
+                <a href="#" class="block bg-[#49b1f5] text-white py-2.5 rounded-md text-[14px] font-medium hover:bg-[#3b9fe4] transition-colors shadow-sm mt-2">
+                    <i class="fas fa-paper-plane mr-2 animate-bounce"></i> Go To OnlineJudge
+                </a>
+            </div>
+
+            <!-- Notice Card (公告) -->
+            <div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+                <h3 class="text-[15px] font-bold text-gray-800 flex items-center mb-4">
+                    <i class="fas fa-bullhorn text-red-400 mr-2 text-lg animate-pulse"></i> 公告
+                </h3>
+                <p class="text-[13px] text-gray-600">This is chd acmer !</p>
+            </div>
+
+            <!-- Recent Articles (最新文章) -->
+            <div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+                <h3 class="text-[15px] font-bold text-gray-800 flex items-center mb-4">
+                    <i class="fas fa-history text-red-400 mr-2 text-lg"></i> 最新文章
+                </h3>
+                <ul class="text-[14px] text-gray-600 space-y-4">
+                    <li class="flex flex-col group">
+                        <a href="#" class="group-hover:text-[#49b1f5] transition-colors leading-snug line-clamp-1 cursor-pointer">2022春季算法讲堂 (6)</a>
+                        <span class="text-[12px] text-gray-400 mt-1 font-sans">2022-05-04</span>
+                    </li>
+                    <li class="flex flex-col group">
+                        <a href="#" class="group-hover:text-[#49b1f5] transition-colors leading-snug line-clamp-1 cursor-pointer">2022春季算法讲堂 (5)</a>
+                        <span class="text-[12px] text-gray-400 mt-1 font-sans">2022-05-02</span>
+                    </li>
+                    <li class="flex flex-col group">
+                        <a href="#" class="group-hover:text-[#49b1f5] transition-colors leading-snug line-clamp-1 cursor-pointer">2022春季算法讲堂 (4)</a>
+                        <span class="text-[12px] text-gray-400 mt-1 font-sans">2022-05-02</span>
+                    </li>
+                    <li class="flex flex-col group">
+                        <a href="#" class="group-hover:text-[#49b1f5] transition-colors leading-snug line-clamp-1 cursor-pointer">2022春季算法讲堂 (3)</a>
+                        <span class="text-[12px] text-gray-400 mt-1 font-sans">2022-05-02</span>
+                    </li>
+                    <li class="flex flex-col group">
+                        <a href="#" class="group-hover:text-[#49b1f5] transition-colors leading-snug line-clamp-1 cursor-pointer">2022春季算法讲堂 (2)</a>
+                        <span class="text-[12px] text-gray-400 mt-1 font-sans">2022-04-18</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Categories (分类) -->
+            <div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+                <h3 class="text-[15px] font-bold text-gray-800 flex items-center mb-4">
+                    <i class="fas fa-folder-open text-red-400 mr-2 text-lg"></i> 分类
+                </h3>
+                <ul class="text-[14px] text-gray-600 space-y-2">
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">FAQ</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">入门指南</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">招新</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">1</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">通知</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">15</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">最新宣讲</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">题解</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">长安大学新生赛</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">长安大学校赛</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tags (标签) -->
+            <div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+                <h3 class="text-[15px] font-bold text-gray-800 flex items-center mb-4">
+                    <i class="fas fa-tags text-red-400 mr-2 text-lg"></i> 标签
+                </h3>
+                <div class="flex flex-wrap gap-x-2 gap-y-1.5 tag-cloud">
+                    <a href="#" class="text-[#8e44ad] text-[15px] hover:text-[#49b1f5]">算法讲堂</a>
+                    <a href="#" class="text-[#27ae60] text-[18px] hover:text-[#49b1f5]">宣讲</a>
+                    <a href="#" class="text-[#f1c40f] text-[12px] hover:text-[#49b1f5]">并查集</a>
+                    <a href="#" class="text-[#2980b9] text-[16px] hover:text-[#49b1f5]">C语言</a>
+                    <a href="#" class="text-[#e74c3c] text-[14px] hover:text-[#49b1f5]">基础数论</a>
+                    <a href="#" class="text-[#16a085] text-[13px] hover:text-[#49b1f5]">求导</a>
+                    <a href="#" class="text-[#d35400] text-[17px] hover:text-[#49b1f5]">离心</a>
+                    <a href="#" class="text-[#34495e] text-[15px] hover:text-[#49b1f5]">二分</a>
+                    <a href="#" class="text-[#9b59b6] text-[14px] hover:text-[#49b1f5]">STL</a>
+                    <a href="#" class="text-[#f39c12] text-[12px] hover:text-[#49b1f5]">DFS BFS</a>
+                    <a href="#" class="text-[#2c3e50] text-[16px] hover:text-[#49b1f5]">动态规划</a>
+                    <a href="#" class="text-[#c0392b] text-[13px] hover:text-[#49b1f5]">单调栈</a>
+                    <a href="#" class="text-[#8e44ad] text-[15px] hover:text-[#49b1f5]">单调队列</a>
+                    <a href="#" class="text-[#27ae60] text-[14px] hover:text-[#49b1f5]">哈希</a>
+                    <a href="#" class="text-[#2980b9] text-[17px] hover:text-[#49b1f5]">KMP Trie</a>
+                    <a href="#" class="text-[#d35400] text-[15px] hover:text-[#49b1f5]">数位统计</a>
+                    <a href="#" class="text-[#16a085] text-[13px] hover:text-[#49b1f5]">状态压缩DP</a>
+                    <a href="#" class="text-[#e74c3c] text-[16px] hover:text-[#49b1f5]">博弈论</a>
+                    <a href="#" class="text-[#8e44ad] text-[12px] hover:text-[#49b1f5]">组合数学</a>
+                    <a href="#" class="text-[#f39c12] text-[14px] hover:text-[#49b1f5]">树形DP</a>
+                </div>
+            </div>
+
+            <!-- Archives (归档) -->
+            <div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+                <h3 class="text-[15px] font-bold text-gray-800 flex items-center mb-4">
+                    <i class="fas fa-archive text-red-400 mr-2 text-lg"></i> 归档
+                </h3>
+                <ul class="text-[14px] text-gray-600 space-y-2">
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">八月 2024</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">1</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">五月 2022</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">5</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">四月 2022</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">三月 2022</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">1</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">十二月 2021</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">十一月 2021</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">6</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">十月 2021</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">5</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-between items-center hover:bg-gray-50 px-2 py-1.5 -mx-2 rounded transition-colors group cursor-pointer">
+                            <span class="group-hover:text-[#49b1f5] transition-colors">九月 2021</span>
+                            <span class="bg-gray-100 text-gray-500 text-[12px] px-2 py-0.5 rounded">2</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Site Stats (网站资讯) -->
+            <div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+                <h3 class="text-[15px] font-bold text-gray-800 flex items-center mb-4">
+                    <i class="fas fa-chart-line text-red-400 mr-2 text-lg"></i> 网站资讯
+                </h3>
+                <ul class="text-[13px] text-gray-600 space-y-2.5">
+                    <li class="flex justify-between"><span>运行时间:</span><span class="font-sans">5d</span></li>
+                    <li class="flex justify-between"><span>访问次数:</span><span class="font-sans">4469 次</span></li>
+                    <li class="flex justify-between"><span>总字数:</span><span class="font-sans">303k</span></li>
+                    <li class="flex justify-between"><span>本站访客数:</span><span class="font-sans">4456</span></li>
+                    <li class="flex justify-between"><span>最后更新时间:</span><span class="font-sans">6 个月前</span></li>
+                </ul>
+            </div>
+            
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-8 py-8" style="background: rgba(0,0,0,0.85);">
+        <div class="text-center text-[13px] text-gray-400">
+            <p>&copy; 2014 - 2024 By CHD-ACM</p>
+        </div>
+    </footer>
+
+</body>
+</html>
