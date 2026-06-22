@@ -30,7 +30,7 @@ export default defineConfig({
     logo: '/favicon.png',
 
     nav: [
-      { text: '首页', link: '/' },
+      { text: '首页', link: '/home' },
       {
         text: '集训队',
         items: [

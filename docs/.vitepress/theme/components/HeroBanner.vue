@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
+import { useData, useRouter, withBase } from 'vitepress'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const { page } = useData()
+const router = useRouter()
 
 // 判断首页（Splash 只在首页显示）
 const isHome = computed(() => {
@@ -11,29 +12,13 @@ const isHome = computed(() => {
 })
 
 // 遮罩状态
-const dismissed = ref(false)
 const leaving = ref(false)
-const SPLASH_KEY = 'xauat-acm-splash-dismissed'
 
-// 页面加载时检查是否已关闭过
-onMounted(() => {
-  if (!isHome.value) return
-  if (typeof sessionStorage !== 'undefined') {
-    if (sessionStorage.getItem(SPLASH_KEY) === '1') {
-      dismissed.value = true
-    }
-  }
-})
-
-// 点击 Enter
+// 点击 Enter：播放退场动画后导航到 /home
 function onEnter() {
   leaving.value = true
-  // 等待动画结束
   setTimeout(() => {
-    dismissed.value = true
-    if (typeof sessionStorage !== 'undefined') {
-      sessionStorage.setItem(SPLASH_KEY, '1')
-    }
+    window.location.href = withBase('/home')
   }, 600)
 }
 
@@ -42,7 +27,7 @@ const typedEl = ref<HTMLElement | null>(null)
 let typed: any = null
 
 onMounted(() => {
-  if (!isHome.value || dismissed.value || typeof window === 'undefined') return
+  if (!isHome.value || typeof window === 'undefined') return
   const script = document.createElement('script')
   script.src = 'https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js'
   script.onload = () => {
@@ -77,7 +62,7 @@ onUnmounted(() => {
   <!-- Splash 遮罩：仅在首页且未关闭时显示 -->
   <Teleport to="body">
     <div
-      v-if="isHome && !dismissed"
+      v-if="isHome"
       class="splash-overlay"
       :class="{ 'splash-leaving': leaving }"
     >
@@ -89,11 +74,48 @@ onUnmounted(() => {
       <!-- 网格纹理 -->
       <div class="splash-grid"></div>
 
+      <!-- 浮动代码涂鸦 -->
+      <div class="splash-doodles" aria-hidden="true">
+        <span class="doodle doodle-brace" style="left:8%;top:20%;">{ }</span>
+        <span class="doodle doodle-paren" style="left:85%;top:30%;">( )</span>
+        <span class="doodle doodle-angle" style="left:15%;top:75%;">&lt; / &gt;</span>
+        <span class="doodle doodle-semi" style="left:78%;top:68%;">;;</span>
+        <span class="doodle doodle-star" style="left:5%;top:50%;">*</span>
+        <span class="doodle doodle-dot" style="left:90%;top:55%;">&#x2022;</span>
+        <span class="doodle doodle-eq" style="left:25%;top:12%;">==</span>
+        <span class="doodle doodle-fn" style="left:70%;top:82%;">fn()</span>
+      </div>
+
       <!-- 主内容 -->
       <div class="splash-content">
-        <!-- Logo 光环 -->
+        <!-- Logo 手绘圆圈 -->
         <div class="splash-logo-ring">
-          <img src="/favicon.png" alt="XAUAT ACM" class="splash-logo-img" />
+          <svg class="splash-hand-circle" viewBox="0 0 120 120" aria-hidden="true">
+            <path
+              d="M60 8
+                 C85 6, 112 28, 113 55
+                 C114 78, 96 108, 66 112
+                 C38 116, 8 98, 7 68
+                 C6 42, 28 9, 60 8Z"
+              fill="none"
+              stroke="rgba(255,107,53,0.35)"
+              stroke-width="2.5"
+              stroke-dasharray="4 2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M60 5
+                 C88 4, 115 30, 116 56
+                 C117 80, 98 112, 66 115
+                 C35 118, 6 97, 5 66
+                 C4 40, 26 7, 60 5Z"
+              fill="none"
+              stroke="rgba(255,209,102,0.2)"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <img :src="withBase('/favicon.png')" alt="XAUAT ACM" class="splash-logo-img" />
         </div>
 
         <h1 class="splash-title">XAUAT ACM</h1>
@@ -108,33 +130,37 @@ onUnmounted(() => {
 
         <!-- Enter 按钮 -->
         <button class="splash-enter" @click="onEnter">
-          <span class="splash-enter-text">Enter</span>
+          <span class="splash-enter-text">🚀 开始探索</span>
           <span class="splash-enter-arrow">→</span>
         </button>
       </div>
 
-      <!-- 底部建筑剪影 -->
-      <svg class="splash-skyline" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-        <rect x="0" y="60" width="60" height="60" opacity="0.12"/>
-        <rect x="70" y="40" width="50" height="80" opacity="0.17"/>
-        <rect x="130" y="50" width="70" height="70" opacity="0.1"/>
-        <rect x="210" y="30" width="55" height="90" opacity="0.15"/>
-        <rect x="280" y="55" width="80" height="65" opacity="0.11"/>
-        <rect x="370" y="35" width="45" height="85" opacity="0.19"/>
-        <rect x="430" y="65" width="65" height="55" opacity="0.08"/>
-        <rect x="510" y="25" width="60" height="95" opacity="0.17"/>
-        <rect x="580" y="48" width="75" height="72" opacity="0.11"/>
-        <rect x="670" y="38" width="50" height="82" opacity="0.14"/>
-        <rect x="740" y="58" width="70" height="62" opacity="0.09"/>
-        <rect x="820" y="20" width="55" height="100" opacity="0.2"/>
-        <rect x="890" y="45" width="80" height="75" opacity="0.13"/>
-        <rect x="980" y="55" width="60" height="65" opacity="0.1"/>
-        <rect x="1050" y="28" width="65" height="92" opacity="0.16"/>
-        <rect x="1130" y="50" width="75" height="70" opacity="0.12"/>
-        <rect x="1210" y="35" width="55" height="85" opacity="0.14"/>
-        <rect x="1280" y="60" width="70" height="60" opacity="0.08"/>
-        <rect x="1360" y="42" width="80" height="78" opacity="0.11"/>
-        <path d="M0 120 L1440 120 L1440 90 Q1200 30 720 70 Q240 40 0 80 Z" opacity="0.06"/>
+      <!-- 底部波浪分割线 -->
+      <svg class="splash-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path
+          d="M0 120 L1440 120 L1440 70
+             Q1260 30, 1080 55
+             Q900 80, 720 45
+             Q540 10, 360 50
+             Q180 85, 0 55 Z"
+          fill="rgba(255,107,53,0.08)"
+        />
+        <path
+          d="M0 120 L1440 120 L1440 90
+             Q1200 50, 1000 75
+             Q800 100, 600 65
+             Q400 35, 200 70
+             Q100 95, 0 75 Z"
+          fill="rgba(255,209,102,0.06)"
+        />
+        <circle cx="180" cy="62" r="3" fill="rgba(255,107,53,0.25)" />
+        <circle cx="420" cy="48" r="2" fill="rgba(255,209,102,0.3)" />
+        <circle cx="660" cy="55" r="3.5" fill="rgba(255,107,53,0.2)" />
+        <circle cx="900" cy="52" r="2" fill="rgba(6,214,160,0.25)" />
+        <circle cx="1140" cy="68" r="3" fill="rgba(255,209,102,0.22)" />
+        <circle cx="1320" cy="58" r="2.5" fill="rgba(255,107,53,0.18)" />
+        <circle cx="280" cy="70" r="1.5" fill="rgba(6,214,160,0.2)" />
+        <circle cx="780" cy="60" r="2" fill="rgba(255,209,102,0.2)" />
       </svg>
     </div>
   </Teleport>
@@ -150,20 +176,17 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    170deg,
-    #0f2b4a 0%,
-    #1a4a6f 15%,
-    #2d6a9f 28%,
-    #5b8cb8 40%,
-    #c4a882 55%,
-    #e8d5b7 68%,
-    #f5e6d3 80%,
-    #faf6f0 100%
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 35%,
+    #2d2535 0%,
+    #241f2f 25%,
+    #1a1a2e 50%,
+    #161528 75%,
+    #121220 100%
   );
   overflow: hidden;
   text-align: center;
-  color: #fff;
+  color: #f5f0e8;
   animation: splash-in 0.8s ease;
 }
 
@@ -192,16 +215,13 @@ onUnmounted(() => {
 
 /* 暗色模式 */
 html.dark .splash-overlay {
-  background: linear-gradient(
-    170deg,
-    #060e1a 0%,
-    #0d1f33 15%,
-    #1a3350 28%,
-    #2a4a6a 40%,
-    #3a3a3a 55%,
-    #2a2a30 68%,
-    #1e1e28 80%,
-    #1a1a22 100%
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 35%,
+    #2a2030 0%,
+    #1e1928 25%,
+    #151225 50%,
+    #110f1e 75%,
+    #0e0c18 100%
   );
 }
 
@@ -215,28 +235,28 @@ html.dark .splash-overlay {
 }
 .orb-1 {
   width: 300px; height: 300px;
-  background: rgba(255, 200, 120, 0.25);
+  background: rgba(255, 107, 53, 0.18);
   right: -60px; top: 10%;
   animation-delay: 0s;
 }
 .orb-2 {
   width: 250px; height: 250px;
-  background: rgba(180, 220, 255, 0.2);
+  background: rgba(255, 209, 102, 0.15);
   left: -40px; bottom: 25%;
   animation-delay: -4s;
 }
 .orb-3 {
   width: 200px; height: 200px;
-  background: rgba(255, 255, 200, 0.18);
+  background: rgba(6, 214, 160, 0.1);
   left: 40%; top: 60%;
   animation-delay: -8s;
 }
 
 @keyframes orb-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25%  { transform: translate(30px, -20px) scale(1.1); }
-  50%  { transform: translate(-15px, 25px) scale(0.9); }
-  75%  { transform: translate(-25px, -15px) scale(1.05); }
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25%     { transform: translate(35px, -20px) scale(1.08) rotate(5deg); }
+  50%     { transform: translate(-20px, 30px) scale(0.92) rotate(-3deg); }
+  75%     { transform: translate(-30px, -10px) scale(1.05) rotate(2deg); }
 }
 
 /* ===== 网格纹理 ===== */
@@ -244,12 +264,46 @@ html.dark .splash-overlay {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 70%);
+  mask-image: radial-gradient(ellipse 65% 55% at 50% 38%, black 35%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 38%, black 35%, transparent 70%);
+}
+
+/* ===== 浮动代码涂鸦 ===== */
+.splash-doodles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.doodle {
+  position: absolute;
+  font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 1.4rem;
+  color: rgba(255, 107, 53, 0.18);
+  animation: doodle-float 8s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(255, 107, 53, 0.15);
+}
+
+.doodle-brace { animation-delay: 0s; }
+.doodle-paren { animation-delay: -1.5s; font-size: 1.1rem; color: rgba(255, 209, 102, 0.18); }
+.doodle-angle { animation-delay: -3s; font-size: 1rem; color: rgba(6, 214, 160, 0.15); }
+.doodle-semi  { animation-delay: -4.5s; font-size: 1.6rem; color: rgba(255, 107, 53, 0.12); }
+.doodle-star  { animation-delay: -2s; font-size: 1.8rem; color: rgba(255, 209, 102, 0.2); }
+.doodle-dot   { animation-delay: -5.5s; font-size: 2rem; color: rgba(255, 107, 53, 0.13); }
+.doodle-eq    { animation-delay: -6s; font-size: 1rem; color: rgba(6, 214, 160, 0.13); }
+.doodle-fn    { animation-delay: -7s; font-size: 1.05rem; color: rgba(255, 209, 102, 0.16); }
+
+@keyframes doodle-float {
+  0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.18; }
+  25%      { transform: translateY(-15px) translateX(8px) rotate(3deg); opacity: 0.28; }
+  50%      { transform: translateY(-5px) translateX(-6px) rotate(-2deg); opacity: 0.14; }
+  75%      { transform: translateY(-20px) translateX(4px) rotate(1deg); opacity: 0.24; }
 }
 
 /* ===== 主内容 ===== */
@@ -269,38 +323,52 @@ html.dark .splash-overlay {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Logo 光环 */
+/* Logo 手绘圆圈 */
 .splash-logo-ring {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
+  position: relative;
+  width: 110px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
-  box-shadow: 0 0 40px rgba(255,255,255,0.2), inset 0 0 20px rgba(255,255,255,0.1);
-  animation: logo-glow 3s ease-in-out infinite;
 }
 
-@keyframes logo-glow {
-  0%, 100% { box-shadow: 0 0 40px rgba(255,255,255,0.2), inset 0 0 20px rgba(255,255,255,0.1); }
-  50% { box-shadow: 0 0 60px rgba(255,255,255,0.35), inset 0 0 30px rgba(255,255,255,0.2); }
+.splash-hand-circle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: circle-wobble 4s ease-in-out infinite;
+}
+
+@keyframes circle-wobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  30%      { transform: rotate(3deg) scale(1.03); }
+  60%      { transform: rotate(-2deg) scale(0.98); }
 }
 
 .splash-logo-img {
-  width: 66px;
-  height: 66px;
+  width: 62px;
+  height: 62px;
   object-fit: contain;
+  position: relative;
+  z-index: 1;
+  animation: logo-bounce 3s ease-in-out infinite;
+}
+
+@keyframes logo-bounce {
+  0%, 100% { transform: translateY(0); }
+  40%      { transform: translateY(-4px); }
+  60%      { transform: translateY(-2px); }
 }
 
 .splash-title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
-  letter-spacing: 6px;
-  color: #fff;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  letter-spacing: 4px;
+  color: #f5f0e8;
+  text-shadow: 0 2px 16px rgba(255, 107, 53, 0.25), 0 0 40px rgba(255, 209, 102, 0.1);
   margin: 0;
   line-height: 1.2;
   font-family: 'Titillium Web', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -309,7 +377,7 @@ html.dark .splash-overlay {
 .splash-subtitle {
   font-size: clamp(1rem, 2.5vw, 1.4rem);
   font-weight: 400;
-  color: rgba(255,255,255,0.85);
+  color: rgba(245, 240, 232, 0.75);
   letter-spacing: 4px;
   margin: 0;
 }
@@ -317,20 +385,20 @@ html.dark .splash-overlay {
 .splash-typed {
   margin-top: 0.3rem;
   font-size: clamp(0.95rem, 2vw, 1.2rem);
-  color: rgba(255,255,255,0.9);
+  color: rgba(6, 214, 160, 0.85);
   font-weight: 500;
   min-height: 2rem;
 }
 
 /* Typed.js 光标颜色 */
 .splash-typed :deep(.typed-cursor) {
-  color: rgba(255,255,255,0.8);
+  color: rgba(6, 214, 160, 0.7);
 }
 
 .splash-desc {
   margin-top: 0.25rem;
   font-size: clamp(0.78rem, 1.5vw, 0.95rem);
-  color: rgba(255,255,255,0.6);
+  color: rgba(245, 240, 232, 0.5);
   letter-spacing: 2px;
 }
 
@@ -341,40 +409,39 @@ html.dark .splash-overlay {
   align-items: center;
   gap: 0.6rem;
   padding: 0.8rem 2.5rem;
-  background: rgba(255,255,255,0.12);
-  border: 2px solid rgba(255,255,255,0.35);
-  border-radius: 50px;
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  border: none;
+  border-radius: 12px;
   color: #fff;
   font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-weight: 700;
+  letter-spacing: 2px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(4px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.35), 0 0 40px rgba(255, 107, 53, 0.1);
 }
 
 .splash-enter:hover {
-  background: rgba(255,255,255,0.22);
-  border-color: rgba(255,255,255,0.6);
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255,255,255,0.15);
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(255, 107, 53, 0.5), 0 0 60px rgba(255, 107, 53, 0.2);
+  background: linear-gradient(135deg, #ff8755, #ff6b35);
 }
 
 .splash-enter:active {
-  transform: scale(0.97);
+  transform: scale(0.95);
 }
 
 .splash-enter-arrow {
   display: inline-block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .splash-enter:hover .splash-enter-arrow {
-  transform: translateX(4px);
+  transform: translateX(5px) scale(1.15);
 }
 
-/* ===== 建筑剪影 ===== */
-.splash-skyline {
+/* ===== 底部波浪分割线 ===== */
+.splash-wave {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -383,20 +450,18 @@ html.dark .splash-overlay {
   z-index: 1;
   pointer-events: none;
 }
-.splash-skyline rect,
-.splash-skyline path {
-  fill: #fff;
-}
 
 /* ===== 响应式 ===== */
 @media (max-width: 768px) {
-  .splash-logo-ring { width: 80px; height: 80px; }
-  .splash-logo-img { width: 52px; height: 52px; }
-  .splash-title { font-size: 2rem; letter-spacing: 3px; }
+  .splash-logo-ring { width: 85px; height: 85px; }
+  .splash-logo-img { width: 48px; height: 48px; }
+  .splash-title { font-size: 2rem; letter-spacing: 2px; }
   .splash-subtitle { font-size: 0.85rem; letter-spacing: 2px; }
   .splash-desc { font-size: 0.72rem; }
   .splash-grid { background-size: 40px 40px; }
-  .splash-skyline { display: none; }
+  .splash-wave { display: none; }
   .splash-enter { padding: 0.65rem 2rem; font-size: 1rem; }
+  .doodle { font-size: 1rem !important; }
+  .doodle-angle, .doodle-eq, .doodle-fn { display: none; }
 }
 </style>

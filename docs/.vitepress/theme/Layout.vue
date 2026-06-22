@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
 import { computed } from 'vue'
 import RightSidebar from './components/RightSidebar.vue'
@@ -279,7 +279,7 @@ const nav = computed(() => theme.value.nav || [])
 
 /* ===== Hero Banner ===== */
 .hero-banner {
-  background: linear-gradient(135deg, #1e3a5f 0%, #49b1f5 50%, #7c3aed 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d2535 40%, #49b1f5 100%);
   padding: 4rem 1rem 2rem;
   text-align: center;
   color: #fff;
@@ -381,7 +381,7 @@ const nav = computed(() => theme.value.nav || [])
 .dark .nav-logo { color: #eee; }
 .dark .nav-item { color: #aaa; }
 .dark .nav-item:hover,
-.dark .nav-item.active { color: #60a5fa; background: rgba(96,165,250,0.1); }
+.dark .nav-item.active { color: #6ec1f7; background: rgba(96, 165, 250,0.1); }
 
 .dark .nav-dropdown-menu {
   background: #1e1e36;
@@ -389,7 +389,7 @@ const nav = computed(() => theme.value.nav || [])
 }
 
 .dark .nav-dropdown-item { color: #aaa; }
-.dark .nav-dropdown-item:hover { background: rgba(96,165,250,0.1); color: #60a5fa; }
+.dark .nav-dropdown-item:hover { background: rgba(96, 165, 250,0.1); color: #6ec1f7; }
 .dark .nav-dropdown-group-label { color: #666; }
 
 .dark .content-card {

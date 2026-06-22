@@ -39,7 +39,7 @@ aside: true
 
 ```
 语言基础 → 模拟/枚举 → 贪心 → 搜索(DFS/BFS) →
-动态规划 → 基础数据结构 → 图论 → 高级专题
+动态规划 → 数据结构（并查集、） → 图论 → 高级专题
 ```
 
 **推荐资料：**
@@ -47,6 +47,7 @@ aside: true
 - [OI Wiki](https://oi-wiki.org) — 免费在线竞赛知识库
 - [AcWing](https://www.acwing.com) — 适合新手入门的算法课程和算法模板
 - [左程云算法](https://space.bilibili.com/8888480?spm_id_from=333.337.0.0) - 非常详细的算法教学
+- [科学刷题指南](https://leetcode.cn/circle/discuss/RvFUtj/) 
 ---
 **以赛代练，查缺补漏**
 | 平台 | 适合阶段 | 注册链接 | 策略 |

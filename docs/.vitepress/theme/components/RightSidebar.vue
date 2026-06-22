@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { computed } from 'vue'
 import { withBase } from 'vitepress'
 import { usePosts } from '../composables/usePosts'
@@ -183,7 +183,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   padding: 0.4rem 0.25rem; border-radius: 8px;
   transition: background 0.15s;
 }
-.rs-stat:hover { background: rgba(73,177,245,0.05); }
+.rs-stat:hover { background: rgba(73, 177, 245,0.05); }
 
 .rs-stat-num {
   display: block;
@@ -217,9 +217,9 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
 }
 
 .rs-social-link:hover {
-  background: rgba(73,177,245,0.08);
+  background: rgba(73, 177, 245,0.08);
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(73,177,245,0.15);
+  box-shadow: 0 4px 12px rgba(73, 177, 245,0.15);
 }
 
 .rs-social-link:hover .rs-social-icon {
@@ -256,7 +256,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   text-decoration: none; padding: 0.35rem 0.4rem; border-radius: 6px;
   transition: background 0.15s;
 }
-.rs-post-item:hover { background: rgba(73,177,245,0.04); }
+.rs-post-item:hover { background: rgba(73, 177, 245,0.04); }
 
 .rs-post-num {
   width: 20px; text-align: center;
@@ -282,7 +282,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   text-decoration: none; padding: 0.35rem 0.4rem; border-radius: 6px;
   font-size: 0.84rem; color: #555; transition: background 0.15s;
 }
-.rs-cat-item:hover { background: rgba(73,177,245,0.04); }
+.rs-cat-item:hover { background: rgba(73, 177, 245,0.04); }
 
 .rs-cat-count {
   font-size: 0.72rem; color: #bbb;
@@ -321,15 +321,15 @@ html.dark .rs-cat-item { color: #aaa; }
 html.dark .rs-cat-count { background: #2a2a45; color: #666; }
 html.dark .rs-announce { color: #aaa; }
 html.dark .rs-post-num { color: #555; }
-html.dark .rs-stat:hover { background: rgba(96,165,250,0.06); }
-html.dark .rs-cat-item:hover { background: rgba(96,165,250,0.06); }
-html.dark .rs-post-item:hover { background: rgba(96,165,250,0.06); }
+html.dark .rs-stat:hover { background: rgba(96, 165, 250,0.06); }
+html.dark .rs-cat-item:hover { background: rgba(96, 165, 250,0.06); }
+html.dark .rs-post-item:hover { background: rgba(96, 165, 250,0.06); }
 html.dark .rs-empty { color: #555; }
 html.dark .rs-socials { border-top-color: #2a2a45; }
 html.dark .rs-social-link { background: #1e1e36; }
 html.dark .rs-social-link:hover { background: #252545; }
-html.dark .rs-social-icon { color: #60a5fa; }
-html.dark .rs-social-text { color: #60a5fa; }
+html.dark .rs-social-icon { color: #6ec1f7; }
+html.dark .rs-social-text { color: #6ec1f7; }
 
 @media (max-width: 1024px) {
   .rs-root { display: none; }
