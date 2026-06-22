@@ -13,9 +13,6 @@ const isHome = computed(() => route.path === '/' || route.path === '/index.html'
 
 const nav = computed(() => theme.value.nav || [])
 
-function toggleDark() {
-  isDark.value = !isDark.value
-}
 </script>
 
 <template>
@@ -50,9 +47,6 @@ function toggleDark() {
             </div>
             <a v-else :href="item.link" class="nav-item" :class="{ active: route.path === item.link }">{{ item.text }}</a>
           </template>
-          <button class="nav-icon-btn" @click="toggleDark" :title="isDark ? '浅色模式' : '深色模式'">
-            {{ isDark ? '☀️' : '🌙' }}
-          </button>
           <button class="nav-icon-btn" @click="openSearch" title="搜索 (Ctrl+K)">🔍</button>
         </nav>
       </div>

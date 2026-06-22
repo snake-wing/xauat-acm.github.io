@@ -8,31 +8,29 @@ aside: true
 <div class="about-section">
 
 欢迎加入 XAUAT ACM 协会！这份指南将帮助你快速入门算法竞赛。
-
----
+## 算法竞赛信息总览
+如果你还不知道什么是程序设计竞赛，推荐先移步标题栏 “关于我们——什么是算法竞赛与ACM” 中了解
+- [打破信息差](https://github.com/NullResot/XCPC-Beginner-Guide)
+- 算法竞赛前沿消息 [https://www.algowiki.cn/](https://www.algowiki.cn/)
+- 算法竞赛相关网址/信息合集 [xcpc.link](https://xcpc.link/)
 
 ## 第一步：掌握编程语言
 
 算法竞赛主要使用 **C/C++**，你需要先掌握：
 
-- 基本语法（变量、循环、分支、函数）
-- 数组、字符串操作
-- 指针与引用
-- **STL 标准库**（vector、map、set、queue、stack 等）
+- C/C++ 基本语法（变量、循环、分支、函数、数组、引用）
+- **STL 标准库**（string、vector、map、set、queue、stack 等）
 - 输入输出（cin/cout、scanf/printf）
 
-协会每年 10-11 月有系统的 C 语言培训，从零开始学完全没问题。
+协会预计每年 9-10 月有系统的 C++ 语法培训
 
 ---
 
-## 第二步：注册 OJ 平台
+## 第二步：刷题入门/锻炼编程思维
 
-| 平台 | 适合阶段 | 注册链接 |
-|------|----------|----------|
-| 洛谷 | 入门~竞赛 | [luogu.com.cn](https://www.luogu.com.cn) |
-| Codeforces | 进阶~竞赛 | [codeforces.com](https://codeforces.com) |
-| LeetCode | 入门~进阶 | [leetcode.cn](https://leetcode.cn) |
-
+| 平台 | 适合阶段 | 注册链接 | 策略 |
+|------|----------|----------|--------------|
+| 洛谷 | 入门~竞赛 | [luogu.com.cn](https://www.luogu.com.cn) | 刷完洛谷-题单-入门1~6 |
 ---
 
 ## 第三步：系统学习算法
@@ -47,17 +45,25 @@ aside: true
 **推荐资料：**
 - 《算法竞赛入门经典》（刘汝佳）— ICPC 必备教材
 - [OI Wiki](https://oi-wiki.org) — 免费在线竞赛知识库
-- [AcWing](https://www.acwing.com) — 高质量算法课程
-
+- [AcWing](https://www.acwing.com) — 适合新手入门的算法课程和算法模板
+- [左程云算法](https://space.bilibili.com/8888480?spm_id_from=333.337.0.0) - 非常详细的算法教学
 ---
+**以赛代练，查缺补漏**
+| 平台 | 适合阶段 | 注册链接 | 策略 |
+|------|----------|----------|--------------|
+| 洛谷 | 入门~竞赛 | [luogu.com.cn](https://www.luogu.com.cn) | 各种算法模板 |
+| Atcoder | 模板~进阶 | [https://atcoder.jp/home](https://atcoder.jp/home) | AtCoder Beginner Contest |
+| 牛客竞赛 | 以赛代练 | [https://ac.nowcoder.com/](https://ac.nowcoder.com/) | 牛客小白月赛、牛客周赛 | 
+| Codeforces | 进阶~竞赛 | [codeforces.com](https://codeforces.com) | Div4 Div3 edu-Div2 |
 
-## 第四步：参加比赛积累经验
+## 第四步：参加线下比赛积累经验
 
 | 赛事 | 时间 | 适合阶段 |
 |------|------|----------|
-| 蓝桥杯省赛 | 每年 4 月 | 入门~进阶 |
-| 天梯赛 | 每年 5 月 | 全阶段 |
-| ICPC/CCPC 区域赛 | 每年 10-12 月 | 进阶~竞赛 |
+| 蓝桥杯省赛 | 每年 4 月 | 入门~提高 |
+| 天梯赛 | 每年 4 月 | 全阶段 |
+| 蓝桥杯国赛/XCPC邀请赛 | 每年 5-6 月 | 提高~进阶 |
+| XCPC 区域赛 | 每年 10-12 月 | 进阶 |
 
 ---
 
@@ -74,9 +80,9 @@ aside: true
 <summary class="faq-question">每周需要投入多少时间？</summary>
 <div class="faq-answer">
 
-- **入门阶段**：每周 3-5 小时（培训 + 做题）
-- **进阶阶段**：每周 8-12 小时（专题学习 + 练习）
-- **竞赛冲刺**：每周 15+ 小时（高强度刷题 + 组队训练）
+- **入门阶段**：每周 8-10 小时（培训 + 做题）
+- **进阶阶段**：每周 15-20 小时（专题学习 + 练习）
+- **竞赛冲刺**：每周 35+ 小时（高强度刷题 + 组队训练）
 
 协会不强制要求，鼓励按照自己的节奏来安排。
 
