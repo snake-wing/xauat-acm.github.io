@@ -18,9 +18,9 @@ aside: true
 
 算法竞赛主要使用 **C/C++**，你需要先掌握：
 
+- 输入输出（cin/cout、scanf/printf）
 - C/C++ 基本语法（变量、循环、分支、函数、数组、引用）
 - **STL 标准库**（string、vector、map、set、queue、stack 等）
-- 输入输出（cin/cout、scanf/printf）
 
 协会预计每年 9-10 月有系统的 C++ 语法培训
 
