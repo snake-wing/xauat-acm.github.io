@@ -9,7 +9,7 @@ aside: true
 
 欢迎加入 XAUAT ACM 协会！这份指南将帮助你快速入门算法竞赛。
 ## 算法竞赛信息总览
-如果你还不知道什么是程序设计竞赛，推荐先移步标题栏 “关于我们——什么是算法竞赛与ACM” 中了解
+如果你还不知道什么是程序设计竞赛，推荐先移步标题栏 “[关于我们——什么是算法竞赛与ACM](/about/competitions)” 中了解
 - [打破信息差](https://github.com/NullResot/XCPC-Beginner-Guide)
 - 算法竞赛前沿消息 [https://www.algowiki.cn/](https://www.algowiki.cn/)
 - 算法竞赛相关网址/信息合集 [xcpc.link](https://xcpc.link/)
