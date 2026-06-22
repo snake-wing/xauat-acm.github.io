@@ -7,7 +7,6 @@ aside: true
 import { data as posts } from './posts.data'
 import { ref, computed, onMounted } from 'vue'
 import { withBase } from 'vitepress'
-import TypedBanner from './.vitepress/theme/components/TypedBanner.vue'
 import Pagination from './.vitepress/theme/components/Pagination.vue'
 import { setPosts } from './.vitepress/theme/composables/usePosts'
 
@@ -31,11 +30,7 @@ function goPage(page) {
 }
 </script>
 
-<div class="typed-line">
-  <TypedBanner />
-</div>
-
-<!-- 最新文�?-->
+<!-- 最新文章 -->
 <section class="post-section">
   <div class="post-list">
     <div v-for="post in pagedPosts" :key="post.url" class="post-item">

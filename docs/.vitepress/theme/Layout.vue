@@ -5,6 +5,7 @@ import RightSidebar from './components/RightSidebar.vue'
 import FloatingPanel from './components/FloatingPanel.vue'
 import Giscus from './components/Giscus.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
+import TypedBanner from './components/TypedBanner.vue'
 
 const { site, theme, frontmatter, isDark } = useData()
 const route = useRoute()
@@ -13,6 +14,10 @@ const isHome = computed(() => route.path === '/' || route.path === '/index.html'
 
 const nav = computed(() => theme.value.nav || [])
 
+function openSearch() {
+  const btn = document.querySelector('.DocSearch-Button') as HTMLElement
+  if (btn) btn.click()
+}
 </script>
 
 <template>
@@ -52,14 +57,54 @@ const nav = computed(() => theme.value.nav || [])
       </div>
     </header>
 
-    <!-- Hero Banner (仅首页) -->
+    <!-- Hero Banner (仅首页) — 校园风全屏 -->
     <section v-if="isHome" class="hero-banner">
-      <div class="hero-banner-content">
-        <h1 class="hero-banner-title">XAUAT ACM</h1>
-        <p class="hero-banner-sub">西安建筑科技大学 ACM 协会</p>
-        <p class="hero-banner-desc">算法竞赛 · 编程训练 · 技术交流 · 以赛促学</p>
+      <!-- 背景层: 浮动光斑 -->
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <!-- 网格纹理 -->
+      <div class="hero-grid"></div>
+      <!-- 主内容 -->
+      <div class="hero-content">
+        <div class="hero-logo-ring">
+          <img src="/favicon.png" alt="XAUAT ACM" class="hero-logo-img" />
+        </div>
+        <h1 class="hero-title">XAUAT ACM</h1>
+        <p class="hero-subtitle">西安建筑科技大学 ACM 协会</p>
+        <div class="hero-typed">
+          <TypedBanner />
+        </div>
+        <p class="hero-desc">算法竞赛 · 编程训练 · 技术交流 · 以赛促学</p>
       </div>
-      <div class="hero-scroll-arrow">▾</div>
+      <!-- 底部建筑剪影 SVG -->
+      <svg class="hero-skyline" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <rect x="0" y="60" width="60" height="60" opacity="0.15"/>
+        <rect x="70" y="40" width="50" height="80" opacity="0.2"/>
+        <rect x="130" y="50" width="70" height="70" opacity="0.12"/>
+        <rect x="210" y="30" width="55" height="90" opacity="0.18"/>
+        <rect x="280" y="55" width="80" height="65" opacity="0.14"/>
+        <rect x="370" y="35" width="45" height="85" opacity="0.22"/>
+        <rect x="430" y="65" width="65" height="55" opacity="0.1"/>
+        <rect x="510" y="25" width="60" height="95" opacity="0.2"/>
+        <rect x="580" y="48" width="75" height="72" opacity="0.13"/>
+        <rect x="670" y="38" width="50" height="82" opacity="0.17"/>
+        <rect x="740" y="58" width="70" height="62" opacity="0.11"/>
+        <rect x="820" y="20" width="55" height="100" opacity="0.23"/>
+        <rect x="890" y="45" width="80" height="75" opacity="0.15"/>
+        <rect x="980" y="55" width="60" height="65" opacity="0.12"/>
+        <rect x="1050" y="28" width="65" height="92" opacity="0.19"/>
+        <rect x="1130" y="50" width="75" height="70" opacity="0.14"/>
+        <rect x="1210" y="35" width="55" height="85" opacity="0.16"/>
+        <rect x="1280" y="60" width="70" height="60" opacity="0.1"/>
+        <rect x="1360" y="42" width="80" height="78" opacity="0.13"/>
+        <path d="M0 120 L1440 120 L1440 90 Q1200 30 720 70 Q240 40 0 80 Z" opacity="0.08"/>
+      </svg>
+      <!-- 滚动提示 -->
+      <div class="hero-scroll">
+        <span class="hero-scroll-text">向下探索</span>
+        <span class="hero-scroll-arrow">▾</span>
+      </div>
     </section>
 
     <!-- 主内容区 -->
@@ -277,48 +322,190 @@ const nav = computed(() => theme.value.nav || [])
   font-size: 0.84rem;
 }
 
-/* ===== Hero Banner ===== */
+/* ===== Hero Banner — 校园风全屏 ===== */
 .hero-banner {
-  background: linear-gradient(135deg, #1e3a5f 0%, #49b1f5 50%, #7c3aed 100%);
-  padding: 4rem 1rem 2rem;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    170deg,
+    #0f2b4a 0%,
+    #1a4a6f 15%,
+    #2d6a9f 28%,
+    #5b8cb8 40%,
+    #c4a882 55%,
+    #e8d5b7 68%,
+    #f5e6d3 80%,
+    #faf6f0 100%
+  );
+  overflow: hidden;
   text-align: center;
   color: #fff;
+}
+
+/* 浮动光斑 */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  animation: orb-float 12s ease-in-out infinite;
+}
+.orb-1 {
+  width: 300px; height: 300px;
+  background: rgba(255, 200, 120, 0.25);
+  right: -60px; top: 10%;
+  animation-delay: 0s;
+}
+.orb-2 {
+  width: 250px; height: 250px;
+  background: rgba(180, 220, 255, 0.2);
+  left: -40px; bottom: 25%;
+  animation-delay: -4s;
+}
+.orb-3 {
+  width: 200px; height: 200px;
+  background: rgba(255, 255, 200, 0.18);
+  left: 40%; top: 60%;
+  animation-delay: -8s;
+}
+
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(30px, -20px) scale(1.1); }
+  50%  { transform: translate(-15px, 25px) scale(0.9); }
+  75%  { transform: translate(-25px, -15px) scale(1.05); }
+}
+
+/* 网格纹理 */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 70%);
+}
+
+/* 主内容 */
+.hero-content {
   position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2rem 1rem;
 }
 
-.hero-banner-content {
-  max-width: 600px;
-  margin: 0 auto;
+/* Logo 光环 */
+.hero-logo-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 40px rgba(255,255,255,0.2), inset 0 0 20px rgba(255,255,255,0.1);
+  animation: logo-glow 3s ease-in-out infinite;
 }
 
-.hero-banner-title {
-  font-size: 2.8rem;
-  font-weight: 800;
+@keyframes logo-glow {
+  0%, 100% { box-shadow: 0 0 40px rgba(255,255,255,0.2), inset 0 0 20px rgba(255,255,255,0.1); }
+  50% { box-shadow: 0 0 60px rgba(255,255,255,0.35), inset 0 0 30px rgba(255,255,255,0.2); }
+}
+
+.hero-logo-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+.hero-typed {
+  margin-top: 0.5rem;
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  min-height: 2rem;
+}
+
+.hero-desc {
+  margin-top: 0.25rem;
+  font-size: clamp(0.78rem, 1.5vw, 0.95rem);
+  color: rgba(255,255,255,0.6);
   letter-spacing: 2px;
-  margin-bottom: 0.5rem;
 }
 
-.hero-banner-sub {
-  font-size: 1.15rem;
-  opacity: 0.9;
-  margin-bottom: 0.5rem;
+/* 建筑剪影 */
+.hero-skyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-skyline rect,
+.hero-skyline path {
+  fill: #fff;
 }
 
-.hero-banner-desc {
-  font-size: 0.9rem;
-  opacity: 0.7;
+/* 滚动提示 */
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-scroll-text {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 2px;
 }
 
 .hero-scroll-arrow {
-  margin-top: 1.5rem;
-  font-size: 1.5rem;
-  opacity: 0.6;
-  animation: bounce-down 2s infinite;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.7);
+  animation: bounce-down 2s ease-in-out infinite;
 }
 
 @keyframes bounce-down {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(10px); opacity: 1; }
 }
 
 /* ===== 主内容区 ===== */
@@ -411,8 +598,14 @@ const nav = computed(() => theme.value.nav || [])
   .nav-links { gap: 0; }
   .nav-links .nav-item { padding: 0.3rem 0.5rem; font-size: 0.78rem; }
   .nav-logo-text { display: none; }
-  .hero-banner { padding: 3rem 1rem 1.5rem; }
-  .hero-banner-title { font-size: 2rem; }
+  .hero-banner { min-height: 100svh; }
+  .hero-title { font-size: 2.2rem; letter-spacing: 3px; }
+  .hero-subtitle { font-size: 0.9rem; }
+  .hero-desc { font-size: 0.75rem; letter-spacing: 1px; }
+  .hero-logo-ring { width: 70px; height: 70px; }
+  .hero-logo-img { width: 46px; height: 46px; }
+  .hero-skyline { display: none; }
+  .hero-grid { background-size: 40px 40px; }
   .main-body { padding: 1rem; }
   .content-card { padding: 1rem 1.25rem; }
   .geo-decor { display: none; }

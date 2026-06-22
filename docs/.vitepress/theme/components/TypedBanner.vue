@@ -43,8 +43,8 @@ onUnmounted(() => {
 <style scoped>
 .typed-banner {
   display: inline-block;
-  font-size: 1.25rem;
-  color: var(--vp-c-brand);
+  font-size: inherit;
+  color: inherit;
   min-height: 2rem;
 }
 </style>
