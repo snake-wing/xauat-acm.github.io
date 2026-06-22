@@ -9,8 +9,8 @@ export default defineConfig({
 
   cleanUrls: true,
 
-  // 默认白色主题
-  appearance: { initialValue: 'light' },
+  // 固定浅色主题，不显示切换按钮
+  appearance: false,
 
   head: [
     ['link', { rel: 'icon', href: '/xauat-acm.github.io/favicon.png' }],
@@ -50,13 +50,13 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/XAUAT-ACM' },
+      { icon: 'github', link: 'https://github.com/snake-wing/xauat-acm.github.io' },
       {
         icon: {
-          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path fill="currentColor" d="M8 12l3 3 5-5"/></svg>',
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11.5" fill="#9ca3af"/><g transform="translate(2.4,2.5) scale(0.8)"><path fill="#fff" d="M21.395 15.035a40 40 0 0 0-.803-2.264l-1.079-2.695c.001-.032.014-.562.014-.836C19.526 4.632 17.351 0 12 0S4.474 4.632 4.474 9.241c0 .274.013.804.014.836l-1.08 2.695a39 39 0 0 0-.802 2.264c-1.021 3.283-.69 4.643-.438 4.673.54.065 2.103-2.472 2.103-2.472 0 1.469.756 3.387 2.394 4.771-.612.188-1.363.479-1.845.835-.434.32-.379.646-.301.778.343.578 5.883.369 7.482.189 1.6.18 7.14.389 7.483-.189.078-.132.132-.458-.301-.778-.483-.356-1.233-.646-1.846-.836 1.637-1.384 2.393-3.302 2.393-4.771 0 0 1.563 2.537 2.103 2.472.251-.03.581-1.39-.438-4.673"/></g></svg>',
         },
-        link: '#',  /* TODO: 替换为实际 QQ 群链接 */
-        ariaLabel: 'QQ 群（待创建）',
+        link: 'https://qm.qq.com/q/xiUbXv19HE',
+        ariaLabel: 'QQ 群',
       },
       {
         icon: {
@@ -75,7 +75,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/XAUAT-ACM/xauat-acm.github.io/edit/main/docs/:path',
+      pattern: 'https://github.com/snake-wing/xauat-acm.github.io/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页',
     },
 
