@@ -15,9 +15,16 @@ const awards = {
     title: 'ICPC 国际大学生程序设计竞赛',
     icon: '🌍',
     levels: [
-      { label: '🥇 金奖', color: 'gold', items: [] },
-      { label: '🥈 银奖', color: 'silver', items: [] },
-      { label: '🥉 铜奖', color: 'bronze', items: [] },
+      { label: '🥇 金奖', color: 'gold', items: [
+          { year: '2025', competition: 'ICPC 亚洲区域赛（南京站）', team: 'XAUAT-1', members: '张三, 李四, 王五' },
+        ] },
+      { label: '🥈 银奖', color: 'silver', items: [
+          { year: '2025', competition: 'ICPC 亚洲区域赛（西安站）', team: 'XAUAT-2', members: '赵六, 孙七, 周八' },
+          { year: '2024', competition: 'ICPC 亚洲区域赛（济南站）', team: 'XAUAT-3', members: '吴九, 郑十, 陈十一' },
+        ] },
+      { label: '🥉 铜奖', color: 'bronze', items: [
+          { year: '2024', competition: 'ICPC 邀请赛（武汉站）', members: '钱十二' },
+        ] },
     ],
   },
   CCPC: {
@@ -25,19 +32,31 @@ const awards = {
     icon: '🇨🇳',
     levels: [
       { label: '🥇 金奖', color: 'gold', items: [] },
-      { label: '🥈 银奖', color: 'silver', items: [] },
-      { label: '🥉 铜奖', color: 'bronze', items: [] },
+      { label: '🥈 银奖', color: 'silver', items: [
+          { year: '2025', competition: 'CCPC 西安站', team: 'XAUAT-1', members: '张三, 李四, 王五' },
+        ] },
+      { label: '🥉 铜奖', color: 'bronze', items: [
+          { year: '2025', competition: 'CCPC 秦皇岛站', team: 'XAUAT-2', members: '赵六, 孙七, 周八' },
+          { year: '2024', competition: 'CCPC 哈尔滨站', team: 'XAUAT-3', members: '吴九, 郑十' },
+        ] },
     ],
   },
   蓝桥杯: {
     title: '蓝桥杯全国软件和信息技术专业人才大赛',
     icon: '🏔️',
     levels: [
-      { label: '🥇 国一', color: 'gold', items: [] },
+      { label: '🥇 国一', color: 'gold', items: [
+          { year: '2025', competition: '蓝桥杯 C/C++ 程序设计大学 A 组', members: '张三' },
+        ] },
       { label: '🥈 国二', color: 'silver', items: [] },
       { label: '🥉 国三', color: 'bronze', items: [] },
-      { label: '省一', color: 'iron', items: [] },
-      { label: '省二', color: 'iron', items: [] },
+      { label: '省一', color: 'iron', items: [
+          { year: '2025', competition: '蓝桥杯 Java 程序设计大学 A 组', members: '李四' },
+          { year: '2024', competition: '蓝桥杯 C/C++ 程序设计大学 A 组', members: '孙七' },
+        ] },
+      { label: '省二', color: 'iron', items: [
+          { year: '2025', competition: '蓝桥杯 Python 程序设计大学 A 组', members: '王五' },
+        ] },
       { label: '省三', color: 'iron', items: [] },
     ],
   },
@@ -50,8 +69,12 @@ const awards = {
         levels: [
           { label: '🥇 国一', color: 'gold', items: [] },
           { label: '🥈 国二', color: 'silver', items: [] },
-          { label: '🥉 国三', color: 'bronze', items: [] },
-          { label: '省一', color: 'iron', items: [] },
+          { label: '🥉 国三', color: 'bronze', items: [
+              { year: '2025', competition: '天梯赛全国总决赛', members: '张三, 李四, 王五, 赵六, 孙七, 周八, 吴九, 郑十, 陈十一, 钱十二' },
+            ] },
+          { label: '省一', color: 'iron', items: [
+              { year: '2024', competition: '天梯赛陕西省赛', members: '张三, 李四, 王五, 赵六, 孙七, 周八, 吴九, 郑十, 陈十一, 钱十二' },
+            ] },
           { label: '省二', color: 'iron', items: [] },
           { label: '省三', color: 'iron', items: [] },
         ],
@@ -60,7 +83,9 @@ const awards = {
         title: '个人奖项',
         levels: [
           { label: '🥇 国一', color: 'gold', items: [] },
-          { label: '🥈 国二', color: 'silver', items: [] },
+          { label: '🥈 国二', color: 'silver', items: [
+              { year: '2025', competition: '天梯赛个人排名', members: '张三' },
+            ] },
           { label: '🥉 国三', color: 'bronze', items: [] },
         ],
       },
@@ -70,6 +95,23 @@ const awards = {
 
 function levelClass(color) {
   return { gold: 'lv-gold', silver: 'lv-silver', bronze: 'lv-bronze', iron: 'lv-iron' }[color] || ''
+}
+
+const achievedSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 11l3.5 3.5L16 6" stroke="#49b1f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+const unachievedSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5l-10 10" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/></svg>'
+
+function flatItems(data) {
+  if (!data) return []
+  if (data.subsections) {
+    return data.subsections.flatMap(sub =>
+      sub.levels.flatMap(level =>
+        level.items.map(item => ({ ...item, award: level.label, color: level.color }))
+      )
+    )
+  }
+  return data.levels.flatMap(level =>
+    level.items.map(item => ({ ...item, award: level.label, color: level.color }))
+  )
 }
 
 function totalCount(data) {
@@ -93,7 +135,6 @@ function totalCount(data) {
     @click="activeTab = tab"
   >
     {{ tab }}
-    <span class="award-tab-count" v-if="totalCount(awards[tab]) > 0">{{ totalCount(awards[tab]) }}</span>
   </button>
 </div>
 
@@ -106,18 +147,27 @@ function totalCount(data) {
     <div class="award-level-col" v-for="level in awards.ICPC.levels" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
         {{ level.label }}
-        <span class="award-level-count">{{ level.items.length }}</span>
+        <span class="award-check-icon" v-html="level.items.length ? achievedSvg : unachievedSvg"></span>
       </div>
       <div class="award-level-items">
-        <div class="award-row" v-for="(item, idx) in level.items" :key="idx">
-          <span class="award-row-year">{{ item.year }}</span>
-          <span class="award-row-comp">{{ item.competition }}</span>
-          <span class="award-row-team" v-if="item.team">{{ item.team }}</span>
-          <span class="award-row-members">{{ item.members }}</span>
-        </div>
-        <div class="award-row-empty" v-if="level.items.length === 0">暂无</div>
+        <div class="award-count-num">{{ level.items.length || 0 }}</div>
       </div>
     </div>
+  </div>
+
+  <div v-show="flatItems(awards.ICPC).length" class="award-table-section">
+    <table class="award-table">
+        <colgroup><col class="at-year"><col class="at-comp"><col class="at-members"><col class="at-award"></colgroup>
+        <thead><tr><th class="at-year">年份</th><th class="at-comp">比赛名称</th><th class="at-members">队员</th><th class="at-award">奖项</th></tr></thead>
+        <tbody>
+          <tr v-for="(item, idx) in flatItems(awards.ICPC)" :key="idx">
+            <td class="at-year">{{ item.year }}</td>
+            <td class="at-comp">{{ item.competition }}</td>
+            <td class="at-members">{{ item.members }}</td>
+            <td class="at-award"><span class="award-tag" :class="levelClass(item.color)">{{ item.award }}</span></td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
 
@@ -130,18 +180,27 @@ function totalCount(data) {
     <div class="award-level-col" v-for="level in awards.CCPC.levels" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
         {{ level.label }}
-        <span class="award-level-count">{{ level.items.length }}</span>
+        <span class="award-check-icon" v-html="level.items.length ? achievedSvg : unachievedSvg"></span>
       </div>
       <div class="award-level-items">
-        <div class="award-row" v-for="(item, idx) in level.items" :key="idx">
-          <span class="award-row-year">{{ item.year }}</span>
-          <span class="award-row-comp">{{ item.competition }}</span>
-          <span class="award-row-team" v-if="item.team">{{ item.team }}</span>
-          <span class="award-row-members">{{ item.members }}</span>
-        </div>
-        <div class="award-row-empty" v-if="level.items.length === 0">暂无</div>
+        <div class="award-count-num">{{ level.items.length || 0 }}</div>
       </div>
     </div>
+  </div>
+
+  <div v-show="flatItems(awards.CCPC).length" class="award-table-section">
+    <table class="award-table">
+        <colgroup><col class="at-year"><col class="at-comp"><col class="at-members"><col class="at-award"></colgroup>
+        <thead><tr><th class="at-year">年份</th><th class="at-comp">比赛名称</th><th class="at-members">队员</th><th class="at-award">奖项</th></tr></thead>
+        <tbody>
+          <tr v-for="(item, idx) in flatItems(awards.CCPC)" :key="idx">
+            <td class="at-year">{{ item.year }}</td>
+            <td class="at-comp">{{ item.competition }}</td>
+            <td class="at-members">{{ item.members }}</td>
+            <td class="at-award"><span class="award-tag" :class="levelClass(item.color)">{{ item.award }}</span></td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
 
@@ -154,18 +213,27 @@ function totalCount(data) {
     <div class="award-level-col" v-for="level in awards['蓝桥杯'].levels" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
         {{ level.label }}
-        <span class="award-level-count">{{ level.items.length }}</span>
+        <span class="award-check-icon" v-html="level.items.length ? achievedSvg : unachievedSvg"></span>
       </div>
       <div class="award-level-items">
-        <div class="award-row" v-for="(item, idx) in level.items" :key="idx">
-          <span class="award-row-year">{{ item.year }}</span>
-          <span class="award-row-comp">{{ item.competition }}</span>
-          <span class="award-row-team" v-if="item.team">{{ item.team }}</span>
-          <span class="award-row-members">{{ item.members }}</span>
-        </div>
-        <div class="award-row-empty" v-if="level.items.length === 0">暂无</div>
+        <div class="award-count-num">{{ level.items.length || 0 }}</div>
       </div>
     </div>
+  </div>
+
+  <div v-show="flatItems(awards['蓝桥杯']).length" class="award-table-section">
+    <table class="award-table">
+        <colgroup><col class="at-year"><col class="at-comp"><col class="at-members"><col class="at-award"></colgroup>
+        <thead><tr><th class="at-year">年份</th><th class="at-comp">比赛名称</th><th class="at-members">队员</th><th class="at-award">奖项</th></tr></thead>
+        <tbody>
+          <tr v-for="(item, idx) in flatItems(awards['蓝桥杯'])" :key="idx">
+            <td class="at-year">{{ item.year }}</td>
+            <td class="at-comp">{{ item.competition }}</td>
+            <td class="at-members">{{ item.members }}</td>
+            <td class="at-award"><span class="award-tag" :class="levelClass(item.color)">{{ item.award }}</span></td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
 
@@ -180,19 +248,28 @@ function totalCount(data) {
       <div class="award-level-col" v-for="level in sub.levels" :key="level.label">
         <div class="award-level-head" :class="levelClass(level.color)">
           {{ level.label }}
-          <span class="award-level-count">{{ level.items.length }}</span>
+          <span class="award-check-icon" v-html="level.items.length ? achievedSvg : unachievedSvg"></span>
         </div>
         <div class="award-level-items">
-          <div class="award-row" v-for="(item, idx) in level.items" :key="idx">
-            <span class="award-row-year">{{ item.year }}</span>
-            <span class="award-row-comp">{{ item.competition }}</span>
-            <span class="award-row-team" v-if="item.team">{{ item.team }}</span>
-            <span class="award-row-members">{{ item.members }}</span>
-          </div>
-          <div class="award-row-empty" v-if="level.items.length === 0">暂无</div>
+          <div class="award-count-num">{{ level.items.length || 0 }}</div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div v-show="flatItems(awards['天梯赛']).length" class="award-table-section">
+    <table class="award-table">
+        <colgroup><col class="at-year"><col class="at-comp"><col class="at-members"><col class="at-award"></colgroup>
+        <thead><tr><th class="at-year">年份</th><th class="at-comp">比赛名称</th><th class="at-members">队员</th><th class="at-award">奖项</th></tr></thead>
+        <tbody>
+          <tr v-for="(item, idx) in flatItems(awards['天梯赛'])" :key="idx">
+            <td class="at-year">{{ item.year }}</td>
+            <td class="at-comp">{{ item.competition }}</td>
+            <td class="at-members">{{ item.members }}</td>
+            <td class="at-award"><span class="award-tag" :class="levelClass(item.color)">{{ item.award }}</span></td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
 
