@@ -671,64 +671,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* ===== 友链页 ===== */
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.2rem;
-  margin-top: 1rem;
-}
-.link-card {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  padding: 1.2rem 1.4rem;
-  background: #fafbfc;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.3s;
-  box-shadow: var(--vp-card-shadow);
-}
-.link-card:hover {
-  border-color: var(--vp-c-brand);
-  transform: translateY(-5px);
-  box-shadow: var(--vp-card-hover-shadow);
-  background: #fff;
-}
-.link-card-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
-  background: rgba(73,177,245,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-.link-card-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s;
-}
-.link-card:hover .link-card-avatar img {
-  transform: rotate(360deg);
-}
-.link-card-info { min-width: 0; }
-.link-card-name {
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  font-size: 1rem;
-  margin-bottom: 0.2rem;
-}
-.link-card-desc {
-  color: #999;
-  font-size: 0.8rem;
-  line-height: 1.5;
-}
 
 /* ===== 404 ===== */
 .not-found {
@@ -1043,12 +985,6 @@ html.dark .contact-link:hover {
   background: rgba(96,165,250,0.15);
   color: #60a5fa;
 }
-html.dark .link-card {
-  background: #1a1a30;
-  border-color: #252540;
-}
-html.dark .link-card:hover { background: #16162a; }
-html.dark .link-card-name { color: #eee; }
 html.dark .faq-item { border-color: #252540; }
 html.dark .faq-question {
   background: #1a1a30;
@@ -1100,7 +1036,6 @@ html.dark .gallery-item { border-color: #252540; background: #1a1a30; }
   .team-table-head .col-grad, .team-table-row .col-grad,
   .team-table-head .col-contact, .team-table-row .col-contact { display: none; }
 
-  .links-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
   .back-to-top { right: 1rem; bottom: 1.5rem; width: 44px; height: 44px; }
   .not-found-code { font-size: 5rem; }
