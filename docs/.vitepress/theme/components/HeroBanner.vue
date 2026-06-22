@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const route = useRoute()
-const isHome = computed(() => route.path === '/' || route.path === '/index.html')
+const { page } = useData()
+// page.relativePath 在 SSR 时更可靠
+const isHome = computed(() => {
+  const rp = page.value?.relativePath || ''
+  return rp === 'index.md' || rp === ''
+})
 
 // Typed.js 打字机效果
 const typedEl = ref<HTMLElement | null>(null)
