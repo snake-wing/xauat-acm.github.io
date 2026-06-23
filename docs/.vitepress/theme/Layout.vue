@@ -99,9 +99,9 @@ const nav = computed(() => theme.value.nav || [])
 /* ===== 根容器 ===== */
 .site-root {
   min-height: 100vh;
-  background: #f8f7f4;
+  background: #f6f8fa;
   font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-  color: #3d3a37;
+  color: #4c4948;
   position: relative;
   overflow-x: hidden;
 }
@@ -128,17 +128,6 @@ const nav = computed(() => theme.value.nav || [])
   border-radius: 50%;
 }
 
-.geo-circle::after {
-  content: '';
-  position: absolute;
-  left: 25px;
-  top: 15px;
-  width: 140px;
-  height: 140px;
-  border: 1.5px solid rgba(255, 107, 53, 0.06);
-  border-radius: 50%;
-}
-
 .geo-triangle {
   position: absolute;
   left: 20px;
@@ -150,25 +139,13 @@ const nav = computed(() => theme.value.nav || [])
   border-bottom: 100px solid rgba(73, 177, 245, 0.04);
 }
 
-.geo-triangle::after {
-  content: '';
-  position: absolute;
-  left: -45px;
-  top: 55px;
-  width: 0;
-  height: 0;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 65px solid rgba(255, 107, 53, 0.035);
-}
-
 .geo-dot-grid {
   position: absolute;
   left: 40px;
   top: 45%;
   width: 80px;
   height: 80px;
-  background-image: radial-gradient(circle, rgba(73, 177, 245, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(73, 177, 245, 0.12) 1px, transparent 1px);
   background-size: 12px 12px;
 }
 
@@ -177,9 +154,9 @@ const nav = computed(() => theme.value.nav || [])
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #fefdfb;
-  border-bottom: 1px solid #e8e4dc;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  background: #fff;
+  border-bottom: 1px solid #e8e8ed;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 
 .top-nav-inner {
@@ -197,13 +174,13 @@ const nav = computed(() => theme.value.nav || [])
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
-  color: #3d3a37;
+  color: #333;
   font-weight: 700;
   font-size: 1.1rem;
 }
 
 .nav-logo-icon {
-  background: var(--acm-orange, #ff6b35);
+  background: #49b1f5;
   color: #fff;
   padding: 0.2rem 0.45rem;
   border-radius: 6px;
@@ -222,7 +199,7 @@ const nav = computed(() => theme.value.nav || [])
   padding: 0.4rem 0.9rem;
   border-radius: 6px;
   text-decoration: none;
-  color: #5d5a55;
+  color: #555;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.15s;
@@ -231,8 +208,8 @@ const nav = computed(() => theme.value.nav || [])
 
 .nav-item:hover,
 .nav-item.active {
-  color: var(--acm-orange, #ff6b35);
-  background: rgba(255, 107, 53, 0.06);
+  color: #49b1f5;
+  background: rgba(73, 177, 245, 0.06);
 }
 
 .nav-icon-btn {
@@ -260,10 +237,10 @@ const nav = computed(() => theme.value.nav || [])
   top: 100%;
   left: 0;
   min-width: 180px;
-  background: #fefdfb;
-  border: 1px solid #e8e4dc;
+  background: #fff;
+  border: 1px solid #e8e8ed;
   border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   padding: 0.5rem 0;
   z-index: 200;
 }
@@ -276,14 +253,14 @@ const nav = computed(() => theme.value.nav || [])
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #5d5a55;
+  color: #555;
   font-size: 0.88rem;
   transition: all 0.15s;
 }
 
 .nav-dropdown-item:hover {
-  background: rgba(255, 107, 53, 0.06);
-  color: var(--acm-orange, #ff6b35);
+  background: rgba(73, 177, 245, 0.06);
+  color: #49b1f5;
 }
 
 .nav-dropdown-group-label {
@@ -302,7 +279,7 @@ const nav = computed(() => theme.value.nav || [])
 
 /* ===== Hero Banner ===== */
 .hero-banner {
-  background: linear-gradient(160deg, #1a1a2e 0%, #2d2535 35%, #3d2a2a 60%, #e55a2b 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d2535 40%, #49b1f5 100%);
   padding: 4rem 1rem 2rem;
   text-align: center;
   color: #fff;
@@ -365,11 +342,11 @@ const nav = computed(() => theme.value.nav || [])
 
 /* ===== 内容卡片 ===== */
 .content-card {
-  background: #fefdfb;
+  background: #fff;
   border-radius: 12px;
   padding: 1.5rem 2rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-  border: 1px solid #e8e4dc;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  border: 1px solid #eee;
 }
 
 /* ===== 页脚卡片 ===== */
@@ -380,7 +357,7 @@ const nav = computed(() => theme.value.nav || [])
   flex-wrap: wrap;
   gap: 1rem;
   font-size: 0.82rem;
-  color: #8a8780;
+  color: #999;
   padding: 1rem 2rem;
 }
 
@@ -388,37 +365,36 @@ const nav = computed(() => theme.value.nav || [])
   width: 100%;
   text-align: center;
   font-size: 0.78rem;
-  color: #9a9690;
 }
 
 /* ===== 暗色模式 ===== */
 .site-root.dark {
-  background: #0f0f1a;
+  background: #1a1a2e;
   color: #ccc;
 }
 
 .dark .top-nav {
-  background: #16162a;
-  border-color: #252540;
+  background: #1e1e36;
+  border-color: #2a2a45;
 }
 
 .dark .nav-logo { color: #eee; }
 .dark .nav-item { color: #aaa; }
 .dark .nav-item:hover,
-.dark .nav-item.active { color: #ff9a60; background: rgba(255, 140, 80, 0.08); }
+.dark .nav-item.active { color: #6ec1f7; background: rgba(96, 165, 250,0.1); }
 
 .dark .nav-dropdown-menu {
-  background: #1a1a30;
-  border-color: #252540;
+  background: #1e1e36;
+  border-color: #2a2a45;
 }
 
 .dark .nav-dropdown-item { color: #aaa; }
-.dark .nav-dropdown-item:hover { background: rgba(255, 140, 80, 0.08); color: #ff9a60; }
+.dark .nav-dropdown-item:hover { background: rgba(96, 165, 250,0.1); color: #6ec1f7; }
 .dark .nav-dropdown-group-label { color: #666; }
 
 .dark .content-card {
-  background: #16162a;
-  border-color: #252540;
+  background: #1e1e36;
+  border-color: #2a2a45;
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
