@@ -1,9 +1,13 @@
 ﻿<script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { withBase } from 'vitepress'
 import { usePosts } from '../composables/usePosts'
 
 const posts = usePosts()
+
+// 移动端侧边栏显示/隐藏
+const showMobile = ref(false)
+function toggleMobile() { showMobile.value = !showMobile.value }
 
 const postCount = computed(() => posts.value.length)
 
@@ -31,7 +35,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
 </script>
 
 <template>
-  <aside class="rs-root">
+  <aside class="rs-root" :class="{ 'show-mobile': showMobile }">
     <!-- 1. 站点信息模块 -->
     <div class="rs-card">
       <div class="rs-avatar"><img src="/favicon.png" alt="ACM" /></div>
@@ -116,6 +120,16 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
       </div>
     </div>
   </aside>
+
+  <!-- 移动端浮动切换按钮（< 768px 可见） -->
+  <button
+    class="rs-mobile-toggle"
+    :class="{ active: showMobile }"
+    @click="toggleMobile"
+    aria-label="切换侧边栏"
+  >
+    <span class="rs-toggle-icon">{{ showMobile ? '✕' : '📋' }}</span>
+  </button>
 </template>
 
 <style scoped>
@@ -127,20 +141,25 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
 }
 
 .rs-card {
-  background: #fff;
+  background: #fefdfb;
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  border: 1px solid #eee;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  border: 1px solid #e8e4dc;
+  transition: border-color 0.3s;
+}
+
+.rs-card:first-child {
+  border-top: 3px solid var(--acm-orange, #ff6b35);
 }
 
 .rs-card-head {
   font-weight: 700;
   font-size: 0.9rem;
-  color: #333;
+  color: #3d3a37;
   margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #e8e4dc;
 }
 
 /* 站点信息 */
@@ -162,13 +181,13 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   text-align: center;
   font-weight: 700;
   font-size: 1.15rem;
-  color: #333;
+  color: #3d3a37;
 }
 
 .rs-tagline {
   text-align: center;
   font-size: 0.8rem;
-  color: #999;
+  color: #7a7670;
   margin-top: 0.25rem;
 }
 
@@ -183,23 +202,23 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   padding: 0.4rem 0.25rem; border-radius: 8px;
   transition: background 0.15s;
 }
-.rs-stat:hover { background: rgba(73, 177, 245,0.05); }
+.rs-stat:hover { background: rgba(255, 107, 53, 0.05); }
 
 .rs-stat-num {
   display: block;
   font-size: 1.3rem; font-weight: 800;
-  color: #49b1f5;
+  color: var(--acm-orange, #ff6b35);
 }
 
 .rs-stat-lbl {
-  font-size: 0.72rem; color: #999;
+  font-size: 0.72rem; color: #7a7670;
 }
 
 /* 社交链接 */
 .rs-socials {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid #e8e4dc;
   display: flex;
   gap: 0.5rem;
 }
@@ -212,34 +231,33 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   padding: 0.45rem 0.6rem;
   border-radius: 8px;
   text-decoration: none;
-  background: #fff;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f8f7f4;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rs-social-link:hover {
-  background: rgba(73, 177, 245,0.08);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(73, 177, 245,0.15);
+  background: rgba(255, 107, 53, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.12);
 }
 
 .rs-social-link:hover .rs-social-icon {
-  animation: icon-bounce 0.5s ease;
+  animation: icon-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rs-social-icon {
   width: 22px;
   height: 22px;
-  color: #49b1f5;
+  color: var(--acm-orange, #ff6b35);
   transition: transform 0.3s ease;
 }
 
-@keyframes icon-bounce {
+@keyframes icon-pop {
   0%   { transform: scale(1); }
-  30%  { transform: scale(1.3); }
-  50%  { transform: scale(0.9); }
-  70%  { transform: scale(1.15); }
+  40%  { transform: scale(1.2); }
   100% { transform: scale(1); }
 }
+
 
 /* 公告 */
 .rs-announce {
@@ -256,20 +274,20 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
   text-decoration: none; padding: 0.35rem 0.4rem; border-radius: 6px;
   transition: background 0.15s;
 }
-.rs-post-item:hover { background: rgba(73, 177, 245,0.04); }
+.rs-post-item:hover { background: rgba(255, 107, 53, 0.04); }
 
 .rs-post-num {
   width: 20px; text-align: center;
-  font-size: 0.75rem; font-weight: 700; color: #ccc;
+  font-size: 0.75rem; font-weight: 700; color: #b5b0a8;
 }
 
 .rs-post-title {
-  flex: 1; font-size: 0.84rem; color: #444;
+  flex: 1; font-size: 0.84rem; color: #4d4a45;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
 .rs-post-date {
-  font-size: 0.72rem; color: #bbb; white-space: nowrap;
+  font-size: 0.72rem; color: #9a9690; white-space: nowrap;
 }
 
 /* 分类 */
@@ -280,13 +298,13 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
 .rs-cat-item {
   display: flex; justify-content: space-between; align-items: center;
   text-decoration: none; padding: 0.35rem 0.4rem; border-radius: 6px;
-  font-size: 0.84rem; color: #555; transition: background 0.15s;
+  font-size: 0.84rem; color: #5d5a55; transition: background 0.15s;
 }
-.rs-cat-item:hover { background: rgba(73, 177, 245,0.04); }
+.rs-cat-item:hover { background: rgba(255, 107, 53, 0.04); }
 
 .rs-cat-count {
-  font-size: 0.72rem; color: #bbb;
-  background: #f5f6f8; padding: 0.1rem 0.4rem; border-radius: 8px;
+  font-size: 0.72rem; color: #9a9690;
+  background: #f2f0ec; padding: 0.1rem 0.4rem; border-radius: 8px;
 }
 
 /* 标签云 */
@@ -306,32 +324,126 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
 
 .rs-empty {
   text-align: center; padding: 0.5rem 0;
-  font-size: 0.82rem; color: #ccc;
+  font-size: 0.82rem; color: #b5b0a8;
 }
 
 /* 暗色模式适配 */
-html.dark .rs-card { background: #1e1e36; border-color: #2a2a45; }
-html.dark .rs-card-head { color: #ccc; border-color: #2a2a45; }
+html.dark .rs-card { background: #16162a; border-color: #252540; }
+html.dark .rs-card:first-child { border-top-color: #ff9a60; }
+html.dark .rs-card-head { color: #ccc; border-color: #252540; }
 html.dark .rs-site-name { color: #eee; }
 html.dark .rs-tagline { color: #888; }
 html.dark .rs-stat-lbl { color: #888; }
 html.dark .rs-post-title { color: #bbb; }
 html.dark .rs-post-date { color: #666; }
 html.dark .rs-cat-item { color: #aaa; }
-html.dark .rs-cat-count { background: #2a2a45; color: #666; }
+html.dark .rs-cat-count { background: #252540; color: #666; }
 html.dark .rs-announce { color: #aaa; }
 html.dark .rs-post-num { color: #555; }
-html.dark .rs-stat:hover { background: rgba(96, 165, 250,0.06); }
-html.dark .rs-cat-item:hover { background: rgba(96, 165, 250,0.06); }
-html.dark .rs-post-item:hover { background: rgba(96, 165, 250,0.06); }
+html.dark .rs-stat:hover { background: rgba(255, 140, 80, 0.06); }
+html.dark .rs-cat-item:hover { background: rgba(255, 140, 80, 0.06); }
+html.dark .rs-post-item:hover { background: rgba(255, 140, 80, 0.06); }
 html.dark .rs-empty { color: #555; }
-html.dark .rs-socials { border-top-color: #2a2a45; }
-html.dark .rs-social-link { background: #1e1e36; }
-html.dark .rs-social-link:hover { background: #252545; }
-html.dark .rs-social-icon { color: #6ec1f7; }
-html.dark .rs-social-text { color: #6ec1f7; }
+html.dark .rs-socials { border-top-color: #252540; }
+html.dark .rs-social-link { background: #16162a; }
+html.dark .rs-social-link:hover { background: rgba(255, 140, 80, 0.08); }
+html.dark .rs-social-icon { color: #ff9a60; }
+html.dark .rs-social-text { color: #ff9a60; }
 
-@media (max-width: 1024px) {
-  .rs-root { display: none; }
+/* ===== 平板端 (768-1024px)：横向滚动 ===== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .rs-root {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+
+  .rs-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+  }
+
+  .rs-card:first-child {
+    border-top: none;
+    border-left: 3px solid var(--acm-orange, #ff6b35);
+  }
+}
+
+/* ===== 手机端 (< 768px)：折叠面板 + 浮动按钮 ===== */
+@media (max-width: 768px) {
+  .rs-root {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 56px;
+    z-index: 500;
+    background: #f8f7f4;
+    overflow-y: auto;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .rs-root.show-mobile {
+    display: flex;
+  }
+
+  .rs-card {
+    max-width: 100%;
+  }
+
+  .rs-mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 1rem;
+    bottom: 5rem;
+    z-index: 501;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--acm-orange, #ff6b35);
+    background: #fefdfb;
+    color: var(--acm-orange, #ff6b35);
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .rs-mobile-toggle:active {
+    transform: scale(0.92);
+  }
+
+  .rs-mobile-toggle.active {
+    background: var(--acm-orange, #ff6b35);
+    color: #fff;
+  }
+
+  /* 暗色 */
+  html.dark .rs-root.show-mobile {
+    background: #0f0f1a;
+  }
+
+  html.dark .rs-mobile-toggle {
+    background: #16162a;
+    border-color: #ff9a60;
+    color: #ff9a60;
+  }
+
+  html.dark .rs-mobile-toggle.active {
+    background: #ff6b35;
+    color: #fff;
+  }
+}
+
+/* 桌面端隐藏按钮 */
+@media (min-width: 769px) {
+  .rs-mobile-toggle { display: none; }
 }
 </style>
