@@ -21,9 +21,9 @@
   --vp-card-shadow: 0 3px 8px 6px rgba(7,17,27,0.06);
   --vp-card-hover-shadow: 0 3px 8px 6px rgba(7,17,27,0.15);
 
-  /* 背景纹理 */
-  --bg-line: rgba(73, 177, 245, 0.045);
-  --bg-line-dark: rgba(110, 193, 247, 0.055);
+  /* 背景纹理 — 工程方格纸 */
+  --bg-grid: rgba(73, 177, 245, 0.08);
+  --bg-grid-dark: rgba(110, 193, 247, 0.10);
 }
 
 /* ===== 需求3：修复根级页面滚动 ===== */
@@ -40,21 +40,21 @@ body {
   font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
-/* ===== 页面背景纹理: 斜纹网格 ===== */
+/* ===== 页面背景: 工程方格纸 ===== */
 .Layout {
   background-color: #f6f8fa !important;
   background-image:
-    repeating-linear-gradient(45deg,  transparent, transparent 3px, var(--bg-line) 3px, var(--bg-line) 4px),
-    repeating-linear-gradient(-45deg, transparent, transparent 3px, var(--bg-line) 3px, var(--bg-line) 4px) !important;
-  background-size: 60px 60px !important;
+    linear-gradient(var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
 }
 
 html.dark .Layout {
   background-color: #0f0f1a !important;
   background-image:
-    repeating-linear-gradient(45deg,  transparent, transparent 3px, var(--bg-line-dark) 3px, var(--bg-line-dark) 4px),
-    repeating-linear-gradient(-45deg, transparent, transparent 3px, var(--bg-line-dark) 3px, var(--bg-line-dark) 4px) !important;
-  background-size: 60px 60px !important;
+    linear-gradient(var(--bg-grid-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-dark) 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
 }
 
 /* ===== 导航栏全宽白色 ===== */
