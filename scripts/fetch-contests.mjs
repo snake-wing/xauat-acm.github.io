@@ -298,31 +298,35 @@ async function fetchNC() {
  * ================================================================ */
 
 const PLATFORM_ICONS = [
-  { name: 'codeforces', url: 'https://codeforces.com/favicon.ico' },
-  { name: 'atcoder',    url: 'https://atcoder.jp/favicon.ico' },
-  { name: 'nowcoder',   url: 'https://ac.nowcoder.com/favicon.ico' },
-  { name: 'luogu',      url: 'https://www.luogu.com.cn/favicon.ico' },
-  { name: 'hdu',        url: 'https://acm.hdu.edu.cn/favicon.ico' },
-  { name: 'acwing',     url: 'https://www.acwing.com/favicon.ico' },
+  { name: 'codeforces', urls: ['https://codeforces.org/apple-touch-icon.png', 'https://codeforces.com/favicon.ico'] },
+  { name: 'atcoder',    urls: ['https://atcoder.jp/apple-touch-icon.png', 'https://atcoder.jp/favicon.ico'] },
+  { name: 'nowcoder',   urls: ['https://ac.nowcoder.com/apple-touch-icon.png', 'https://ac.nowcoder.com/favicon.ico'] },
+  { name: 'luogu',      urls: ['https://www.luogu.com.cn/apple-touch-icon.png', 'https://www.luogu.com.cn/favicon.ico'] },
+  { name: 'hdu',        urls: ['https://acm.hdu.edu.cn/favicon.ico'] },
+  { name: 'acwing',     urls: ['https://www.acwing.com/apple-touch-icon.png', 'https://www.acwing.com/favicon.ico'] },
 ]
 
 async function downloadFavicons() {
-  console.log('[Icons] Downloading favicons...')
+  console.log('[Icons] Downloading logos...')
   mkdirSync('docs/public/icons', { recursive: true })
 
-  for (const { name, url } of PLATFORM_ICONS) {
-    try {
-      const controller = new AbortController()
-      const timeout = setTimeout(() => controller.abort(), 15000)
-      const res = await fetch(url, { signal: controller.signal })
-      clearTimeout(timeout)
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      const buf = Buffer.from(await res.arrayBuffer())
-      writeFileSync(`docs/public/icons/${name}.ico`, buf)
-      console.log(`[Icons] ${name} ✅ ${buf.length} bytes`)
-    } catch (err) {
-      console.log(`[Icons] ${name} ⚠️ ${err.message} (will use fallback)`)
+  for (const { name, urls } of PLATFORM_ICONS) {
+    let ok = false
+    for (const url of urls) {
+      try {
+        const ctrl = new AbortController()
+        const t = setTimeout(() => ctrl.abort(), 15000)
+        const res = await fetch(url, { signal: ctrl.signal })
+        clearTimeout(t)
+        if (!res.ok) continue
+        const buf = Buffer.from(await res.arrayBuffer())
+        writeFileSync(`docs/public/icons/${name}.png`, buf)
+        console.log(`[Icons] ${name} ✅ ${buf.length} bytes`)
+        ok = true
+        break
+      } catch { /* try next URL */ }
     }
+    if (!ok) console.log(`[Icons] ${name} ⚠️ all URLs failed`)
   }
 }
 

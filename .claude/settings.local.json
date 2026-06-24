@@ -49,7 +49,8 @@
       "PowerShell($repos = @\\('Azure99/AlgContestInfo', 'Azure99/alg-contest-info', 'Azure99/alg_contest_info', 'Azure99/contest-info', 'Azure99/AlgContest'\\); foreach \\($r in $repos\\) { $url = \"https://github.com/$r.git\"; Write-Output \"Trying $url ...\"; git clone --depth 1 $url \"D:\\\\xauat_acm\\\\_ref\" 2>&1; if \\($LASTEXITCODE -eq 0\\) { Write-Output \"SUCCESS: $r\"; break } })",
       "PowerShell(node scripts/fetch-contests.mjs 2>&1)",
       "PowerShell(curl.exe -s -H \"x-lentille-request: content-only\" -H \"Accept: application/json\" -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" -H \"Referer: https://www.luogu.com.cn/\" \"https://www.luogu.com.cn/contest/list?page=1\" 2>&1)",
-      "PowerShell(Test-Path *)"
+      "PowerShell(Test-Path *)",
+      "PowerShell(Get-ChildItem docs/public/icons/ | ForEach-Object { Write-Output \"$\\($_.Name\\): $\\($_.Length\\) bytes\" })"
     ]
   },
   "skillOverrides": {

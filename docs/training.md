@@ -22,7 +22,7 @@ import { withBase } from 'vitepress'
 
 <a class="platform-card" href="https://codeforces.com" target="_blank" rel="noopener" style="--pc: #1f8acb">
   <div class="pc-icon">
-    <img :src="withBase('/icons/codeforces.ico')" alt="Codeforces" class="pc-logo"
+    <img :src="withBase('/icons/codeforces.png')" alt="Codeforces" class="pc-logo"
          @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='block'">
     <svg class="pc-logo-fb" style="display:none" viewBox="0 0 48 48" fill="none">
       <circle cx="24" cy="24" r="22" fill="#1f8acb" opacity=".12"/>
@@ -40,7 +40,7 @@ import { withBase } from 'vitepress'
 
 <a class="platform-card" href="https://atcoder.jp" target="_blank" rel="noopener" style="--pc: #1a1a1a">
   <div class="pc-icon">
-    <img :src="withBase('/icons/atcoder.ico')" alt="AtCoder" class="pc-logo"
+    <img :src="withBase('/icons/atcoder.png')" alt="AtCoder" class="pc-logo"
          @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='block'">
     <svg class="pc-logo-fb" style="display:none" viewBox="0 0 48 48" fill="none">
       <circle cx="24" cy="24" r="22" fill="#1a1a1a" opacity=".08"/>
@@ -57,7 +57,7 @@ import { withBase } from 'vitepress'
 
 <a class="platform-card" href="https://ac.nowcoder.com" target="_blank" rel="noopener" style="--pc: #5cb85c">
   <div class="pc-icon">
-    <img :src="withBase('/icons/nowcoder.ico')" alt="牛客" class="pc-logo"
+    <img :src="withBase('/icons/nowcoder.png')" alt="牛客" class="pc-logo"
          @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='block'">
     <svg class="pc-logo-fb" style="display:none" viewBox="0 0 48 48" fill="none">
       <circle cx="24" cy="24" r="22" fill="#5cb85c" opacity=".12"/>
@@ -74,7 +74,7 @@ import { withBase } from 'vitepress'
 
 <a class="platform-card" href="https://www.luogu.com.cn" target="_blank" rel="noopener" style="--pc: #e67e22">
   <div class="pc-icon">
-    <img :src="withBase('/icons/luogu.ico')" alt="洛谷" class="pc-logo"
+    <img :src="withBase('/icons/luogu.png')" alt="洛谷" class="pc-logo"
          @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='block'">
     <svg class="pc-logo-fb" style="display:none" viewBox="0 0 48 48" fill="none">
       <circle cx="24" cy="24" r="22" fill="#e67e22" opacity=".12"/>
@@ -91,7 +91,7 @@ import { withBase } from 'vitepress'
 
 <a class="platform-card" href="https://acm.hdu.edu.cn" target="_blank" rel="noopener" style="--pc: #1a6fb5">
   <div class="pc-icon">
-    <img :src="withBase('/icons/hdu.ico')" alt="HDU OJ" class="pc-logo"
+    <img :src="withBase('/icons/hdu.png')" alt="HDU OJ" class="pc-logo"
          @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='block'">
     <svg class="pc-logo-fb" style="display:none" viewBox="0 0 48 48" fill="none">
       <circle cx="24" cy="24" r="22" fill="#1a6fb5" opacity=".12"/>
@@ -110,7 +110,7 @@ import { withBase } from 'vitepress'
 
 <a class="platform-card" href="https://www.acwing.com" target="_blank" rel="noopener" style="--pc: #2ecc71">
   <div class="pc-icon">
-    <img :src="withBase('/icons/acwing.ico')" alt="AcWing" class="pc-logo"
+    <img :src="withBase('/icons/acwing.png')" alt="AcWing" class="pc-logo"
          @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='block'">
     <svg class="pc-logo-fb" style="display:none" viewBox="0 0 48 48" fill="none">
       <circle cx="24" cy="24" r="22" fill="#2ecc71" opacity=".12"/>

@@ -1,10 +1,8 @@
 {
-  "updatedAt": 1782315117797,
-  "updatedAtISO": "2026-06-24T15:31:57.797Z",
-  "total": 17,
-  "failedPlatforms": [
-    "Codeforces"
-  ],
+  "updatedAt": 1782315284582,
+  "updatedAtISO": "2026-06-24T15:34:44.582Z",
+  "total": 22,
+  "failedPlatforms": [],
   "contests": [
     {
       "id": "at-awc0099",
@@ -43,6 +41,30 @@
       "starColor": "#3b82f6"
     },
     {
+      "id": "cf-2239",
+      "name": "Codeforces Round (Div. 1)",
+      "platform": "Codeforces",
+      "platformColor": "#1f8acb",
+      "startTimeSeconds": 1782570900,
+      "durationSeconds": 9000,
+      "url": "https://codeforces.com/contests/2239",
+      "stars": 6,
+      "starLabel": "Div.1",
+      "starColor": "#ef4444"
+    },
+    {
+      "id": "cf-2240",
+      "name": "Codeforces Round (Div. 2)",
+      "platform": "Codeforces",
+      "platformColor": "#1f8acb",
+      "startTimeSeconds": 1782570900,
+      "durationSeconds": 9000,
+      "url": "https://codeforces.com/contests/2240",
+      "stars": 5,
+      "starLabel": "Div.2",
+      "starColor": "#f59e0b"
+    },
+    {
       "id": "nc-1137073",
       "name": "牛客周赛 Round 150",
       "platform": "NowCoder",
@@ -65,6 +87,30 @@
       "stars": 6,
       "starLabel": "ARC",
       "starColor": "#ef4444"
+    },
+    {
+      "id": "cf-2238",
+      "name": "Codeforces Round (Div. 2)",
+      "platform": "Codeforces",
+      "platformColor": "#1f8acb",
+      "startTimeSeconds": 1782657300,
+      "durationSeconds": 7200,
+      "url": "https://codeforces.com/contests/2238",
+      "stars": 5,
+      "starLabel": "Div.2",
+      "starColor": "#f59e0b"
+    },
+    {
+      "id": "cf-2241",
+      "name": "Codeforces Round (Div. 3)",
+      "platform": "Codeforces",
+      "platformColor": "#1f8acb",
+      "startTimeSeconds": 1782830100,
+      "durationSeconds": 8100,
+      "url": "https://codeforces.com/contests/2241",
+      "stars": 3,
+      "starLabel": "Div.3",
+      "starColor": "#3b82f6"
     },
     {
       "id": "nc-1137264",
@@ -115,6 +161,18 @@
       "starColor": "#3b82f6"
     },
     {
+      "id": "cf-2242",
+      "name": "Educational Codeforces Round 192 (Rated for Div. 2)",
+      "platform": "Codeforces",
+      "platformColor": "#1f8acb",
+      "startTimeSeconds": 1783348500,
+      "durationSeconds": 7200,
+      "url": "https://codeforces.com/contests/2242",
+      "stars": 4,
+      "starLabel": "Edu",
+      "starColor": "#8b5cf6"
+    },
+    {
       "id": "at-awtf2026heuristic",
       "name": "World Tour Finals 2026 Heuristic",
       "platform": "AtCoder",
@@ -122,66 +180,6 @@
       "startTimeSeconds": 1783382400,
       "durationSeconds": 122400,
       "url": "https://atcoder.jp/contests/awtf2026heuristic",
-      "stars": 5,
-      "starLabel": "AHC",
-      "starColor": "#f59e0b"
-    },
-    {
-      "id": "at-awtf2026algo",
-      "name": "World Tour Finals 2026 Algorithm",
-      "platform": "AtCoder",
-      "platformColor": "#1a1a1a",
-      "startTimeSeconds": 1783562400,
-      "durationSeconds": 25200,
-      "url": "https://atcoder.jp/contests/awtf2026algo",
-      "stars": 4,
-      "starLabel": "",
-      "starColor": "#8b5cf6"
-    },
-    {
-      "id": "at-awtf2026algo-open",
-      "name": "World Tour Finals 2026 Algorithm（Open Contest）",
-      "platform": "AtCoder",
-      "platformColor": "#1a1a1a",
-      "startTimeSeconds": 1783562400,
-      "durationSeconds": 25200,
-      "url": "https://atcoder.jp/contests/awtf2026algo-open",
-      "stars": 4,
-      "starLabel": "",
-      "starColor": "#8b5cf6"
-    },
-    {
-      "id": "at-abc466",
-      "name": "AtCoder Beginner Contest 466",
-      "platform": "AtCoder",
-      "platformColor": "#1a1a1a",
-      "startTimeSeconds": 1783771200,
-      "durationSeconds": 6000,
-      "url": "https://atcoder.jp/contests/abc466",
-      "stars": 3,
-      "starLabel": "ABC",
-      "starColor": "#3b82f6"
-    },
-    {
-      "id": "nc-1133876",
-      "name": "2026牛客暑期多校训练营1",
-      "platform": "NowCoder",
-      "platformColor": "#5cb85c",
-      "startTimeSeconds": 1784260800,
-      "durationSeconds": 7200,
-      "url": "https://ac.nowcoder.com/acm/contest/133876?from=acm_calendar",
-      "stars": 6,
-      "starLabel": "集训",
-      "starColor": "#ef4444"
-    },
-    {
-      "id": "at-ahc068",
-      "name": "estie Programming Contest 2026 (AtCoder Heuristic Contest 068)",
-      "platform": "AtCoder",
-      "platformColor": "#1a1a1a",
-      "startTimeSeconds": 1784354400,
-      "durationSeconds": 14400,
-      "url": "https://atcoder.jp/contests/ahc068",
       "stars": 5,
       "starLabel": "AHC",
       "starColor": "#f59e0b"
