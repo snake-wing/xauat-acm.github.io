@@ -1125,13 +1125,7 @@ html.dark .gallery-item { border-color: #252540; background: #1a1a30; }
   background: rgba(0,0,0,0.03);
 }
 
-.pc-logo {
-  width: 40px; height: 40px;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.pc-logo-fb { width: 48px; height: 48px; }
+.pc-icon svg { width: 48px; height: 48px; }
 
 html.dark .pc-icon { background: rgba(255,255,255,0.04); }
 
