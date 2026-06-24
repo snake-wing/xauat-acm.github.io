@@ -298,11 +298,11 @@ async function fetchNC() {
  * ================================================================ */
 
 const PLATFORM_ICONS = [
-  { name: 'codeforces', urls: ['https://codeforces.org/apple-touch-icon.png', 'https://codeforces.com/favicon.ico'] },
-  { name: 'atcoder',    urls: ['https://atcoder.jp/apple-touch-icon.png', 'https://atcoder.jp/favicon.ico'] },
+  { name: 'codeforces', urls: ['https://sta.codeforces.com/s/0/favicon-32x32.png', 'https://codeforces.org/apple-touch-icon.png', 'https://codeforces.com/favicon.ico'] },
+  { name: 'atcoder',    urls: ['https://atcoder.jp/apple-touch-icon.png', 'https://img.atcoder.jp/public/icon/atcoder.png', 'https://atcoder.jp/favicon.ico'] },
   { name: 'nowcoder',   urls: ['https://ac.nowcoder.com/apple-touch-icon.png', 'https://ac.nowcoder.com/favicon.ico'] },
   { name: 'luogu',      urls: ['https://www.luogu.com.cn/apple-touch-icon.png', 'https://www.luogu.com.cn/favicon.ico'] },
-  { name: 'hdu',        urls: ['https://acm.hdu.edu.cn/favicon.ico'] },
+  { name: 'hdu',        urls: ['https://acm.hdu.edu.cn/images/logo.png', 'https://acm.hdu.edu.cn/favicon.ico'] },
   { name: 'acwing',     urls: ['https://www.acwing.com/apple-touch-icon.png', 'https://www.acwing.com/favicon.ico'] },
 ]
 
