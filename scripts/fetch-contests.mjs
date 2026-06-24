@@ -302,7 +302,7 @@ const PLATFORM_ICONS = [
   { name: 'atcoder',    url: 'https://atcoder.jp/favicon.ico' },
   { name: 'nowcoder',   url: 'https://ac.nowcoder.com/favicon.ico' },
   { name: 'luogu',      url: 'https://www.luogu.com.cn/favicon.ico' },
-  { name: 'vjudge',     url: 'https://vjudge.net/favicon.ico' },
+  { name: 'hdu',        url: 'https://acm.hdu.edu.cn/favicon.ico' },
   { name: 'acwing',     url: 'https://www.acwing.com/favicon.ico' },
 ]
 

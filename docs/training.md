@@ -89,21 +89,21 @@ import { withBase } from 'vitepress'
   <span class="pc-arrow">→</span>
 </a>
 
-<a class="platform-card" href="https://vjudge.net" target="_blank" rel="noopener" style="--pc: #e74c3c">
+<a class="platform-card" href="https://acm.hdu.edu.cn" target="_blank" rel="noopener" style="--pc: #1a6fb5">
   <div class="pc-icon">
-    <img :src="withBase('/icons/vjudge.ico')" alt="Virtual Judge" class="pc-logo"
+    <img :src="withBase('/icons/hdu.ico')" alt="HDU OJ" class="pc-logo"
          @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='block'">
     <svg class="pc-logo-fb" style="display:none" viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" fill="#e74c3c" opacity=".12"/>
-      <line x1="24" y1="30" x2="24" y2="12" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="14" y1="18" x2="34" y2="18" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="14" cy="18" r="4" stroke="#e74c3c" stroke-width="2" fill="none"/>
-      <circle cx="34" cy="18" r="4" stroke="#e74c3c" stroke-width="2" fill="none"/>
+      <circle cx="24" cy="24" r="22" fill="#1a6fb5" opacity=".12"/>
+      <rect x="10" y="14" width="28" height="20" rx="3" stroke="#1a6fb5" stroke-width="2" fill="none"/>
+      <line x1="17" y1="20" x2="31" y2="20" stroke="#1a6fb5" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="17" y1="24" x2="28" y2="24" stroke="#1a6fb5" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="17" y1="28" x2="25" y2="28" stroke="#1a6fb5" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
   </div>
   <div class="pc-body">
-    <span class="pc-name">Virtual Judge</span>
-    <span class="pc-desc">多 OJ 聚合虚拟裁判 · 团队训练赛/补题神器</span>
+    <span class="pc-name">HDU OJ</span>
+    <span class="pc-desc">杭州电子科技大学 OJ · 老牌经典题库/题解丰富</span>
   </div>
   <span class="pc-arrow">→</span>
 </a>
