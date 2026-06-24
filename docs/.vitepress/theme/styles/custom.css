@@ -21,28 +21,18 @@
   --vp-card-shadow: 0 3px 8px 6px rgba(7,17,27,0.06);
   --vp-card-hover-shadow: 0 3px 8px 6px rgba(7,17,27,0.15);
 
-  /* 背景纹理 — 图论节点图 */
-  --bg-dot: rgba(73, 177, 245, 0.06);
-  --bg-edge: rgba(73, 177, 245, 0.018);
-  --bg-dot-dark: rgba(110, 193, 247, 0.07);
-  --bg-edge-dark: rgba(110, 193, 247, 0.022);
+  /* 背景纹理 — 图论节点图 (调试: 拉高不透明度验证渲染) */
+  --bg-dot: rgba(73, 177, 245, 0.22);
+  --bg-edge: rgba(73, 177, 245, 0.10);
+  --bg-dot-dark: rgba(110, 193, 247, 0.22);
+  --bg-edge-dark: rgba(110, 193, 247, 0.10);
 }
 
 /* ===== 需求3：修复根级页面滚动 ===== */
 /* VitePress 默认在内部容器做滚动，此处改为 body 根级滚动，确保鼠标滚轮正常 */
 html {
-  background: #f6f8fa;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-/* ===== 页面背景纹理: 图论节点图 ===== */
-/* Layer 1: 六角点阵 (节点) + Layer 2: 斜向连线 (边) */
-/* 极低对比度——像水印，不抢内容 */
-.VPDoc {
   background-color: #f6f8fa;
   background-image:
-    /* 斜边 — 连接节点形成图结构 */
     repeating-linear-gradient(
       135deg,
       transparent,
@@ -61,18 +51,13 @@ html {
       transparent 41px,
       transparent 79px
     ),
-    /* 垂直 & 水平基线 */
     linear-gradient(var(--bg-edge) 1px, transparent 1px),
     linear-gradient(90deg, var(--bg-edge) 1px, transparent 1px),
-    /* 节点 — 交点处小圆点 */
     radial-gradient(circle, var(--bg-dot) 2px, transparent 2px);
-  background-size:
-    80px 80px,
-    80px 80px,
-    80px 80px,
-    80px 80px,
-    20px 20px;
+  background-size: 80px 80px, 80px 80px, 80px 80px, 80px 80px, 20px 20px;
   background-position: 0 0, 0 0, 0 0, 0 0, 10px 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -94,7 +79,7 @@ body {
 
 /* ===== 主内容双栏布局 ===== */
 .VPDoc {
-  background-color: #f6f8fa;
+  background-color: transparent;
   padding: 0 !important;
   padding-left: 0 !important;
 }
@@ -986,13 +971,7 @@ html.dark .roadmap-body span { color: #999; }
 }
 
 /* ===== 暗色模式适配 ===== */
-html.dark { background: #0f0f1a; }
-html.dark .VPNav {
-  background: #16162a !important;
-  border-color: #252540 !important;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
-}
-html.dark .VPDoc {
+html.dark {
   background-color: #0f0f1a;
   background-image:
     repeating-linear-gradient(
@@ -1018,6 +997,11 @@ html.dark .VPDoc {
     radial-gradient(circle, var(--bg-dot-dark) 2px, transparent 2px);
   background-size: 80px 80px, 80px 80px, 80px 80px, 80px 80px, 20px 20px;
   background-position: 0 0, 0 0, 0 0, 0 0, 10px 10px;
+}
+html.dark .VPNav {
+  background: #16162a !important;
+  border-color: #252540 !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
 }
 html.dark .vp-doc {
   background: #16162a;
