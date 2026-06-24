@@ -42,15 +42,15 @@ body {
 
 /* ===== 页面背景纹理: 极简点阵 ===== */
 .Layout {
-  background:
-    radial-gradient(circle, var(--bg-dot) 1.5px, transparent 1.5px) 0 0 / 24px 24px,
-    #f6f8fa !important;
+  background-color: #f6f8fa !important;
+  background-image: radial-gradient(circle, var(--bg-dot) 1.5px, transparent 1.5px) !important;
+  background-size: 24px 24px !important;
 }
 
 html.dark .Layout {
-  background:
-    radial-gradient(circle, var(--bg-dot-dark) 1.5px, transparent 1.5px) 0 0 / 24px 24px,
-    #0f0f1a !important;
+  background-color: #0f0f1a !important;
+  background-image: radial-gradient(circle, var(--bg-dot-dark) 1.5px, transparent 1.5px) !important;
+  background-size: 24px 24px !important;
 }
 
 /* ===== 导航栏全宽白色 ===== */
