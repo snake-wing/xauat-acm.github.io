@@ -303,7 +303,7 @@ const PLATFORM_ICONS = [
   { name: 'nowcoder',   urls: ['https://static.nowcoder.com/acm/images-acm/logo.png'] },
   { name: 'luogu',      urls: ['https://www.luogu.com.cn/favicon.ico'] },
   { name: 'hdu',        urls: ['https://acm.hdu.edu.cn/favicon.ico'] },
-  { name: 'acwing',     urls: ['https://cdn.acwing.com/static/web/img/favicon.ico'] },
+  { name: 'acwing',     urls: ['https://www.acwing.com/favicon.ico'] },
 ]
 
 async function downloadIcons() {
