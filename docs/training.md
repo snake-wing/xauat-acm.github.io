@@ -66,7 +66,7 @@ import { withBase } from 'vitepress'
 
 <a class="platform-card" href="https://acm.hdu.edu.cn" target="_blank" rel="noopener" style="--pc: #1a6fb5">
   <div class="pc-icon">
-    <img :src="withBase('/icons/hdu.png')" alt="HDU OJ" class="pc-logo">
+    <img :src="withBase('/icons/hdu.svg')" alt="HDU OJ" class="pc-logo-hdu">
   </div>
   <div class="pc-body">
     <span class="pc-name">HDU OJ</span>

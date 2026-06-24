@@ -302,7 +302,7 @@ const PLATFORM_ICONS = [
   { name: 'atcoder',    urls: ['https://img.atcoder.jp/assets/favicon.png'] },
   { name: 'nowcoder',   urls: ['https://static.nowcoder.com/acm/images-acm/logo.png'] },
   { name: 'luogu',      urls: ['https://www.luogu.com.cn/favicon.ico'] },
-  { name: 'hdu',        urls: ['https://acm.hdu.edu.cn/favicon.ico'] },
+  { name: 'hdu',        urls: ['https://www.hdu.edu.cn/_upload/tpl/02/12/530/template530/images/logo_main.svg'] },
   { name: 'acwing',     urls: ['https://www.acwing.com/favicon.ico'] },
 ]
 
@@ -320,8 +320,9 @@ async function downloadIcons() {
         clearTimeout(t)
         if (!res.ok) continue
         const buf = Buffer.from(await res.arrayBuffer())
-        writeFileSync(`docs/public/icons/${name}.png`, buf)
-        console.log(`[Icons] ${name} ✅ ${buf.length} bytes`)
+        const ext = url.endsWith('.svg') ? 'svg' : 'png'
+        writeFileSync(`docs/public/icons/${name}.${ext}`, buf)
+        console.log(`[Icons] ${name} ✅ ${buf.length} bytes (${ext})`)
         ok = true
         break
       } catch { /* try next URL */ }

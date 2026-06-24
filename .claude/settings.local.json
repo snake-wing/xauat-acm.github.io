@@ -50,7 +50,8 @@
       "PowerShell(node scripts/fetch-contests.mjs 2>&1)",
       "PowerShell(curl.exe -s -H \"x-lentille-request: content-only\" -H \"Accept: application/json\" -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" -H \"Referer: https://www.luogu.com.cn/\" \"https://www.luogu.com.cn/contest/list?page=1\" 2>&1)",
       "PowerShell(Test-Path *)",
-      "PowerShell(Get-ChildItem docs/public/icons/ | ForEach-Object { Write-Output \"$\\($_.Name\\): $\\($_.Length\\) bytes\" })"
+      "PowerShell(Get-ChildItem docs/public/icons/ | ForEach-Object { Write-Output \"$\\($_.Name\\): $\\($_.Length\\) bytes\" })",
+      "WebFetch(domain:www.urongda.com)"
     ]
   },
   "skillOverrides": {
