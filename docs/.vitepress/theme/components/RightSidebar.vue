@@ -67,7 +67,7 @@ function tagColor(idx: number) { return tagColors[idx % tagColors.length] }
     <div class="rs-card">
       <div class="rs-card-head">📢 公告</div>
       <div class="rs-announce">
-        <p>欢迎加入 XAUAT ACM 协会！2026 秋季纳新即将开始，敬请期待～</p>
+        <p>欢迎加入 XAUAT ACM 协会！2026 秋季纳新即将开始，<a :href="withBase('/join')" style="color:var(--vp-c-brand);font-weight:600">点击了解详情</a>～</p>
         <p v-if="latestPosts.length > 0" style="margin-top:0.3rem;font-size:0.8rem;color:var(--vp-c-text-3)">
           📝 最新文章：<a :href="withBase(latestPosts[0].url)" style="color:var(--vp-c-brand)">{{ latestPosts[0].title }}</a>
         </p>

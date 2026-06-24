@@ -5,6 +5,9 @@ on:
     branches: [main, master]
   # 允许手动触发
   workflow_dispatch:
+  # 每 6 小时自动构建以刷新比赛数据 (UTC 时间)
+  schedule:
+    - cron: '0 */6 * * *'
 
 # 设置 GITHUB_TOKEN 的权限
 permissions:

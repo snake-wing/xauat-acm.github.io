@@ -39,6 +39,8 @@ export default defineConfig({
           { text: '获奖瞬间', link: '/gallery' },
         ],
       },
+      { text: '训练平台', link: '/training' },
+      { text: '招新', link: '/join' },
       {
         text: '关于我们',
         items: [

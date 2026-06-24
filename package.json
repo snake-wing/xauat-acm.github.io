@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
+    "fetch-contests": "node scripts/fetch-contests.mjs",
+    "build": "npm run fetch-contests && vitepress build docs",
     "preview": "vitepress preview docs"
   },
   "devDependencies": {
