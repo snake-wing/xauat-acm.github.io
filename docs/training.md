@@ -5,6 +5,7 @@ aside: true
 
 <script setup>
 import ContestBoard from './.vitepress/theme/components/ContestBoard.vue'
+import { withBase } from 'vitepress'
 </script>
 
 <div class="training-page">
@@ -21,13 +22,7 @@ import ContestBoard from './.vitepress/theme/components/ContestBoard.vue'
 
 <a class="platform-card" href="https://codeforces.com" target="_blank" rel="noopener" style="--pc: #1f8acb">
   <div class="pc-icon">
-    <!-- Codeforces: 三柱上升 (Simple Icons) -->
-    <svg viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" fill="#1f8acb" opacity=".12"/>
-      <rect x="9" y="14" width="5" height="20" rx="1.5" fill="#1f8acb"/>
-      <rect x="17" y="10" width="5" height="28" rx="1.5" fill="#1f8acb"/>
-      <rect x="25" y="18" width="5" height="18" rx="1.5" fill="#1f8acb"/>
-    </svg>
+    <img :src="withBase('/icons/codeforces.png')" alt="Codeforces" class="pc-logo">
   </div>
   <div class="pc-body">
     <span class="pc-name">Codeforces</span>
@@ -38,12 +33,7 @@ import ContestBoard from './.vitepress/theme/components/ContestBoard.vue'
 
 <a class="platform-card" href="https://atcoder.jp" target="_blank" rel="noopener" style="--pc: #1a1a1a">
   <div class="pc-icon">
-    <!-- AtCoder: 三道斜杠 A -->
-    <svg viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" fill="#1a1a1a" opacity=".08"/>
-      <path d="M16 30l6-18 6 18" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <line x1="13" y1="24" x2="35" y2="24" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+    <img :src="withBase('/icons/atcoder.png')" alt="AtCoder" class="pc-logo">
   </div>
   <div class="pc-body">
     <span class="pc-name">AtCoder</span>
@@ -54,12 +44,7 @@ import ContestBoard from './.vitepress/theme/components/ContestBoard.vue'
 
 <a class="platform-card" href="https://ac.nowcoder.com" target="_blank" rel="noopener" style="--pc: #5cb85c">
   <div class="pc-icon">
-    <!-- 牛客: 折线上扬 -->
-    <svg viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" fill="#5cb85c" opacity=".12"/>
-      <polyline points="12,30 18,24 24,27 30,18 36,20" stroke="#5cb85c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="30" cy="18" r="2" fill="#5cb85c"/>
-    </svg>
+    <img :src="withBase('/icons/nowcoder.png')" alt="牛客" class="pc-logo">
   </div>
   <div class="pc-body">
     <span class="pc-name">牛客竞赛</span>
@@ -70,12 +55,7 @@ import ContestBoard from './.vitepress/theme/components/ContestBoard.vue'
 
 <a class="platform-card" href="https://www.luogu.com.cn" target="_blank" rel="noopener" style="--pc: #e67e22">
   <div class="pc-icon">
-    <!-- 洛谷: 三角山 -->
-    <svg viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" fill="#e67e22" opacity=".12"/>
-      <polygon points="24,8 8,34 40,34" fill="#e67e22" opacity=".3"/>
-      <polyline points="16,28 24,18 32,28" stroke="#e67e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>
+    <img :src="withBase('/icons/luogu.png')" alt="洛谷" class="pc-logo">
   </div>
   <div class="pc-body">
     <span class="pc-name">洛谷</span>
@@ -86,17 +66,7 @@ import ContestBoard from './.vitepress/theme/components/ContestBoard.vue'
 
 <a class="platform-card" href="https://acm.hdu.edu.cn" target="_blank" rel="noopener" style="--pc: #1a6fb5">
   <div class="pc-icon">
-    <!-- HDU OJ: 代码窗口 -->
-    <svg viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" fill="#1a6fb5" opacity=".12"/>
-      <rect x="10" y="12" width="28" height="24" rx="3" stroke="#1a6fb5" stroke-width="2" fill="none"/>
-      <line x1="17" y1="18" x2="31" y2="18" stroke="#1a6fb5" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="17" y1="23" x2="28" y2="23" stroke="#1a6fb5" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="17" y1="28" x2="24" y2="28" stroke="#1a6fb5" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="13" cy="14" r="1.5" fill="#22c55e"/>
-      <circle cx="13" cy="19" r="1.5" fill="#f59e0b"/>
-      <circle cx="13" cy="24" r="1.5" fill="#ef4444"/>
-    </svg>
+    <img :src="withBase('/icons/hdu.png')" alt="HDU OJ" class="pc-logo">
   </div>
   <div class="pc-body">
     <span class="pc-name">HDU OJ</span>
@@ -107,13 +77,7 @@ import ContestBoard from './.vitepress/theme/components/ContestBoard.vue'
 
 <a class="platform-card" href="https://www.acwing.com" target="_blank" rel="noopener" style="--pc: #2ecc71">
   <div class="pc-icon">
-    <!-- AcWing: 翻开的书 -->
-    <svg viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" fill="#2ecc71" opacity=".12"/>
-      <path d="M14 34V18l10 5 10-5v16l-10-5-10 5z" fill="#2ecc71" opacity=".3"/>
-      <polyline points="14,18 24,23 34,18" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <line x1="24" y1="23" x2="24" y2="34" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
+    <img :src="withBase('/icons/acwing.png')" alt="AcWing" class="pc-logo">
   </div>
   <div class="pc-body">
     <span class="pc-name">AcWing</span>

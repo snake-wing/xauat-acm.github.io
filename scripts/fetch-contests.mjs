@@ -11,7 +11,7 @@
  *   NowCoder   — 日历 JSON API  (ac.nowcoder.com/acm/calendar/contest)
  */
 
-import { writeFileSync } from 'node:fs'
+import { writeFileSync, mkdirSync } from 'node:fs'
 
 const NOW_SEC = Math.floor(Date.now() / 1000)
 const USER_AGENT = 'Mozilla/5.0 (compatible; XauatACM/1.0; +https://github.com/snake-wing/xauat-acm.github.io)'
@@ -294,6 +294,43 @@ async function fetchNC() {
 }
 
 /* ================================================================
+ * 平台高清图标下载 — 各平台真实 logo (高分辨率 PNG)
+ * ================================================================ */
+
+const PLATFORM_ICONS = [
+  { name: 'codeforces', urls: ['https://codeforces.com/codeforces.org/s/59834/apple-icon-180x180.png'] },
+  { name: 'atcoder',    urls: ['https://img.atcoder.jp/assets/favicon.png'] },
+  { name: 'nowcoder',   urls: ['https://static.nowcoder.com/acm/images-acm/logo.png'] },
+  { name: 'luogu',      urls: ['https://www.luogu.com.cn/favicon.ico'] },
+  { name: 'hdu',        urls: ['https://acm.hdu.edu.cn/favicon.ico'] },
+  { name: 'acwing',     urls: ['https://cdn.acwing.com/static/web/img/favicon.ico'] },
+]
+
+async function downloadIcons() {
+  console.log('[Icons] Downloading...')
+  mkdirSync('docs/public/icons', { recursive: true })
+
+  for (const { name, urls } of PLATFORM_ICONS) {
+    let ok = false
+    for (const url of urls) {
+      try {
+        const ctrl = new AbortController()
+        const t = setTimeout(() => ctrl.abort(), 15000)
+        const res = await fetch(url, { signal: ctrl.signal })
+        clearTimeout(t)
+        if (!res.ok) continue
+        const buf = Buffer.from(await res.arrayBuffer())
+        writeFileSync(`docs/public/icons/${name}.png`, buf)
+        console.log(`[Icons] ${name} ✅ ${buf.length} bytes`)
+        ok = true
+        break
+      } catch { /* try next URL */ }
+    }
+    if (!ok) console.log(`[Icons] ${name} ⚠️ failed`)
+  }
+}
+
+/* ================================================================
  * 主流程
  * ================================================================ */
 
@@ -301,10 +338,11 @@ async function main() {
   console.log('=== XAUAT ACM Contest Fetcher ===')
   console.log(`Time: ${new Date().toISOString()}`)
 
-  // 并行抓取所有平台比赛数据
+  // 并行：比赛数据 + 图标下载
   const results = await Promise.allSettled([
     fetchCF(), fetchAT(), fetchNC(), fetchLG(),
   ])
+  downloadIcons() // fire-and-forget
 
   const all = []
   const failed = []
