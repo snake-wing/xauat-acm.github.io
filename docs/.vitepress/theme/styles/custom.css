@@ -20,6 +20,12 @@
   --vp-nav-height: 56px;
   --vp-card-shadow: 0 3px 8px 6px rgba(7,17,27,0.06);
   --vp-card-hover-shadow: 0 3px 8px 6px rgba(7,17,27,0.15);
+
+  /* 背景纹理 — 图论节点图 */
+  --bg-dot: rgba(73, 177, 245, 0.06);
+  --bg-edge: rgba(73, 177, 245, 0.018);
+  --bg-dot-dark: rgba(110, 193, 247, 0.07);
+  --bg-edge-dark: rgba(110, 193, 247, 0.022);
 }
 
 /* ===== 需求3：修复根级页面滚动 ===== */
@@ -28,6 +34,45 @@ html {
   background: #f6f8fa;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+/* ===== 页面背景纹理: 图论节点图 ===== */
+/* Layer 1: 六角点阵 (节点) + Layer 2: 斜向连线 (边) */
+/* 极低对比度——像水印，不抢内容 */
+.VPDoc {
+  background-color: #f6f8fa;
+  background-image:
+    /* 斜边 — 连接节点形成图结构 */
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 39px,
+      var(--bg-edge) 39px,
+      var(--bg-edge) 41px,
+      transparent 41px,
+      transparent 79px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 39px,
+      var(--bg-edge) 39px,
+      var(--bg-edge) 41px,
+      transparent 41px,
+      transparent 79px
+    ),
+    /* 垂直 & 水平基线 */
+    linear-gradient(var(--bg-edge) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-edge) 1px, transparent 1px),
+    /* 节点 — 交点处小圆点 */
+    radial-gradient(circle, var(--bg-dot) 2px, transparent 2px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    80px 80px,
+    80px 80px,
+    20px 20px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 10px 10px;
 }
 
 body {
@@ -947,7 +992,33 @@ html.dark .VPNav {
   border-color: #252540 !important;
   box-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
 }
-html.dark .VPDoc { background: #0f0f1a; }
+html.dark .VPDoc {
+  background-color: #0f0f1a;
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 39px,
+      var(--bg-edge-dark) 39px,
+      var(--bg-edge-dark) 41px,
+      transparent 41px,
+      transparent 79px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 39px,
+      var(--bg-edge-dark) 39px,
+      var(--bg-edge-dark) 41px,
+      transparent 41px,
+      transparent 79px
+    ),
+    linear-gradient(var(--bg-edge-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-edge-dark) 1px, transparent 1px),
+    radial-gradient(circle, var(--bg-dot-dark) 2px, transparent 2px);
+  background-size: 80px 80px, 80px 80px, 80px 80px, 80px 80px, 20px 20px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 10px 10px;
+}
 html.dark .vp-doc {
   background: #16162a;
   border-color: #252540;
