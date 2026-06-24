@@ -22,8 +22,8 @@
   --vp-card-hover-shadow: 0 3px 8px 6px rgba(7,17,27,0.15);
 
   /* 背景纹理 */
-  --bg-dot: rgba(73, 177, 245, 0.065);
-  --bg-dot-dark: rgba(110, 193, 247, 0.08);
+  --bg-line: rgba(73, 177, 245, 0.045);
+  --bg-line-dark: rgba(110, 193, 247, 0.055);
 }
 
 /* ===== 需求3：修复根级页面滚动 ===== */
@@ -40,17 +40,21 @@ body {
   font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
-/* ===== 页面背景纹理: 极简点阵 ===== */
+/* ===== 页面背景纹理: 斜纹网格 ===== */
 .Layout {
   background-color: #f6f8fa !important;
-  background-image: radial-gradient(circle, var(--bg-dot) 1.5px, transparent 1.5px) !important;
-  background-size: 24px 24px !important;
+  background-image:
+    repeating-linear-gradient(45deg,  transparent, transparent 3px, var(--bg-line) 3px, var(--bg-line) 4px),
+    repeating-linear-gradient(-45deg, transparent, transparent 3px, var(--bg-line) 3px, var(--bg-line) 4px) !important;
+  background-size: 60px 60px !important;
 }
 
 html.dark .Layout {
   background-color: #0f0f1a !important;
-  background-image: radial-gradient(circle, var(--bg-dot-dark) 1.5px, transparent 1.5px) !important;
-  background-size: 24px 24px !important;
+  background-image:
+    repeating-linear-gradient(45deg,  transparent, transparent 3px, var(--bg-line-dark) 3px, var(--bg-line-dark) 4px),
+    repeating-linear-gradient(-45deg, transparent, transparent 3px, var(--bg-line-dark) 3px, var(--bg-line-dark) 4px) !important;
+  background-size: 60px 60px !important;
 }
 
 /* ===== 导航栏全宽白色 ===== */
