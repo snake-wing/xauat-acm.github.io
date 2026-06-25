@@ -190,9 +190,9 @@ onUnmounted(() => {
     <!-- 分割线 -->
     <div class="cr-divider"></div>
 
-    <!-- 右：即将举行的比赛（线下） -->
+    <!-- 右：即将举行的比赛（正式） -->
     <div class="cr-right">
-      <div class="cr-title">📅 即将举行的比赛（线下）</div>
+      <div class="cr-title">📅 即将举行的比赛（正式）</div>
       <div v-if="offlineContests.length === 0" class="cr-right-empty">暂无数据</div>
       <div v-else class="cr-offline-list">
         <a
