@@ -166,6 +166,22 @@ html.dark .Layout {
   box-shadow: var(--vp-card-hover-shadow);
 }
 
+/* 通用内容卡片（供 index.ts 插槽使用） */
+.content-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  border: 1px solid #eee;
+  margin-bottom: 1.25rem;
+}
+
+html.dark .content-card {
+  background: #1e1e36;
+  border-color: #2a2a45;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
 /* ===== 文章列表（首页） ===== */
 .post-section { margin: 0; padding: 0; }
 .post-list { margin: 0; padding: 0; }

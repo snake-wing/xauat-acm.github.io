@@ -5,11 +5,13 @@ import RightSidebar from './components/RightSidebar.vue'
 import FloatingPanel from './components/FloatingPanel.vue'
 import Giscus from './components/Giscus.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
+import HomeContestRanking from './components/HomeContestRanking.vue'
 
 const { site, theme, frontmatter, isDark } = useData()
 const route = useRoute()
 
 const isHome = computed(() => route.path === '/' || route.path === '/index.html')
+const isHomePage = computed(() => route.path === '/home' || route.path === '/home.html')
 
 const nav = computed(() => theme.value.nav || [])
 
@@ -69,6 +71,11 @@ const nav = computed(() => theme.value.nav || [])
         <article class="content-card">
           <Content />
         </article>
+
+        <!-- 比赛排名（仅首页） -->
+        <div v-if="isHomePage" class="content-card">
+          <HomeContestRanking />
+        </div>
 
         <!-- 评论区 -->
         <div class="content-card">

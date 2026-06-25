@@ -1,7 +1,7 @@
 {
-  "updatedAt": 1782316868355,
-  "updatedAtISO": "2026-06-24T16:01:08.355Z",
-  "total": 22,
+  "updatedAt": 1782377688103,
+  "updatedAtISO": "2026-06-25T08:54:48.103Z",
+  "total": 23,
   "failedPlatforms": [],
   "contests": [
     {
@@ -15,18 +15,6 @@
       "stars": 4,
       "starLabel": "",
       "starColor": "#8b5cf6"
-    },
-    {
-      "id": "nc-1137072",
-      "name": "牛客小白月赛134",
-      "platform": "NowCoder",
-      "platformColor": "#5cb85c",
-      "startTimeSeconds": 1782471600,
-      "durationSeconds": 7200,
-      "url": "https://ac.nowcoder.com/acm/contest/137072?from=acm_calendar",
-      "stars": 3,
-      "starLabel": "小白月赛",
-      "starColor": "#3b82f6"
     },
     {
       "id": "at-abc464",
@@ -63,18 +51,6 @@
       "stars": 5,
       "starLabel": "Div.2",
       "starColor": "#f59e0b"
-    },
-    {
-      "id": "nc-1137073",
-      "name": "牛客周赛 Round 150",
-      "platform": "NowCoder",
-      "platformColor": "#5cb85c",
-      "startTimeSeconds": 1782644400,
-      "durationSeconds": 7200,
-      "url": "https://ac.nowcoder.com/acm/contest/137073?from=acm_calendar",
-      "stars": 3,
-      "starLabel": "周赛",
-      "starColor": "#3b82f6"
     },
     {
       "id": "at-arc223",
@@ -183,6 +159,30 @@
       "stars": 5,
       "starLabel": "AHC",
       "starColor": "#f59e0b"
+    },
+    {
+      "id": "at-awtf2026algo",
+      "name": "World Tour Finals 2026 Algorithm",
+      "platform": "AtCoder",
+      "platformColor": "#1a1a1a",
+      "startTimeSeconds": 1783562400,
+      "durationSeconds": 25200,
+      "url": "https://atcoder.jp/contests/awtf2026algo",
+      "stars": 4,
+      "starLabel": "",
+      "starColor": "#8b5cf6"
+    },
+    {
+      "id": "at-awtf2026algo-open",
+      "name": "World Tour Finals 2026 Algorithm（Open Contest）",
+      "platform": "AtCoder",
+      "platformColor": "#1a1a1a",
+      "startTimeSeconds": 1783562400,
+      "durationSeconds": 25200,
+      "url": "https://atcoder.jp/contests/awtf2026algo-open",
+      "stars": 4,
+      "starLabel": "",
+      "starColor": "#8b5cf6"
     }
   ]
 }

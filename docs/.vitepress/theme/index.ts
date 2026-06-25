@@ -9,6 +9,7 @@ import GiscusWrapper from './components/GiscusWrapper.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
 import CanvasRibbon from './components/CanvasRibbon.vue'
 import PostMeta from './components/PostMeta.vue'
+import HomeContestRanking from './components/HomeContestRanking.vue'
 import './styles/custom.css'
 
 export default {
@@ -23,6 +24,10 @@ export default {
       const rPath = route.path || ''
       return rp.startsWith('posts/') || rPath.startsWith('/posts/') || rPath.includes('/posts/')
     })
+    const isHomePage = computed(() => {
+      const rp = page.value?.relativePath || ''
+      return rp === 'home.md' || route.path === '/home' || route.path === '/home.html'
+    })
 
     return h(DefaultTheme.Layout, null, {
       // 文章页元数据（日期、分类、标签）
@@ -30,8 +35,9 @@ export default {
 
       // HeroBanner 已移至 / 根路径作为独立 Splash 页面，不再通过 layout-top 插槽注入
       'layout-top': () => [],
-      // 文章底部：评论区 + 页脚信息
+      // 文章底部：比赛排名卡片 + 评论区 + 页脚信息
       'doc-after': () => [
+        isHomePage.value ? h('div', { class: 'content-card' }, [h(HomeContestRanking)]) : null,
         h(GiscusWrapper),
         h('div', { class: 'footer-extras' }, [
           h(SiteRuntime),
