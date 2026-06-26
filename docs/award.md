@@ -152,6 +152,7 @@ const lanqiaoFlatList = (() => {
       level.items.map(item => ({ ...item, award: level.label, color: level.color }))
     ) : []
     list.push({ _type: 'year', _key: `y-${sec.year}`, _count: items.length, year: sec.year })
+    list.push({ _type: 'header', _key: `h-${sec.year}`, year: sec.year })
     for (let i = 0; i < items.length; i++) {
       list.push({ ...items[i], _type: 'item', _key: `i-${sec.year}-${i}` })
     }
@@ -283,7 +284,13 @@ const lanqiaoSummary = (() => {
       <span class="lanqiao-year-label">{{ entry.year }} 年</span>
       <span class="lanqiao-year-count">{{ entry._count }} 人获奖</span>
     </div>
-    <div v-else-if="lanqiaoExpanded.has(entry.year)" class="award-table-row">
+    <div v-else-if="entry._type === 'header' && lanqiaoExpanded.has(entry.year)" class="award-table-row award-table-head-row">
+      <span class="at-year">年份</span>
+      <span class="at-comp">比赛名称</span>
+      <span class="at-members">队员</span>
+      <span class="at-award">奖项</span>
+    </div>
+    <div v-else-if="entry._type === 'item' && lanqiaoExpanded.has(entry.year)" class="award-table-row">
       <span class="at-year">{{ entry.year }}</span>
       <span class="at-comp">{{ entry.competition }}</span>
       <span class="at-members">{{ entry.members }}</span>

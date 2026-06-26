@@ -716,56 +716,53 @@ html.dark .at-members { color: #aaa; }
 html.dark .at-year { color: #666; }
 html.dark .award-tag { border-color: rgba(255,255,255,0.06); }
 
-/* ===== 蓝桥杯 div 仿表格（避免 SSR 嵌套 v-for 中 <table> 的编译问题） ===== */
-.award-table-div {
-  display: table;
+/* ===== 蓝桥杯 div 仿表格（扁平列表单层 v-for，避开 SSR 嵌套限制） ===== */
+/* 表格容器 */
+.lanqiao-year-section + .lanqiao-year-section { margin-top: 0.75rem; }
+
+/* 表头行 */
+.award-table-head-row {
+  border-top: 1px solid #e0e4ea;
+  border-bottom: 2px solid #e0e4ea;
 }
-.award-table-head {
-  display: table-header-group;
-}
-.award-table-head > span {
-  display: table-cell;
+.award-table-head-row > span {
   font-weight: 600;
-  text-align: left;
-  padding: 0.55rem 0.85rem;
-  border-bottom: 2px solid #e8e8ed;
-  white-space: nowrap;
   color: #6b6b6b;
   font-size: 0.78rem;
   background: linear-gradient(to bottom, #fafafc, #f4f5f9);
 }
+
+/* 所有行共用 */
 .award-table-row {
-  display: table-row;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
 }
 .award-table-row > span {
-  display: table-cell;
-  padding: 0.55rem 0.85rem;
-  border-bottom: 1px solid #f0f1f5;
+  padding: 0.5rem 0.75rem;
   font-size: 0.82rem;
-  vertical-align: middle;
 }
-.award-table-row:hover > span {
+.award-table-row:hover {
   background: rgba(73, 177, 245, 0.03);
 }
-.award-table-row:last-child > span {
-  border-bottom: none;
-}
-.award-table-head > span.at-year,
-.award-table-row > span.at-year { text-align: center !important; }
-.award-table-head > span.at-award,
-.award-table-row > span.at-award { text-align: center !important; }
-.award-table-head > span.at-members,
-.award-table-row > span.at-members { text-align: center !important; }
 
-html.dark .award-table-head > span {
-  background: #1a1a30;
-  color: #888;
+/* 列宽 */
+.award-table-row > span.at-year   { width: 8%;  text-align: center; flex-shrink: 0; }
+.award-table-row > span.at-comp   { flex: 1;     min-width: 0; }
+.award-table-row > span.at-members { width: 42%; text-align: center; flex-shrink: 0; }
+.award-table-row > span.at-award  { width: 13%; text-align: center; flex-shrink: 0; }
+
+html.dark .award-table-head-row {
   border-color: #252540;
 }
-html.dark .award-table-row > span {
+html.dark .award-table-head-row > span {
+  background: #1a1a30;
+  color: #888;
+}
+html.dark .award-table-row {
   border-color: #1e1e35;
 }
-html.dark .award-table-row:hover > span {
+html.dark .award-table-row:hover {
   background: rgba(96, 165, 250, 0.05);
 }
 
