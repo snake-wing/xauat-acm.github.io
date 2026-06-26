@@ -736,18 +736,22 @@ html.dark .award-tag { border-color: rgba(255,255,255,0.06); }
 .award-table-row {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #e0e4ea;
 }
 .award-table-row > span {
-  padding: 0.5rem 0.75rem;
-  font-size: 0.82rem;
+  padding: 0.28rem 0.6rem;
+  font-size: 0.78rem;
+  border-right: 1px solid #e8e8ed;
+}
+.award-table-row > span:last-child {
+  border-right: none;
 }
 .award-table-row:hover {
   background: rgba(73, 177, 245, 0.03);
 }
 
 /* 列宽 */
-.award-table-row > span.at-year   { width: 8%;  text-align: center; flex-shrink: 0; }
+.award-table-row > span.at-year   { width: 7%;  text-align: center; flex-shrink: 0; }
 .award-table-row > span.at-comp   { flex: 1;     min-width: 0; }
 .award-table-row > span.at-members { width: 42%; text-align: center; flex-shrink: 0; }
 .award-table-row > span.at-award  { width: 13%; text-align: center; flex-shrink: 0; }
@@ -761,6 +765,9 @@ html.dark .award-table-head-row > span {
 }
 html.dark .award-table-row {
   border-color: #1e1e35;
+}
+html.dark .award-table-row > span {
+  border-right-color: #252540;
 }
 html.dark .award-table-row:hover {
   background: rgba(96, 165, 250, 0.05);
