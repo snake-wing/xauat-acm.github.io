@@ -717,6 +717,43 @@ html.dark .at-year { color: #666; }
 html.dark .award-tag { border-color: rgba(255,255,255,0.06); }
 
 /* ===== 蓝桥杯 div 仿表格（扁平列表单层 v-for，避开 SSR 嵌套限制） ===== */
+/* 年份头（非点击） */
+.lanqiao-year-header {
+  cursor: default;
+}
+/* 国赛/省赛 组头（可点击折叠，稍内缩） */
+.lanqiao-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.3rem;
+  background: #fafbfc;
+  border: 1px solid #eef0f3;
+  border-radius: 7px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+}
+.lanqiao-group-header:hover {
+  background: #eef1f5;
+  border-color: #d0dae5;
+}
+.lanqiao-group-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #555;
+}
+html.dark .lanqiao-group-header {
+  background: #1e1e36;
+  border-color: #2a2a45;
+}
+html.dark .lanqiao-group-header:hover {
+  background: #242440;
+  border-color: #3a5080;
+}
+html.dark .lanqiao-group-label { color: #ddd; }
 /* 表格外框：左/右竖线 */
 .lanqiao-table-box {
   border-left: 1px solid #e0e4ea;

@@ -47,33 +47,43 @@ const awards = {
     sections: [
       {
         year: '2026',
-        levels: [
-          { label: '🥇 国一', color: 'gold', items: [
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '张渊博' },
-            ] },
-          { label: '🥈 国二', color: 'silver', items: [
-              { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '潘扬' },
-              { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '黄章满' },
-              { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '庞钧溢' },
-              { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '王子鹏' },
-              { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '苑晓舰' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '孙子芮' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '邹凯' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '姚艺欣' },
-            ] },
-          { label: '🥉 国三', color: 'bronze', items: [
-              { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '王思远' },
-              { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '叶帅杰' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '杨帆' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '刘家林' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '张帅' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '刘济荣' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '王树茂' },
-              { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学研究生组（国赛）', members: '郭旭东' },
-            ] },
-          { label: '省一', color: 'iron', items: [] },
-          { label: '省二', color: 'iron', items: [] },
-          { label: '省三', color: 'iron', items: [] },
+        groups: [
+          {
+            label: '国赛',
+            levels: [
+              { label: '🥇 国一', color: 'gold', items: [
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '张渊博' },
+                ] },
+              { label: '🥈 国二', color: 'silver', items: [
+                  { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '潘扬' },
+                  { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '黄章满' },
+                  { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '庞钧溢' },
+                  { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '王子鹏' },
+                  { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '苑晓舰' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '孙子芮' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '邹凯' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '姚艺欣' },
+                ] },
+              { label: '🥉 国三', color: 'bronze', items: [
+                  { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '王思远' },
+                  { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '叶帅杰' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '杨帆' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '刘家林' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '张帅' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '刘济荣' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '王树茂' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学研究生组（国赛）', members: '郭旭东' },
+                ] },
+            ],
+          },
+          {
+            label: '省赛',
+            levels: [
+              { label: '省一', color: 'iron', items: [] },
+              { label: '省二', color: 'iron', items: [] },
+              { label: '省三', color: 'iron', items: [] },
+            ],
+          },
         ],
       },
     ],
@@ -132,45 +142,58 @@ function flatItems(data) {
   )
 }
 
-/* ===== 蓝桥杯年份折叠 ===== */
-const lanqiaoExpanded = ref(new Set(['2026']))
+/* ===== 蓝桥杯折叠（国赛/省赛分组） ===== */
+const lanqiaoExpanded = ref(new Set(['2026-国赛']))
 
-function toggleLanqiaoYear(year) {
-  if (lanqiaoExpanded.value.has(year)) {
-    lanqiaoExpanded.value.delete(year)
+function toggleLanqiaoGroup(key) {
+  if (lanqiaoExpanded.value.has(key)) {
+    lanqiaoExpanded.value.delete(key)
   } else {
-    lanqiaoExpanded.value.add(year)
+    lanqiaoExpanded.value.add(key)
   }
   lanqiaoExpanded.value = new Set(lanqiaoExpanded.value)
 }
 
-// 扁平列表：年份头 + 条目交替，单层 v-for 避开 SSR 嵌套限制
+// 扁平列表：年份头 → 国赛/省赛组头 → 表，单层 v-for 避开 SSR 嵌套限制
 const lanqiaoFlatList = (() => {
   const list = []
   for (const sec of (awards['蓝桥杯'].sections || [])) {
-    const items = sec.levels ? sec.levels.flatMap(level =>
-      level.items.map(item => ({ ...item, award: level.label, color: level.color }))
-    ) : []
-    list.push({ _type: 'year', _key: `y-${sec.year}`, _count: items.length, year: sec.year })
-    list.push({ _type: 'table-open', _key: `to-${sec.year}`, year: sec.year })
-    list.push({ _type: 'header', _key: `h-${sec.year}`, year: sec.year })
-    for (let i = 0; i < items.length; i++) {
-      list.push({ ...items[i], _type: 'item', _key: `i-${sec.year}-${i}` })
+    let yearTotal = 0
+    for (const grp of (sec.groups || [])) {
+      const items = grp.levels ? grp.levels.flatMap(level =>
+        level.items.map(item => ({ ...item, award: level.label, color: level.color }))
+      ) : []
+      yearTotal += items.length
     }
-    list.push({ _type: 'table-close', _key: `tc-${sec.year}`, year: sec.year })
+    list.push({ _type: 'year', _key: `y-${sec.year}`, _count: yearTotal, year: sec.year })
+    for (const grp of (sec.groups || [])) {
+      const items = grp.levels ? grp.levels.flatMap(level =>
+        level.items.map(item => ({ ...item, award: level.label, color: level.color }))
+      ) : []
+      const gkey = `${sec.year}-${grp.label}`
+      list.push({ _type: 'group', _key: `g-${gkey}`, year: sec.year, group: grp.label, _count: items.length, _gkey: gkey })
+      list.push({ _type: 'table-open', _key: `to-${gkey}`, _gkey: gkey })
+      list.push({ _type: 'header', _key: `h-${gkey}`, _gkey: gkey })
+      for (let i = 0; i < items.length; i++) {
+        list.push({ ...items[i], _type: 'item', _key: `i-${gkey}-${i}`, _gkey: gkey })
+      }
+      list.push({ _type: 'table-close', _key: `tc-${gkey}`, _gkey: gkey })
+    }
   }
   return list
 })()
 
-// 蓝桥杯汇总统计（跨年份聚合）
+// 蓝桥杯汇总统计（跨年份跨组聚合）
 const lanqiaoSummary = (() => {
   const labelOrder = ['🥇 国一', '🥈 国二', '🥉 国三', '省一', '省二', '省三']
   const colorMap = { '🥇 国一': 'gold', '🥈 国二': 'silver', '🥉 国三': 'bronze', '省一': 'iron', '省二': 'iron', '省三': 'iron' }
   const merged = {}
   for (const label of labelOrder) merged[label] = { label, color: colorMap[label], count: 0 }
   for (const sec of (awards['蓝桥杯'].sections || [])) {
-    for (const level of (sec.levels || [])) {
-      if (merged[level.label]) merged[level.label].count += level.items.length
+    for (const grp of (sec.groups || [])) {
+      for (const level of (grp.levels || [])) {
+        if (merged[level.label]) merged[level.label].count += level.items.length
+      }
     }
   }
   return labelOrder.map(l => merged[l])
@@ -281,26 +304,33 @@ const lanqiaoSummary = (() => {
 
   <!-- 按年份分组（扁平列表，单层 v-for，避开 SSR 嵌套限制） -->
   <template v-for="entry in lanqiaoFlatList" :key="entry._key">
-    <div v-if="entry._type === 'year'" class="lanqiao-year-header" @click="toggleLanqiaoYear(entry.year)">
-      <span class="lanqiao-year-arrow">{{ lanqiaoExpanded.has(entry.year) ? '▼' : '▶' }}</span>
+    <!-- 年份头 -->
+    <div v-if="entry._type === 'year'" class="lanqiao-year-header">
       <span class="lanqiao-year-label">{{ entry.year }} 年</span>
       <span class="lanqiao-year-count">{{ entry._count }} 人获奖</span>
     </div>
-    <div v-else-if="entry._type === 'table-open' && lanqiaoExpanded.has(entry.year)" class="lanqiao-table-box">
+    <!-- 国赛/省赛 组头 -->
+    <div v-else-if="entry._type === 'group'" class="lanqiao-group-header" @click="toggleLanqiaoGroup(entry._gkey)">
+      <span class="lanqiao-year-arrow">{{ lanqiaoExpanded.has(entry._gkey) ? '▼' : '▶' }}</span>
+      <span class="lanqiao-group-label">{{ entry.group }}</span>
+      <span class="lanqiao-year-count">{{ entry._count }} 人</span>
     </div>
-    <div v-else-if="entry._type === 'header' && lanqiaoExpanded.has(entry.year)" class="award-table-row award-table-head-row">
+    <!-- 表内容（受 _gkey 控制展开） -->
+    <div v-else-if="entry._type === 'table-open' && lanqiaoExpanded.has(entry._gkey)" class="lanqiao-table-box">
+    </div>
+    <div v-else-if="entry._type === 'header' && lanqiaoExpanded.has(entry._gkey)" class="award-table-row award-table-head-row">
       <span class="at-year">年份</span>
       <span class="at-comp">比赛名称</span>
       <span class="at-members">队员</span>
       <span class="at-award">奖项</span>
     </div>
-    <div v-else-if="entry._type === 'item' && lanqiaoExpanded.has(entry.year)" class="award-table-row">
+    <div v-else-if="entry._type === 'item' && lanqiaoExpanded.has(entry._gkey)" class="award-table-row">
       <span class="at-year">{{ entry.year }}</span>
       <span class="at-comp">{{ entry.competition }}</span>
       <span class="at-members">{{ entry.members }}</span>
       <span class="at-award"><span class="award-tag" :class="levelClass(entry.color)">{{ entry.award }}</span></span>
     </div>
-    <div v-else-if="entry._type === 'table-close' && lanqiaoExpanded.has(entry.year)" class="lanqiao-table-box-close">
+    <div v-else-if="entry._type === 'table-close' && lanqiaoExpanded.has(entry._gkey)" class="lanqiao-table-box-close">
     </div>
   </template>
 </div>
