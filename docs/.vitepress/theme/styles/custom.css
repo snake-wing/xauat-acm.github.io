@@ -717,13 +717,29 @@ html.dark .at-year { color: #666; }
 html.dark .award-tag { border-color: rgba(255,255,255,0.06); }
 
 /* ===== 蓝桥杯 div 仿表格（扁平列表单层 v-for，避开 SSR 嵌套限制） ===== */
-/* 表格容器 */
-.lanqiao-year-section + .lanqiao-year-section { margin-top: 0.75rem; }
+/* 表格外框：左/右竖线 */
+.lanqiao-table-box {
+  border-left: 1px solid #e0e4ea;
+  border-right: 1px solid #e0e4ea;
+}
+.lanqiao-table-box + .award-table-head-row {
+  border-left: 1px solid #e0e4ea;
+  border-right: 1px solid #e0e4ea;
+}
+/* 底部封口 */
+.lanqiao-table-box-close {
+  height: 0;
+  border-left: 1px solid #e0e4ea;
+  border-right: 1px solid #e0e4ea;
+  border-bottom: 1px solid #e0e4ea;
+}
 
 /* 表头行 */
 .award-table-head-row {
   border-top: 1px solid #e0e4ea;
   border-bottom: 2px solid #e0e4ea;
+  border-left: 1px solid #e0e4ea;
+  border-right: 1px solid #e0e4ea;
 }
 .award-table-head-row > span {
   font-weight: 600;
@@ -737,6 +753,8 @@ html.dark .award-tag { border-color: rgba(255,255,255,0.06); }
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e0e4ea;
+  border-left: 1px solid #e0e4ea;
+  border-right: 1px solid #e0e4ea;
 }
 .award-table-row > span {
   padding: 0.28rem 0.6rem;
@@ -756,6 +774,8 @@ html.dark .award-tag { border-color: rgba(255,255,255,0.06); }
 .award-table-row > span.at-members { width: 42%; text-align: center; flex-shrink: 0; }
 .award-table-row > span.at-award  { width: 13%; text-align: center; flex-shrink: 0; }
 
+html.dark .lanqiao-table-box,
+html.dark .lanqiao-table-box-close,
 html.dark .award-table-head-row {
   border-color: #252540;
 }

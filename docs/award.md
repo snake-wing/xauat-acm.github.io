@@ -152,10 +152,12 @@ const lanqiaoFlatList = (() => {
       level.items.map(item => ({ ...item, award: level.label, color: level.color }))
     ) : []
     list.push({ _type: 'year', _key: `y-${sec.year}`, _count: items.length, year: sec.year })
+    list.push({ _type: 'table-open', _key: `to-${sec.year}`, year: sec.year })
     list.push({ _type: 'header', _key: `h-${sec.year}`, year: sec.year })
     for (let i = 0; i < items.length; i++) {
       list.push({ ...items[i], _type: 'item', _key: `i-${sec.year}-${i}` })
     }
+    list.push({ _type: 'table-close', _key: `tc-${sec.year}`, year: sec.year })
   }
   return list
 })()
@@ -278,11 +280,13 @@ const lanqiaoSummary = (() => {
   </div>
 
   <!-- 按年份分组（扁平列表，单层 v-for，避开 SSR 嵌套限制） -->
-  <div v-for="entry in lanqiaoFlatList" :key="entry._key" :class="entry._type === 'year' ? 'lanqiao-year-section' : ''">
+  <template v-for="entry in lanqiaoFlatList" :key="entry._key">
     <div v-if="entry._type === 'year'" class="lanqiao-year-header" @click="toggleLanqiaoYear(entry.year)">
       <span class="lanqiao-year-arrow">{{ lanqiaoExpanded.has(entry.year) ? '▼' : '▶' }}</span>
       <span class="lanqiao-year-label">{{ entry.year }} 年</span>
       <span class="lanqiao-year-count">{{ entry._count }} 人获奖</span>
+    </div>
+    <div v-else-if="entry._type === 'table-open' && lanqiaoExpanded.has(entry.year)" class="lanqiao-table-box">
     </div>
     <div v-else-if="entry._type === 'header' && lanqiaoExpanded.has(entry.year)" class="award-table-row award-table-head-row">
       <span class="at-year">年份</span>
@@ -296,7 +300,9 @@ const lanqiaoSummary = (() => {
       <span class="at-members">{{ entry.members }}</span>
       <span class="at-award"><span class="award-tag" :class="levelClass(entry.color)">{{ entry.award }}</span></span>
     </div>
-  </div>
+    <div v-else-if="entry._type === 'table-close' && lanqiaoExpanded.has(entry.year)" class="lanqiao-table-box-close">
+    </div>
+  </template>
 </div>
 
 <div class="award-section" v-show="activeTab === '天梯赛'">
