@@ -44,8 +44,9 @@ const awards = {
   蓝桥杯: {
     title: '蓝桥杯全国软件和信息技术专业人才大赛',
     icon: '🏔️',
-    years: {
-      '2026': {
+    sections: [
+      {
+        year: '2026',
         levels: [
           { label: '🥇 国一', color: 'gold', items: [
               { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '张渊博' },
@@ -75,7 +76,7 @@ const awards = {
           { label: '省三', color: 'iron', items: [] },
         ],
       },
-    },
+    ],
   },
   天梯赛: {
     title: '中国高校计算机大赛-团体程序设计天梯赛',
@@ -134,43 +135,43 @@ function flatItems(data) {
 /* ===== 蓝桥杯年份折叠 ===== */
 const lanqiaoExpanded = ref(new Set(['2026']))
 
-// 预计算年份分组（每一年：year + items + total，供单层 v-for 使用）
-const _lanqiaoYears = awards['蓝桥杯'].years || {}
-const lanqiaoYearEntries = Object.keys(_lanqiaoYears)
-  .sort((a, b) => Number(b) - Number(a))
-  .map(year => {
-    const yd = _lanqiaoYears[year]
-    const items = (yd && yd.levels)
-      ? yd.levels.flatMap(level =>
-          level.items.map(item => ({ ...item, award: level.label, color: level.color }))
-        )
-      : []
-    return { year, items, total: items.length }
-  })
-
-// 汇总统计
-const lanqiaoSummary = (() => {
-  const labelOrder = ['🥇 国一', '🥈 国二', '🥉 国三', '省一', '省二', '省三']
-  const colorMap = { '🥇 国一': 'gold', '🥈 国二': 'silver', '🥉 国三': 'bronze', '省一': 'iron', '省二': 'iron', '省三': 'iron' }
-  const merged = {}
-  for (const label of labelOrder) merged[label] = { label, color: colorMap[label], count: 0 }
-  for (const year of Object.values(_lanqiaoYears)) {
-    for (const level of (year.levels || [])) {
-      if (merged[level.label]) merged[level.label].count += level.items.length
-    }
-  }
-  return labelOrder.map(l => merged[l])
-})()
-
 function toggleLanqiaoYear(year) {
   if (lanqiaoExpanded.value.has(year)) {
     lanqiaoExpanded.value.delete(year)
   } else {
     lanqiaoExpanded.value.add(year)
   }
-  // trigger reactivity
   lanqiaoExpanded.value = new Set(lanqiaoExpanded.value)
 }
+
+// 扁平列表：年份头 + 条目交替，单层 v-for 避开 SSR 嵌套限制
+const lanqiaoFlatList = (() => {
+  const list = []
+  for (const sec of (awards['蓝桥杯'].sections || [])) {
+    const items = sec.levels ? sec.levels.flatMap(level =>
+      level.items.map(item => ({ ...item, award: level.label, color: level.color }))
+    ) : []
+    list.push({ _type: 'year', _key: `y-${sec.year}`, _count: items.length, year: sec.year })
+    for (let i = 0; i < items.length; i++) {
+      list.push({ ...items[i], _type: 'item', _key: `i-${sec.year}-${i}` })
+    }
+  }
+  return list
+})()
+
+// 蓝桥杯汇总统计（跨年份聚合）
+const lanqiaoSummary = (() => {
+  const labelOrder = ['🥇 国一', '🥈 国二', '🥉 国三', '省一', '省二', '省三']
+  const colorMap = { '🥇 国一': 'gold', '🥈 国二': 'silver', '🥉 国三': 'bronze', '省一': 'iron', '省二': 'iron', '省三': 'iron' }
+  const merged = {}
+  for (const label of labelOrder) merged[label] = { label, color: colorMap[label], count: 0 }
+  for (const sec of (awards['蓝桥杯'].sections || [])) {
+    for (const level of (sec.levels || [])) {
+      if (merged[level.label]) merged[level.label].count += level.items.length
+    }
+  }
+  return labelOrder.map(l => merged[l])
+})()
 
 </script>
 
@@ -256,14 +257,13 @@ function toggleLanqiaoYear(year) {
   </div>
 </div>
 
-<ClientOnly>
 <div class="award-section" v-show="activeTab === '蓝桥杯'">
   <div class="award-section-head">
     <img src="/images/lanqiao-logo.png" alt="蓝桥杯" class="award-logo" />
     <span class="award-section-title">{{ awards['蓝桥杯'].title }}</span>
   </div>
 
-  <!-- 总体统计卡片 -->
+  <!-- 总体统计卡片（跨年份汇总） -->
   <div class="award-levels-grid">
     <div class="award-level-col" v-for="level in lanqiaoSummary" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
@@ -276,31 +276,21 @@ function toggleLanqiaoYear(year) {
     </div>
   </div>
 
-  <!-- 按年份分组 -->
-  <div v-for="entry in lanqiaoYearEntries" :key="entry.year" class="lanqiao-year-section">
-    <div class="lanqiao-year-header" @click="toggleLanqiaoYear(entry.year)">
+  <!-- 按年份分组（扁平列表，单层 v-for，避开 SSR 嵌套限制） -->
+  <div v-for="entry in lanqiaoFlatList" :key="entry._key" :class="entry._type === 'year' ? 'lanqiao-year-section' : ''">
+    <div v-if="entry._type === 'year'" class="lanqiao-year-header" @click="toggleLanqiaoYear(entry.year)">
       <span class="lanqiao-year-arrow">{{ lanqiaoExpanded.has(entry.year) ? '▼' : '▶' }}</span>
       <span class="lanqiao-year-label">{{ entry.year }} 年</span>
-      <span class="lanqiao-year-count">{{ entry.total }} 人获奖</span>
+      <span class="lanqiao-year-count">{{ entry._count }} 人获奖</span>
     </div>
-
-    <div v-show="lanqiaoExpanded.has(entry.year)" class="award-table-section">
-      <table class="award-table">
-          <colgroup><col class="at-year"><col class="at-comp"><col class="at-members"><col class="at-award"></colgroup>
-          <thead><tr><th class="at-year">年份</th><th class="at-comp">比赛名称</th><th class="at-members">队员</th><th class="at-award">奖项</th></tr></thead>
-          <tbody>
-            <tr v-for="(item, idx) in entry.items" :key="idx">
-              <td class="at-year">{{ item.year }}</td>
-              <td class="at-comp">{{ item.competition }}</td>
-              <td class="at-members">{{ item.members }}</td>
-              <td class="at-award"><span class="award-tag" :class="levelClass(item.color)">{{ item.award }}</span></td>
-            </tr>
-          </tbody>
-        </table>
+    <div v-else-if="lanqiaoExpanded.has(entry.year)" class="award-table-row">
+      <span class="at-year">{{ entry.year }}</span>
+      <span class="at-comp">{{ entry.competition }}</span>
+      <span class="at-members">{{ entry.members }}</span>
+      <span class="at-award"><span class="award-tag" :class="levelClass(entry.color)">{{ entry.award }}</span></span>
     </div>
   </div>
 </div>
-</ClientOnly>
 
 <div class="award-section" v-show="activeTab === '天梯赛'">
   <div class="award-section-head">

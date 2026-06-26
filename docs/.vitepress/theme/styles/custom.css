@@ -716,6 +716,59 @@ html.dark .at-members { color: #aaa; }
 html.dark .at-year { color: #666; }
 html.dark .award-tag { border-color: rgba(255,255,255,0.06); }
 
+/* ===== 蓝桥杯 div 仿表格（避免 SSR 嵌套 v-for 中 <table> 的编译问题） ===== */
+.award-table-div {
+  display: table;
+}
+.award-table-head {
+  display: table-header-group;
+}
+.award-table-head > span {
+  display: table-cell;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.55rem 0.85rem;
+  border-bottom: 2px solid #e8e8ed;
+  white-space: nowrap;
+  color: #6b6b6b;
+  font-size: 0.78rem;
+  background: linear-gradient(to bottom, #fafafc, #f4f5f9);
+}
+.award-table-row {
+  display: table-row;
+}
+.award-table-row > span {
+  display: table-cell;
+  padding: 0.55rem 0.85rem;
+  border-bottom: 1px solid #f0f1f5;
+  font-size: 0.82rem;
+  vertical-align: middle;
+}
+.award-table-row:hover > span {
+  background: rgba(73, 177, 245, 0.03);
+}
+.award-table-row:last-child > span {
+  border-bottom: none;
+}
+.award-table-head > span.at-year,
+.award-table-row > span.at-year { text-align: center !important; }
+.award-table-head > span.at-award,
+.award-table-row > span.at-award { text-align: center !important; }
+.award-table-head > span.at-members,
+.award-table-row > span.at-members { text-align: center !important; }
+
+html.dark .award-table-head > span {
+  background: #1a1a30;
+  color: #888;
+  border-color: #252540;
+}
+html.dark .award-table-row > span {
+  border-color: #1e1e35;
+}
+html.dark .award-table-row:hover > span {
+  background: rgba(96, 165, 250, 0.05);
+}
+
 /* 响应式 */
 @media (max-width: 768px) {
   .award-table-section { max-height: 340px; }
