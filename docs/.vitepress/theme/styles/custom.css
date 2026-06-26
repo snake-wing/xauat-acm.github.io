@@ -647,7 +647,8 @@ html.dark .content-card {
 
 .at-year { width: 8% !important; color: #6b6b6b; white-space: nowrap; text-align: center !important; }
 .at-comp { width: 27% !important; color: var(--vp-c-text-1); }
-.at-members { width: 52% !important; color: #666; }
+.at-members { width: 52% !important; color: #666; text-align: center !important; }
+.award-table thead th.at-members { text-align: center !important; }
 .at-award { width: 13% !important; text-align: center !important; white-space: nowrap; }
 
 .award-tag {
