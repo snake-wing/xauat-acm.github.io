@@ -430,25 +430,36 @@ const awards = {
       {
         title: '团队奖项',
         levels: [
-          { label: '🥇 国一', color: 'gold', items: [] },
-          { label: '🥈 国二', color: 'silver', items: [] },
+          { label: '🥇 国一', color: 'gold', items: [
+
+            ] },
+          { label: '🥈 国二', color: 'silver', items: [
+
+            ] },
           { label: '🥉 国三', color: 'bronze', items: [
-              { year: '2025', competition: '天梯赛全国总决赛', members: '张三, 李四, 王五, 赵六, 孙七, 周八, 吴九, 郑十, 陈十一, 钱十二' },
+                { year: '2025', competition: '天梯赛全国总决赛（我将夺回建大的一切）', members: '黄章满, 邹凯, 刘昊, 王子鹏, 张渊博, 王树茂, 谢钰涵, 李康乐, 王思远, 庞钧溢' },
             ] },
           { label: '省一', color: 'iron', items: [
-              { year: '2024', competition: '天梯赛陕西省赛', members: '张三, 李四, 王五, 赵六, 孙七, 周八, 吴九, 郑十, 陈十一, 钱十二' },
+
             ] },
-          { label: '省二', color: 'iron', items: [] },
-          { label: '省三', color: 'iron', items: [] },
+          { label: '省二', color: 'iron', items: [
+                { year: '2023', competition: '天梯赛陕西省赛（十明智）', members: '陈碧辉, 黄林豪, 孙伟中, 黄瑞冬, 李豪威, 李杨, 陈佳彬, 马岳奇, 杨杰, 陈馨仪' },
+                { year: '2025', competition: '天梯赛陕西省赛（我将夺回建大的一切）', members: '黄章满, 邹凯, 刘昊, 王子鹏, 张渊博, 王树茂, 谢钰涵, 李康乐, 王思远, 庞钧溢' },
+                { year: '2026', competition: '天梯赛陕西省赛（建大深情队）', members: '张渊博, 张帅, 邹凯, 刘易通, 刘济荣, 王思翊, 李家琦, 孙子芮, 王思远, 陈明熙' },
+            ] },
+          { label: '省三', color: 'iron', items: [
+                { year: '2022', competition: '天梯赛陕西省赛（十头猪）', members: '陈碧辉, 王学荣, 黄林豪, 杨钰婕, 黄瑞冬, 陈远韬, 徐政豪, 胡展瑜, 周杨, 于滔' },
+                { year: '2024', competition: '天梯赛陕西省赛（十力强）', members: '李豪威, 王云飞, 李启燚, 杨杰, 刘昊, 陈佳彬, 傅佳乐, 张渊博, 谢钰涵, 彭翔锋' },
+                { year: '2025', competition: '天梯赛陕西省赛（Bug终结队）', members: '孙康鑫, 徐功锋, 陈明熙, 王艺璇, 丁紫曦, 周奕, 袁浩然, 周映文, 孔诚明, 熊鑫' },
+                { year: '2026', competition: '天梯赛陕西省赛（建大忘情队）', members: '潘扬, 李康乐, 文乐, 谢钰涵, 尹志学, 刘家林, 蒋曼, 袁浩然, 吴绪东, 王艺璇' },
+            ] },
         ],
       },
       {
         title: '个人奖项',
         levels: [
           { label: '🥇 国一', color: 'gold', items: [] },
-          { label: '🥈 国二', color: 'silver', items: [
-              { year: '2025', competition: '天梯赛个人排名', members: '张三' },
-            ] },
+          { label: '🥈 国二', color: 'silver', items: [] },
           { label: '🥉 国三', color: 'bronze', items: [] },
         ],
       },
