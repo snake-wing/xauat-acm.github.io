@@ -44,21 +44,7 @@ const awards = {
   蓝桥杯: {
     title: '蓝桥杯全国软件和信息技术专业人才大赛',
     icon: '🏔️',
-    levels: [
-      { label: '🥇 国一', color: 'gold', items: [
-          { year: '2025', competition: '蓝桥杯 C/C++ 程序设计大学 A 组', members: '张三' },
-        ] },
-      { label: '🥈 国二', color: 'silver', items: [] },
-      { label: '🥉 国三', color: 'bronze', items: [] },
-      { label: '省一', color: 'iron', items: [
-          { year: '2025', competition: '蓝桥杯 Java 程序设计大学 A 组', members: '李四' },
-          { year: '2024', competition: '蓝桥杯 C/C++ 程序设计大学 A 组', members: '孙七' },
-        ] },
-      { label: '省二', color: 'iron', items: [
-          { year: '2025', competition: '蓝桥杯 Python 程序设计大学 A 组', members: '王五' },
-        ] },
-      { label: '省三', color: 'iron', items: [] },
-    ],
+    images: true,
   },
   天梯赛: {
     title: '中国高校计算机大赛-团体程序设计天梯赛',
@@ -209,31 +195,10 @@ function totalCount(data) {
     <img src="/images/lanqiao-logo.png" alt="蓝桥杯" class="award-logo" />
     <span class="award-section-title">{{ awards['蓝桥杯'].title }}</span>
   </div>
-  <div class="award-levels-grid">
-    <div class="award-level-col" v-for="level in awards['蓝桥杯'].levels" :key="level.label">
-      <div class="award-level-head" :class="levelClass(level.color)">
-        {{ level.label }}
-        <span class="award-check-icon" v-html="level.items.length ? achievedSvg : unachievedSvg"></span>
-      </div>
-      <div class="award-level-items">
-        <div class="award-count-num">{{ level.items.length || 0 }}</div>
-      </div>
-    </div>
-  </div>
 
-  <div v-show="flatItems(awards['蓝桥杯']).length" class="award-table-section">
-    <table class="award-table">
-        <colgroup><col class="at-year"><col class="at-comp"><col class="at-members"><col class="at-award"></colgroup>
-        <thead><tr><th class="at-year">年份</th><th class="at-comp">比赛名称</th><th class="at-members">队员</th><th class="at-award">奖项</th></tr></thead>
-        <tbody>
-          <tr v-for="(item, idx) in flatItems(awards['蓝桥杯'])" :key="idx">
-            <td class="at-year">{{ item.year }}</td>
-            <td class="at-comp">{{ item.competition }}</td>
-            <td class="at-members">{{ item.members }}</td>
-            <td class="at-award"><span class="award-tag" :class="levelClass(item.color)">{{ item.award }}</span></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="lanqiao-images">
+    <img src="/images/lanqiao-2026-national-1.png" alt="2026 蓝桥杯国赛获奖 1" class="lanqiao-award-img" />
+    <img src="/images/lanqiao-2026-national-2.png" alt="2026 蓝桥杯国赛获奖 2" class="lanqiao-award-img" />
   </div>
 </div>
 

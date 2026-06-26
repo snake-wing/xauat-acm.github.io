@@ -516,6 +516,23 @@ html.dark .content-card {
   color: var(--vp-c-text-1);
 }
 
+/* ===== 蓝桥杯获奖图片展示 ===== */
+.lanqiao-images {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+.lanqiao-award-img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #e8e8ed;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+html.dark .lanqiao-award-img {
+  border-color: #2a2a45;
+}
+
 .award-levels-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
