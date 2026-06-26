@@ -46,17 +46,18 @@ const awards = {
     icon: '🏔️',
     levels: [
       { label: '🥇 国一', color: 'gold', items: [
-          { year: '2025', competition: '蓝桥杯 C/C++ 程序设计大学 A 组', members: '张三' },
+          { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '张渊博' },
         ] },
-      { label: '🥈 国二', color: 'silver', items: [] },
-      { label: '🥉 国三', color: 'bronze', items: [] },
-      { label: '省一', color: 'iron', items: [
-          { year: '2025', competition: '蓝桥杯 Java 程序设计大学 A 组', members: '李四' },
-          { year: '2024', competition: '蓝桥杯 C/C++ 程序设计大学 A 组', members: '孙七' },
+      { label: '🥈 国二', color: 'silver', items: [
+          { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '潘扬, 黄章满, 庞钧溢, 王子鹏, 苑晓舰' },
+          { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '孙子芮, 邹凯, 姚艺欣' },
         ] },
-      { label: '省二', color: 'iron', items: [
-          { year: '2025', competition: '蓝桥杯 Python 程序设计大学 A 组', members: '王五' },
+      { label: '🥉 国三', color: 'bronze', items: [
+          { year: '2026', competition: '蓝桥杯 Python 程序设计大学 B 组（国赛）', members: '王思远, 叶帅杰' },
+          { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '杨帆, 刘家林, 张帅, 刘济荣, 王树茂' },
         ] },
+      { label: '省一', color: 'iron', items: [] },
+      { label: '省二', color: 'iron', items: [] },
       { label: '省三', color: 'iron', items: [] },
     ],
   },
