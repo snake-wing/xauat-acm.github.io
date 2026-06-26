@@ -359,7 +359,8 @@ function toggleLanqiaoGroup(key) {
 // 扁平列表：年份头 → 国赛/省赛组头 → 表，单层 v-for 避开 SSR 嵌套限制
 const lanqiaoFlatList = (() => {
   const list = []
-  for (const sec of (awards['蓝桥杯'].sections || [])) {
+  const sortedSections = (awards['蓝桥杯'].sections || []).slice().sort((a, b) => Number(b.year) - Number(a.year))
+  for (const sec of sortedSections) {
     let yearTotal = 0
     for (const grp of (sec.groups || [])) {
       const items = grp.levels ? grp.levels.flatMap(level =>
