@@ -460,7 +460,15 @@ const awards = {
         levels: [
           { label: '🥇 国一', color: 'gold', items: [] },
           { label: '🥈 国二', color: 'silver', items: [] },
-          { label: '🥉 国三', color: 'bronze', items: [] },
+          { label: '🥉 国三', color: 'bronze', items: [
+              { year: '2026', competition: '天梯赛个人三等奖', members: '张渊博' },
+              { year: '2026', competition: '天梯赛个人三等奖', members: '张帅' },
+              { year: '2026', competition: '天梯赛个人三等奖', members: '邹凯' },
+              { year: '2025', competition: '天梯赛个人三等奖', members: '黄章满' },
+              { year: '2023', competition: '天梯赛个人三等奖', members: '陈碧辉' },
+              { year: '2023', competition: '天梯赛个人三等奖', members: '黄林豪' },
+              { year: '2022', competition: '天梯赛个人三等奖', members: '黄林豪' },
+            ] },
         ],
       },
     ],
