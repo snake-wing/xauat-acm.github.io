@@ -590,6 +590,53 @@ html.dark .content-card {
   margin-bottom: 0.5rem;
 }
 
+/* ===== 蓝桥杯年份折叠 ===== */
+.lanqiao-year-section {
+  margin-top: 0.75rem;
+}
+.lanqiao-year-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  background: #f5f6f8;
+  border: 1px solid #e8e8ed;
+  border-radius: 9px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+}
+.lanqiao-year-header:hover {
+  background: #eef1f5;
+  border-color: #d0dae5;
+}
+.lanqiao-year-arrow {
+  font-size: 0.7rem;
+  color: #888;
+  transition: transform 0.2s;
+}
+.lanqiao-year-label {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #4c4948;
+}
+.lanqiao-year-count {
+  font-size: 0.78rem;
+  color: #999;
+  margin-left: auto;
+}
+html.dark .lanqiao-year-header {
+  background: #1e1e36;
+  border-color: #2a2a45;
+}
+html.dark .lanqiao-year-header:hover {
+  background: #242440;
+  border-color: #3a5080;
+}
+html.dark .lanqiao-year-label { color: #ddd; }
+html.dark .lanqiao-year-arrow,
+html.dark .lanqiao-year-count { color: #666; }
+
 /* ===== 获奖明细表 ===== */
 .award-table-section {
   width: 100%;
