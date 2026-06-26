@@ -131,15 +131,36 @@ function flatItems(data) {
   )
 }
 
-function totalCount(data) {
-  if (data.subsections) {
-    return data.subsections.reduce((s, sub) => s + sub.levels.reduce((ss, l) => ss + l.items.length, 0), 0)
-  }
-  return data.levels.reduce((s, l) => s + l.items.length, 0)
-}
-
 /* ===== 蓝桥杯年份折叠 ===== */
 const lanqiaoExpanded = ref(new Set(['2026']))
+
+// 预计算年份分组（每一年：year + items + total，供单层 v-for 使用）
+const _lanqiaoYears = awards['蓝桥杯'].years || {}
+const lanqiaoYearEntries = Object.keys(_lanqiaoYears)
+  .sort((a, b) => Number(b) - Number(a))
+  .map(year => {
+    const yd = _lanqiaoYears[year]
+    const items = (yd && yd.levels)
+      ? yd.levels.flatMap(level =>
+          level.items.map(item => ({ ...item, award: level.label, color: level.color }))
+        )
+      : []
+    return { year, items, total: items.length }
+  })
+
+// 汇总统计
+const lanqiaoSummary = (() => {
+  const labelOrder = ['🥇 国一', '🥈 国二', '🥉 国三', '省一', '省二', '省三']
+  const colorMap = { '🥇 国一': 'gold', '🥈 国二': 'silver', '🥉 国三': 'bronze', '省一': 'iron', '省二': 'iron', '省三': 'iron' }
+  const merged = {}
+  for (const label of labelOrder) merged[label] = { label, color: colorMap[label], count: 0 }
+  for (const year of Object.values(_lanqiaoYears)) {
+    for (const level of (year.levels || [])) {
+      if (merged[level.label]) merged[level.label].count += level.items.length
+    }
+  }
+  return labelOrder.map(l => merged[l])
+})()
 
 function toggleLanqiaoYear(year) {
   if (lanqiaoExpanded.value.has(year)) {
@@ -151,41 +172,6 @@ function toggleLanqiaoYear(year) {
   lanqiaoExpanded.value = new Set(lanqiaoExpanded.value)
 }
 
-function lanqiaoSortedYears() {
-  if (!awards['蓝桥杯'].years) return []
-  return Object.keys(awards['蓝桥杯'].years).sort((a, b) => Number(b) - Number(a))
-}
-
-function lanqiaoFlatItems(yearData) {
-  if (!yearData || !yearData.levels) return []
-  return yearData.levels.flatMap(level =>
-    level.items.map(item => ({ ...item, award: level.label, color: level.color }))
-  )
-}
-
-function lanqiaoSummaryLevels() {
-  const years = awards['蓝桥杯'].years
-  if (!years) return []
-  const labelOrder = ['🥇 国一', '🥈 国二', '🥉 国三', '省一', '省二', '省三']
-  const colorMap = { '🥇 国一': 'gold', '🥈 国二': 'silver', '🥉 国三': 'bronze', '省一': 'iron', '省二': 'iron', '省三': 'iron' }
-  const merged = {}
-  for (const label of labelOrder) {
-    merged[label] = { label, color: colorMap[label], count: 0 }
-  }
-  for (const year of Object.values(years)) {
-    for (const level of (year.levels || [])) {
-      if (merged[level.label]) {
-        merged[level.label].count += level.items.length
-      }
-    }
-  }
-  return labelOrder.map(l => merged[l])
-}
-
-function lanqiaoYearTotal(yearData) {
-  if (!yearData || !yearData.levels) return 0
-  return yearData.levels.reduce((s, l) => s + l.items.length, 0)
-}
 </script>
 
 # 🏆 获奖荣誉
@@ -270,6 +256,7 @@ function lanqiaoYearTotal(yearData) {
   </div>
 </div>
 
+<ClientOnly>
 <div class="award-section" v-show="activeTab === '蓝桥杯'">
   <div class="award-section-head">
     <img src="/images/lanqiao-logo.png" alt="蓝桥杯" class="award-logo" />
@@ -278,7 +265,7 @@ function lanqiaoYearTotal(yearData) {
 
   <!-- 总体统计卡片 -->
   <div class="award-levels-grid">
-    <div class="award-level-col" v-for="level in lanqiaoSummaryLevels()" :key="level.label">
+    <div class="award-level-col" v-for="level in lanqiaoSummary" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
         {{ level.label }}
         <span class="award-check-icon" v-html="level.count ? achievedSvg : unachievedSvg"></span>
@@ -290,19 +277,19 @@ function lanqiaoYearTotal(yearData) {
   </div>
 
   <!-- 按年份分组 -->
-  <div v-for="year in lanqiaoSortedYears()" :key="year" class="lanqiao-year-section">
-    <div class="lanqiao-year-header" @click="toggleLanqiaoYear(year)">
-      <span class="lanqiao-year-arrow">{{ lanqiaoExpanded.has(year) ? '▼' : '▶' }}</span>
-      <span class="lanqiao-year-label">{{ year }} 年</span>
-      <span class="lanqiao-year-count">{{ lanqiaoYearTotal(awards['蓝桥杯'].years[year]) }} 人获奖</span>
+  <div v-for="entry in lanqiaoYearEntries" :key="entry.year" class="lanqiao-year-section">
+    <div class="lanqiao-year-header" @click="toggleLanqiaoYear(entry.year)">
+      <span class="lanqiao-year-arrow">{{ lanqiaoExpanded.has(entry.year) ? '▼' : '▶' }}</span>
+      <span class="lanqiao-year-label">{{ entry.year }} 年</span>
+      <span class="lanqiao-year-count">{{ entry.total }} 人获奖</span>
     </div>
 
-    <div v-show="lanqiaoExpanded.has(year)" class="award-table-section">
+    <div v-show="lanqiaoExpanded.has(entry.year)" class="award-table-section">
       <table class="award-table">
           <colgroup><col class="at-year"><col class="at-comp"><col class="at-members"><col class="at-award"></colgroup>
           <thead><tr><th class="at-year">年份</th><th class="at-comp">比赛名称</th><th class="at-members">队员</th><th class="at-award">奖项</th></tr></thead>
           <tbody>
-            <tr v-for="(item, idx) in lanqiaoFlatItems(awards['蓝桥杯'].years[year])" :key="idx">
+            <tr v-for="(item, idx) in entry.items" :key="idx">
               <td class="at-year">{{ item.year }}</td>
               <td class="at-comp">{{ item.competition }}</td>
               <td class="at-members">{{ item.members }}</td>
@@ -313,6 +300,7 @@ function lanqiaoYearTotal(yearData) {
     </div>
   </div>
 </div>
+</ClientOnly>
 
 <div class="award-section" v-show="activeTab === '天梯赛'">
   <div class="award-section-head">
