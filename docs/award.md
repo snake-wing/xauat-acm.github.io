@@ -482,6 +482,9 @@ function levelClass(color) {
 const achievedSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 11l3.5 3.5L16 6" stroke="#49b1f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 const unachievedSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5l-10 10" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/></svg>'
 
+// 天梯赛按年份降序排列
+const tiantiFlatList = flatItems(awards['天梯赛']).sort((a, b) => Number(b.year) - Number(a.year))
+
 function flatItems(data) {
   if (!data) return []
   if (data.subsections) {
@@ -710,20 +713,20 @@ const lanqiaoSummary = (() => {
     </div>
   </div>
 
-  <div v-show="flatItems(awards['天梯赛']).length" class="award-table-section">
-    <table class="award-table">
-        <colgroup><col class="at-year"><col class="at-comp"><col class="at-members"><col class="at-award"></colgroup>
-        <thead><tr><th class="at-year">年份</th><th class="at-comp">比赛名称</th><th class="at-members">队员</th><th class="at-award">奖项</th></tr></thead>
-        <tbody>
-          <tr v-for="(item, idx) in flatItems(awards['天梯赛'])" :key="idx">
-            <td class="at-year">{{ item.year }}</td>
-            <td class="at-comp">{{ item.competition }}</td>
-            <td class="at-members">{{ item.members }}</td>
-            <td class="at-award"><span class="award-tag" :class="levelClass(item.color)">{{ item.award }}</span></td>
-          </tr>
-        </tbody>
-      </table>
-  </div>
+  <div v-show="tiantiFlatList.length" class="award-table-section">
+      <div class="award-table-head-row award-table-row">
+        <span class="at-year">年份</span>
+        <span class="at-comp">比赛名称</span>
+        <span class="at-members">队员</span>
+        <span class="at-award">奖项</span>
+      </div>
+      <div class="award-table-row" v-for="(item, idx) in tiantiFlatList" :key="idx">
+        <span class="at-year">{{ item.year }}</span>
+        <span class="at-comp">{{ item.competition }}</span>
+        <span class="at-members">{{ item.members }}</span>
+        <span class="at-award"><span class="award-tag" :class="levelClass(item.color)">{{ item.award }}</span></span>
+      </div>
+    </div>
 </div>
 
 </div>
