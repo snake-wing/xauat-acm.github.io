@@ -135,7 +135,7 @@ aside: true
 <details class="faq-item">
 <summary class="faq-question">研究生可以加入吗？</summary>
 <div class="faq-answer">
-欢迎！研究生同学可以参加训练和交流，但不能参加 ICPC/CCPC 区域赛（赛事对参赛者有年龄和学历限制）。蓝桥杯、天梯赛等赛事研究生可以报名。
+欢迎！研究生同学可以参加训练和交流，但不能参加 天梯赛、ICPC/CCPC 区域赛（赛事对参赛者有年龄和学历限制）。蓝桥杯、码蹄杯、百度之星、部分ICPC/CCPC邀请赛、省赛 等赛事研究生可以报名。
 </div>
 </details>
 
