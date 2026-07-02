@@ -336,7 +336,7 @@ const awards = {
                   { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '张帅' },
                   { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '刘济荣' },
                   { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学 B 组（国赛）', members: '王树茂' },
-                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计大学研究生组（国赛）', members: '郭旭东' },
+                  { year: '2026', competition: '蓝桥杯 C/C++ 程序设计研究生组（国赛）', members: '郭旭东' },
                 ] },
             ],
           },
