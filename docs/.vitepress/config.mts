@@ -32,7 +32,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/home' },
       {
-        text: '集训队',
+        text: '成员归档',
         items: [
           { text: '成员', link: '/team' },
           { text: '获奖荣誉', link: '/award' },

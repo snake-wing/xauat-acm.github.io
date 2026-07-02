@@ -1,5 +1,12 @@
 [
   {
+    "name": "2026年ICPC 国际大学生程序设计竞赛全国邀请赛（沈阳）",
+    "date": "2026-07-29",
+    "location": "线下",
+    "url": "https://uep.pintia.cn/icpc-reg/examGroups",
+    "status": "upcoming"
+  },
+  {
     "name": "2026年码蹄杯 本科院校赛道 &青少年挑战赛道提高组国赛",
     "date": "2026-08-02",
     "location": "线上",
@@ -8,7 +15,7 @@
   },
   {
     "name": "2026年百度之星 初赛 第一场",
-    "date": "待定（未开始报名）",
+    "date": "2026-08-23",
     "location": "线上",
     "url": "https://www.matiji.net/exam/contest/topic2026?id=68",
     "status": "upcoming"
@@ -25,6 +32,13 @@
     "date": "2026-09-12",
     "location": "线上",
     "url": "https://icpc.pku.edu.cn/tzgg/a8fd24b90c57484dafc921f17deee908.htm",
+    "status": "upcoming"
+  },
+  {
+    "name": "2026年百度之星 初赛 第二场",
+    "date": "2026-09-19",
+    "location": "线上",
+    "url": "https://www.matiji.net/exam/contest/topic2026?id=68",
     "status": "upcoming"
   }
 ]

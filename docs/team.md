@@ -55,7 +55,7 @@ function isCollapsed(year) {
 }
 </script>
 
-<h1 class="team-page-title">ACM 集训队成员名单</h1>
+<h1 class="team-page-title">ACM 成员归档</h1>
 
 <div class="team-section">
 
