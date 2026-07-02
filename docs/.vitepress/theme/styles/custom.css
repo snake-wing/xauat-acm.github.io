@@ -805,8 +805,8 @@ html.dark .lanqiao-group-label { color: #ddd; }
 
 /* 列宽 */
 .award-table-row > span.at-year   { width: 7%;  text-align: center; flex-shrink: 0; }
-.award-table-row > span.at-comp   { flex: 1;     min-width: 0; }
-.award-table-row > span.at-members { width: 42%; text-align: center; flex-shrink: 0; }
+.award-table-row > span.at-comp   { flex: 1;     min-width: 0; white-space: nowrap; }
+.award-table-row > span.at-members { width: 36%; text-align: center; flex-shrink: 0; }
 .award-table-row > span.at-award  { width: 13%; text-align: center; flex-shrink: 0; }
 
 html.dark .lanqiao-table-box,
