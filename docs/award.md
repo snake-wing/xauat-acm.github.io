@@ -15,15 +15,20 @@ const awards = {
     title: 'ICPC 国际大学生程序设计竞赛',
     icon: '🌍',
     levels: [
-      { label: '🥇 金奖', color: 'gold', items: [
-          { year: '2025', competition: 'ICPC 亚洲区域赛（南京站）', team: 'XAUAT-1', members: '张三, 李四, 王五' },
-        ] },
-      { label: '🥈 银奖', color: 'silver', items: [
-          { year: '2025', competition: 'ICPC 亚洲区域赛（西安站）', team: 'XAUAT-2', members: '赵六, 孙七, 周八' },
-          { year: '2024', competition: 'ICPC 亚洲区域赛（济南站）', team: 'XAUAT-3', members: '吴九, 郑十, 陈十一' },
-        ] },
+      { label: '🥇 金奖', color: 'gold', items: [] },
+      { label: '🥈 银奖', color: 'silver', items: [] },
       { label: '🥉 铜奖', color: 'bronze', items: [
-          { year: '2024', competition: 'ICPC 邀请赛（武汉站）', members: '钱十二' },
+          { year: '2026', competition: 'ICPC 全国邀请赛（南昌站）', members: '最后一舞（张渊博, 邹凯, 蒋曼）', rank: 181 },
+          { year: '2025', competition: 'ICPC 邀请赛西安站', members: 'bug是自己长出来的（张渊博, 邹凯, 黄章满）', rank: 237 },
+          { year: '2024', competition: 'ICPC 邀请赛西安站', members: '三明治（王学荣, 陈碧辉, 黄林豪）', rank: 154 },
+          { year: '2022', competition: 'ICPC 亚洲区域赛（南京站）', members: '三明智（王学荣, 陈碧辉, 黄林豪）', rank: 175 },
+          { year: '2022', competition: 'ICPC 亚洲区域赛（济南站）', members: '三明智（王学荣, 陈碧辉, 黄林豪）', rank: 195 },
+          { year: '2022', competition: 'ICPC 陕西省赛', members: '三明治（王学荣, 陈碧辉, 黄林豪）', rank: 39 },
+        ] },
+      { label: '优胜奖', color: 'iron', items: [
+          { year: '2026', competition: 'ICPC 陕西省赛', members: '可能AC（刘弋睿, 郭旭东, 王越）', rank: 131 },
+          { year: '2026', competition: 'ICPC 邀请赛西安站', members: '最后一舞（张渊博, 周杨涛, 邹凯）', rank: 243 },
+          { year: '2025', competition: 'ICPC 邀请赛武汉站', members: 'bug是自己长出来的（张渊博, 邹凯, 黄章满）', rank: 249 },
         ] },
     ],
   },
@@ -33,11 +38,19 @@ const awards = {
     levels: [
       { label: '🥇 金奖', color: 'gold', items: [] },
       { label: '🥈 银奖', color: 'silver', items: [
-          { year: '2025', competition: 'CCPC 西安站', team: 'XAUAT-1', members: '张三, 李四, 王五' },
+          { year: '2026', competition: 'CCPC 全国邀请赛（贵州站）', members: '最后一舞（张渊博, 邹凯, 郭旭东）', rank: 32 },
         ] },
       { label: '🥉 铜奖', color: 'bronze', items: [
-          { year: '2025', competition: 'CCPC 秦皇岛站', team: 'XAUAT-2', members: '赵六, 孙七, 周八' },
-          { year: '2024', competition: 'CCPC 哈尔滨站', team: 'XAUAT-3', members: '吴九, 郑十' },
+          { year: '2026', competition: 'CCPC 全国邀请赛（南昌站）', members: '最后一舞（张渊博, 邹凯, 郭旭东）', rank: 135 },
+          { year: '2026', competition: 'CCPC 全国邀请赛（福州站）', members: '再欺负噜噜找人弄你（张渊博, 蒋曼, 刘济荣）', rank: 107 },
+          { year: '2025', competition: 'CCPC 全国邀请赛（南昌站）', members: '建大一队（张渊博, 邹凯, 李家琦）', rank: 154 },
+        ] },
+      { label: '优胜奖', color: 'iron', items: [
+          { year: '2026', competition: 'CCPC 全国邀请赛（南昌站）', members: '还要想吗（张帅, 刘家林, 孙子芮）', rank: 267 },
+          { year: '2025', competition: 'CCPC 郑州站（区域赛）', members: '地对地导弹（郭旭东, 袁浩然, 吴佳翼）', rank: 292 },
+          { year: '2025', competition: 'CCPC 哈尔滨站（区域赛）', members: '求求赏我一块铜（张渊博, 邹凯, 刘济荣）', rank: 229 },
+          { year: '2025', competition: 'CCPC 全国邀请赛（南昌站）', members: '建大二队（郭旭东, 袁浩然, 井宇航）', rank: 236 },
+          { year: '2025', competition: 'CCPC 全国邀请赛（南昌站）', members: '建大三队（刘济荣, 王杰, 王思远）', rank: 227 },
         ] },
     ],
   },
@@ -485,6 +498,8 @@ const unachievedSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="non
 // 天梯赛按年份降序排列
 const tiantiFlatList = flatItems(awards['天梯赛']).sort((a, b) => Number(b.year) - Number(a.year))
 
+function ordinal(n) { return n + 'th' }
+
 function flatItems(data) {
   if (!data) return []
   if (data.subsections) {
@@ -495,8 +510,12 @@ function flatItems(data) {
     )
   }
   return data.levels.flatMap(level =>
-    level.items.map(item => ({ ...item, award: level.label, color: level.color }))
-  )
+    level.items.map(item => ({
+      ...item,
+      award: item.rank != null ? `${level.label}（${ordinal(item.rank)}）` : level.label,
+      color: level.color
+    }))
+  ).sort((a, b) => Number(b.year) - Number(a.year))
 }
 
 /* ===== 蓝桥杯折叠（国赛/省赛分组） ===== */
@@ -581,7 +600,7 @@ const lanqiaoSummary = (() => {
     <span class="award-section-title">{{ awards.ICPC.title }}</span>
   </div>
   <div class="award-levels-grid">
-    <div class="award-level-col" v-for="level in awards.ICPC.levels" :key="level.label">
+    <div class="award-level-col" v-for="level in awards.ICPC.levels.filter(l => l.label !== '优胜奖')" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
         {{ level.label }}
         <span class="award-check-icon" v-html="level.items.length ? achievedSvg : unachievedSvg"></span>
@@ -614,7 +633,7 @@ const lanqiaoSummary = (() => {
     <span class="award-section-title">{{ awards.CCPC.title }}</span>
   </div>
   <div class="award-levels-grid">
-    <div class="award-level-col" v-for="level in awards.CCPC.levels" :key="level.label">
+    <div class="award-level-col" v-for="level in awards.CCPC.levels.filter(l => l.label !== '优胜奖')" :key="level.label">
       <div class="award-level-head" :class="levelClass(level.color)">
         {{ level.label }}
         <span class="award-check-icon" v-html="level.items.length ? achievedSvg : unachievedSvg"></span>

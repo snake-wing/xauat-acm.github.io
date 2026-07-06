@@ -676,6 +676,7 @@ html.dark .lanqiao-year-count { color: #666; }
   padding: 0.5rem 0.85rem;
   border-bottom: 1px solid #f0f0f3;
   vertical-align: middle;
+  background: #fff;
 }
 .award-table tbody tr:last-child td {
   border-bottom: none;
@@ -692,9 +693,9 @@ html.dark .lanqiao-year-count { color: #666; }
 
 .at-year { width: 8% !important; color: #6b6b6b; white-space: nowrap; text-align: center !important; }
 .at-comp { width: 27% !important; color: var(--vp-c-text-1); }
-.at-members { width: 52% !important; color: #666; text-align: center !important; }
+.at-members { width: 46% !important; color: #666; text-align: center !important; }
 .award-table thead th.at-members { text-align: center !important; }
-.at-award { width: 13% !important; text-align: center !important; white-space: nowrap; }
+.at-award { width: 18% !important; text-align: center !important; white-space: nowrap; }
 
 .award-tag {
   display: inline-block;
@@ -707,7 +708,7 @@ html.dark .lanqiao-year-count { color: #666; }
 /* 暗色 */
 html.dark .award-table-section { border-color: #252540; }
 html.dark .award-table thead th { background: #1a1a30; color: #888; border-color: #252540; }
-html.dark .award-table tbody td { border-color: #1e1e35; }
+html.dark .award-table tbody td { border-color: #1e1e35; background: #1a1a2e; }
 html.dark .award-table tbody tr:hover td { background: rgba(96, 165, 250, 0.05); }
 html.dark .at-comp { color: #eee; }
 html.dark .at-members { color: #aaa; }
@@ -806,8 +807,8 @@ html.dark .lanqiao-group-label { color: #ddd; }
 /* 列宽 */
 .award-table-row > span.at-year   { width: 7%;  text-align: center; flex-shrink: 0; }
 .award-table-row > span.at-comp   { flex: 1;     min-width: 0; white-space: nowrap; }
-.award-table-row > span.at-members { width: 36%; text-align: center; flex-shrink: 0; }
-.award-table-row > span.at-award  { width: 13%; text-align: center; flex-shrink: 0; }
+.award-table-row > span.at-members { width: 32%; text-align: center; flex-shrink: 0; }
+.award-table-row > span.at-award  { width: 17%; text-align: center; flex-shrink: 0; }
 
 html.dark .lanqiao-table-box,
 html.dark .lanqiao-table-box-close,

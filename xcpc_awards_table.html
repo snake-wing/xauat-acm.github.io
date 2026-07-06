@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西安建筑科技大学 XCPC 获奖记录</title>
+<style>
+  :root {
+    --gold: #f0a500;
+    --gold-bg: #fff8e7;
+    --silver: #8a8d91;
+    --silver-bg: #f5f5f5;
+    --bronze: #c47b3b;
+    --bronze-bg: #fdf2e9;
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text2: #8b949e;
+    --accent: #58a6ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 40px 24px;
+    min-height: 100vh;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .header .subtitle {
+    color: var(--text2);
+    font-size: 0.95rem;
+  }
+  .header .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .stat-card .num.gold-c   { color: var(--gold); }
+  .stat-card .num.silver-c { color: #a0a4a8; }
+  .stat-card .num.bronze-c { color: var(--bronze); }
+  .stat-card .num.total-c  { color: var(--accent); }
+  .stat-card .label {
+    color: var(--text2);
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+
+  /* Table */
+  .table-wrapper {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .table-wrapper h2 {
+    padding: 16px 20px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text2);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #0d1117;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #21262d;
+    vertical-align: middle;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #1c2129; }
+
+  /* Award badges */
+  .medal-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .medal-gold   { background: #3d3100; color: #f0a500; border: 1px solid #5a4a00; }
+  .medal-silver { background: #2a2d30; color: #c0c4c8; border: 1px solid #4a4d50; }
+  .medal-bronze { background: #332215; color: #d4843b; border: 1px solid #553a20; }
+  .medal-none   { color: var(--text2); }
+
+  .year-cell { font-weight: 700; color: var(--accent); white-space: nowrap; }
+  .members-cell { font-size: 0.85rem; color: #b1bac4; }
+  .team-cell { font-weight: 500; }
+  .rank-cell { color: var(--text2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* Category header rows */
+  .cat-row td {
+    background: #1a1f28;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text2);
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Summary at bottom */
+  .timeline-note {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    color: var(--text2);
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+  .timeline-note strong { color: var(--text); }
+
+  @media (max-width: 768px) {
+    body { padding: 20px 12px; }
+    .header h1 { font-size: 1.4rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 8px 10px; }
+    .hide-mobile { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🏆 西安建筑科技大学 XCPC 获奖记录</h1>
+    <p class="subtitle">数据来源：XIPF 竞赛数据平台 · 截至 2026-07-06</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="num gold-c">0</div>
+      <div class="label">🥇 金奖</div>
+    </div>
+    <div class="stat-card">
+      <div class="num silver-c">1</div>
+      <div class="label">🥈 银奖</div>
+    </div>
+    <div class="stat-card">
+      <div class="num bronze-c">9</div>
+      <div class="label">🥉 铜奖</div>
+    </div>
+    <div class="stat-card">
+      <div class="num total-c">18</div>
+      <div class="label">📋 参赛场次</div>
+    </div>
+  </div>
+
+  <!-- ICPC 表格 -->
+  <div class="table-wrapper">
+    <h2>🌍 ICPC 国际大学生程序设计竞赛</h2>
+    <table>
+      <colgroup>
+        <col style="width:60px">
+        <col style="min-width:220px">
+        <col style="width:120px">
+        <col style="min-width:160px">
+        <col style="width:80px">
+        <col style="width:80px">
+        <col style="width:70px">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>年份</th>
+          <th>比赛名称</th>
+          <th>队名</th>
+          <th>队员</th>
+          <th>奖项</th>
+          <th>排名</th>
+          <th class="hide-mobile">解题</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="year-cell">2026</td>
+          <td>ICPC 全国邀请赛（南昌站）</td>
+          <td class="team-cell">最后一舞</td>
+          <td class="members-cell">张渊博, 邹凯, 蒋曼</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">191</td>
+          <td class="rank-cell hide-mobile">4</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2026</td>
+          <td>ICPC 陕西省赛</td>
+          <td class="team-cell">可能AC(maybeAC)</td>
+          <td class="members-cell">刘弋睿, 郭旭东, 王越</td>
+          <td><span class="medal-none">—</span></td>
+          <td class="rank-cell">131</td>
+          <td class="rank-cell hide-mobile">3</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2026</td>
+          <td>ICPC 邀请赛西安站</td>
+          <td class="team-cell">最后一舞</td>
+          <td class="members-cell">张渊博, 周杨涛, 邹凯</td>
+          <td><span class="medal-none">—</span></td>
+          <td class="rank-cell">277</td>
+          <td class="rank-cell hide-mobile">4</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2025</td>
+          <td>ICPC 邀请赛武汉站</td>
+          <td class="team-cell">bug是自己长出来的</td>
+          <td class="members-cell">张渊博, 邹凯, 黄章满</td>
+          <td><span class="medal-none">—</span></td>
+          <td class="rank-cell">276</td>
+          <td class="rank-cell hide-mobile">3</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2025</td>
+          <td>ICPC 邀请赛西安站</td>
+          <td class="team-cell">bug是自己长出来的</td>
+          <td class="members-cell">张渊博, 邹凯, 黄章满</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">237</td>
+          <td class="rank-cell hide-mobile">—</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2024</td>
+          <td>ICPC 邀请赛西安站</td>
+          <td class="team-cell">三明治</td>
+          <td class="members-cell">王学荣, 陈碧辉, 黄林豪</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">154</td>
+          <td class="rank-cell hide-mobile">—</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2022</td>
+          <td>ICPC 陕西省赛</td>
+          <td class="team-cell">三明治</td>
+          <td class="members-cell">王学荣, 陈碧辉, 黄林豪</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">39</td>
+          <td class="rank-cell hide-mobile">—</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2022</td>
+          <td>ICPC 亚洲区域赛（南京站）</td>
+          <td class="team-cell">三明智</td>
+          <td class="members-cell">王学荣, 陈碧辉, 黄林豪</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">175</td>
+          <td class="rank-cell hide-mobile">3</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2022</td>
+          <td>ICPC 亚洲区域赛（济南站）</td>
+          <td class="team-cell">三明智</td>
+          <td class="members-cell">王学荣, 陈碧辉, 黄林豪</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">195</td>
+          <td class="rank-cell hide-mobile">4</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CCPC 表格 -->
+  <div class="table-wrapper">
+    <h2>🇨🇳 CCPC 中国大学生程序设计竞赛</h2>
+    <table>
+      <colgroup>
+        <col style="width:60px">
+        <col style="min-width:220px">
+        <col style="width:130px">
+        <col style="min-width:160px">
+        <col style="width:80px">
+        <col style="width:80px">
+        <col style="width:70px">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>年份</th>
+          <th>比赛名称</th>
+          <th>队名</th>
+          <th>队员</th>
+          <th>奖项</th>
+          <th>排名</th>
+          <th class="hide-mobile">解题</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="year-cell">2026</td>
+          <td>CCPC 全国邀请赛（贵州站）暨贵州省赛</td>
+          <td class="team-cell">最后一舞</td>
+          <td class="members-cell">张渊博, 邹凯, 郭旭东</td>
+          <td><span class="medal-tag medal-silver">🥈 银奖</span></td>
+          <td class="rank-cell">36</td>
+          <td class="rank-cell hide-mobile">7</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2026</td>
+          <td>CCPC 全国邀请赛（福州站）暨福建省赛</td>
+          <td class="team-cell">再欺负噜噜找人弄你</td>
+          <td class="members-cell">张渊博, 蒋曼, 刘济荣</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">107</td>
+          <td class="rank-cell hide-mobile">5</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2026</td>
+          <td>CCPC 全国邀请赛（南昌站）</td>
+          <td class="team-cell">最后一舞</td>
+          <td class="members-cell">张渊博, 邹凯, 郭旭东</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">155</td>
+          <td class="rank-cell hide-mobile">5</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2026</td>
+          <td>CCPC 全国邀请赛（南昌站）</td>
+          <td class="team-cell">还要想吗</td>
+          <td class="members-cell">张帅, 刘家林, 孙子芮</td>
+          <td><span class="medal-none">—</span></td>
+          <td class="rank-cell">295</td>
+          <td class="rank-cell hide-mobile">3</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2025</td>
+          <td>CCPC 郑州站（区域赛）</td>
+          <td class="team-cell">地对地导弹</td>
+          <td class="members-cell">郭旭东, 袁浩然, 吴佳翼</td>
+          <td><span class="medal-none">—</span></td>
+          <td class="rank-cell">292</td>
+          <td class="rank-cell hide-mobile">1</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2025</td>
+          <td>CCPC 哈尔滨站（区域赛）</td>
+          <td class="team-cell">求求赏我一块铜</td>
+          <td class="members-cell">张渊博, 邹凯, 刘济荣</td>
+          <td><span class="medal-none">—</span></td>
+          <td class="rank-cell">240</td>
+          <td class="rank-cell hide-mobile">3</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2025</td>
+          <td>CCPC 全国邀请赛（南昌站）</td>
+          <td class="team-cell">建大一队</td>
+          <td class="members-cell">张渊博, 邹凯, 李家琦</td>
+          <td><span class="medal-tag medal-bronze">🥉 铜奖</span></td>
+          <td class="rank-cell">165</td>
+          <td class="rank-cell hide-mobile">5</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2025</td>
+          <td>CCPC 全国邀请赛（南昌站）</td>
+          <td class="team-cell">建大二队</td>
+          <td class="members-cell">郭旭东, 袁浩然, 井宇航</td>
+          <td><span class="medal-none">—</span></td>
+          <td class="rank-cell">246</td>
+          <td class="rank-cell hide-mobile">3</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2025</td>
+          <td>CCPC 全国邀请赛（南昌站）</td>
+          <td class="team-cell">建大三队</td>
+          <td class="members-cell">刘济荣, 王杰, 王思远</td>
+          <td><span class="medal-none">—</span></td>
+          <td class="rank-cell">237</td>
+          <td class="rank-cell hide-mobile">3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Timeline note -->
+  <div class="timeline-note">
+    <strong>📌 说明：</strong><br>
+    · 2022 年"三明智"队连续获得 ICPC 南京站和济南站两枚铜牌；2024 年"三明治"队继续拿下 ICPC 西安邀请赛和陕西省赛两枚铜牌<br>
+    · 2026 年是参赛最活跃的一年（7 场），贵州站银牌为建大 CCPC 首枚邀请赛银牌<br>
+    · 核心队员张渊博、邹凯参与了大部分比赛，是建大 ACM 队的绝对主力<br>
+    · 外校参赛需自费出省，建大近年通过"以赛代练"策略积累了大量参赛经验<br>
+    · 标注"—"的字段为平台上未收录的数据（排名/解题数），由队员手动补充
+  </div>
+
+</div>
+</body>
+</html>
